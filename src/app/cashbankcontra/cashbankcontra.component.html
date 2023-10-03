@@ -1,0 +1,193 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">CASH BANK CONTRA</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+        <!-- <div class="row form-group">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+              </button>
+            <a (click)="this.test('E:/Quotation Format.pdf')">abc</a>
+        </div>
+         -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+        <fieldset style="border: solid black 1px;">
+        <div class="row form-group" id="row">
+                
+            <div class="col-sm-3">
+                <button name="NewAC" id="NewAC">NEW A/C</button>
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="TransferFrom" class="control-label">TRANSFER FROM</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="TransferFrom" name="TransferFrom" class="form-control">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="TransferFrom" name="TransferFrom" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="TransferFromDate" class="control-label">DATE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="date" id="TransferFromDate" name="TransferFromDate" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="TransferFromVerBranch" class="control-label">VER.BRANCH</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="TransferFromVerBranch" name="TransferFromVerBranch" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="ContraDocNo" class="control-label">CONTRA DOC. NO.</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="ContraDocNo" name="ContraDocNo" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="ContraDate" class="control-label">DATE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="date" id="ContraDate" name="ContraDate" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="ContraACCode" class="control-label">CONTRA A/C CODE</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="ContraACCode" name="ContraACCode" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="ContraACName" name="ContraACName" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="TranferTo" class="control-label">TRANSFER TO</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="TranferTo" name="TranferTo" class="form-control">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="TranferToName" name="TranferToName" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="TranferToDate" class="control-label">DATE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="date" id="TranferToDate" name="TranferToDate" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="TranferToVerBranch" class="control-label">VER.BRANCH</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="TranferToVerBranch" name="TranferToVerBranch" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="Amount" class="control-label">AMOUNT</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="Amount" name="Amount" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="DrCr" class="control-label">Dr./Cr.</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="DrCr" name="DrCr" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="Transit" class="control-label">Transit</label>
+            </div>
+            <div class="col-sm-2">
+               <select class="form-control" id="Transit" name="Transit">
+                <option></option>
+               </select>
+            </div>
+
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="BranchId" class="control-label">BRANCH ID</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="BranchId" name="BranchId" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="BranchCode" class="control-label">BRANCH CODE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="BranchCode" name="BranchCode" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-1">
+                <label for="Nar1" class="control-label">NAR 1</label>
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="Nar1" name="Nar1"></textarea>
+            </div>
+            <div class="col-sm-1">
+                <label for="Nar2" class="control-label">NAR 2</label>
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="Nar2" name="Nar2"></textarea>
+            </div>
+            <div class="col-sm-1">
+                <label for="Nar3" class="control-label">NAR 3</label>
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="Nar3" name="Nar3"></textarea>
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-1">
+                <label for="Nar4" class="control-label">NAR 4</label>
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="Nar4" name="Nar4"></textarea>
+            </div>
+            <div class="col-sm-1">
+                <label for="Nar5" class="control-label">NAR 5</label>
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" id="Nar5" name="Nar5"></textarea>
+            </div>
+        </div>
+
+        </fieldset>
+    </form>
+</body>

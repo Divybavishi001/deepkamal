@@ -1,0 +1,165 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <div class="col-sm-12">
+    <h1 style="text-align: center;">Agent  &nbsp;  Enquiry</h1>
+    </div>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+        <fieldset style="border: 1px black solid;width: 100%;" id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;background-color: blanchedalmond;" border="2px">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">NO</th>
+                        <th scope="col">Enq No.</th>
+                        <th scope="col">Enq Date.</th>
+                        <th scope="col">VEh. Code</th>
+                        <th scope="col">Veh Name</th>
+                        <th scope="col">Pary Name</th>
+                        <th scope="col">Add1</th>
+                        <th scope="col">Add2</th>
+                        <th scope="col">Add3</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Adhar</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+
+                        </td>
+                        <td >
+                            <input type="text" id="No" name="No"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="EnqNo" name="EnqNo" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="EnqDate" name="EnqDate" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="VehCode" name="VehCode" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="VehName"  name="VehName" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="PartyName" name="PartyName" class="form-control">
+                        </td>
+                  
+                        <td >
+                            <input type="text" id="Add1" name="Add1" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Add2" name="Add2" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Add3" name="Add3" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Area" name="Area" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="City" name="City" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Mobile" name="Mobile" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Adhar" name="Adhar" class="form-control">
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                   <br/><br/>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    
+                        
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+    </form>
+</body>

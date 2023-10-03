@@ -1,0 +1,271 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">AGENT ENQUIRY</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+        <!-- <page-action (getActionName)="this.GetActionName(event);"></page-action> -->
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+        <div class="row form-group">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+              </button>
+            <!-- <a (click)="this.test('E:/Quotation Format.pdf')">abc</a> -->
+        </div>
+        
+        <div class="row form-group">
+            <div class="col-sm-4">
+                <label for="searchEnq" class="control-label">Search Enquiry No. :</label>
+                <input type="text" id="searchEnq" name="searchEnq" width="5px" class="form-control"
+         />
+            </div>
+        </div>
+        <fieldset [disabled]="">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="EnqNo" class="control-label">Enquiry No. :</label>
+                    <input type="text" id="EnqNo" name="EnqNo" width="5px" class="form-control"
+                        disabled="true" />
+                </div>
+                <div class="col-sm-3">
+                    <label for="enqDate" class="control-label">Date :</label>
+                    <input type="date" id="enqDate" name="enqDate" width="5px" class="form-control"
+                         />
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-3">
+                    <label for="expectedDeliveryDate" class="control-label">Expected Delivery Date :</label>
+                    <input type="date" id="expectedDeliveryDate" name="expectedDeliveryDate" width="5px"
+                        class="form-control"  />
+                </div>
+                <div class="col-sm-2">
+                    <label for="vehicleCode" class="control-label">Vehicle Code :</label>
+                    <select name="vehicleCode" id="vehicleCode" class="form-control"
+                        >
+                        <option class='option' 
+                            >
+                            </option>
+                    </select>
+                    <!-- <input type="text" id="vehicleCode" name="vehicleCode" width="5px" class="form-control"
+                    [(ngModel)]="this.enquiryDetails.vehicleCode" /> -->
+                </div>
+                <div class="col-sm-4">
+                    <label for="vehicleName" class="control-label">Vehicle Name :</label>
+                    <input type="text" id="vehicleName" name="vehicleName" disabled="true" width="5px"
+                        class="form-control"  />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <label for="withAcessories" class="control-label">With Acessories :</label>
+                    <select name="withAcessories" id="withAcessories" class="form-control"
+                        >
+                        <option class='option' 
+                    >
+                            </option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="withMeter" class="control-label">With Meter :</label>
+                    <select name="withMeter" id="withMeter" class="form-control"
+                        >
+                        <option class='option' >
+                            </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-3">
+                    <label for="financeCoCode" class="control-label">Finance Company Code :</label>
+                    <select name="financeCoCode" id="financeCoCode" style="width: 100px;" class="form-control">
+                            <option>
+                            </option>
+                    </select>
+
+                    <!-- <input type="text" id="financeCoCode" name="financeCoCode" width="5px" class="form-control"
+                    [(ngModel)]="this.enquiryDetails.financeCoCode" /> -->
+                </div>
+                <div class="col-sm-6">
+                    <label for="financeCoName" class="control-label">Finance Company Name :</label>
+                    <input type="text" id="financeCoName" name="financeCoName" width="5px" class="form-control"
+                        disabled="true" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-1">
+                    <label for="rto" class="control-label">RTO :</label>
+                    <select name="rto" id="rto" class="form-control" 
+                        >
+                        <option class='option' >
+                            </option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="rtoNo" class="control-label">RTO No. :</label>
+                    <input type="text" id="rtoNo" name="rtoNo" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="firstName" class="control-label">First Name :</label>
+                    <input type="text" id="firstName" name="firstName" width="5px" class="form-control"
+                />
+                </div>
+                <div class="col-sm-4">
+                    <label for="middleName" class="control-label">Middle Name :</label>
+                    <input type="text" id="middleName" name="middleName" width="5px" class="form-control"
+                         />
+                </div>
+                <div class="col-sm-4">
+                    <label for="lastName" class="control-label">Last Name :</label>
+                    <input type="text" id="lastName" name="lastName" width="5px" class="form-control"
+                        />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label for="visitorName" class="control-label">Visitor Name :</label>
+                    <input type="text" id="visitorName" disabled="true" name="visitorName" width="5px"
+                        class="form-control"  />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="mobile1" class="control-label">Mobile :</label>
+                    <input type="text" id="mobile1" name="mobile1" onlyNumbers width="5px" maxlength="10"
+                        class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label for="mobile2" class="control-label">Mobile2 :</label>
+                    <input type="text" id="mobile2" name="mobile2" width="5px" onlyNumbers maxlength="10"
+                        class="form-control"  />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label for="add1" class="control-label">Address (1) :</label>
+                    <input type="text" id="add1" name="add1" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label for="add2" class="control-label">Address (2) :</label>
+                    <input type="text" id="add2" name="add2" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-12">
+                    <label for="add3" class="control-label">Address (3) :</label>
+                    <input type="text" id="add3" name="add3" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <label for="areaCode" class="control-label">Area Code :</label>
+                    <input type="text" id="areaCode" style="width: 50px;" name="areaCode" onlyNumbers 
+                        width="5px" class="form-control"  />
+                </div>
+                <div class="col-sm-4">
+                    <label for="areaName" class="control-label">Area Name :</label>
+                    <input type="text" id="areaName" name="areaName" width="5px" class="form-control"
+                    />
+                </div>
+                <div class="col-sm-4">
+                    <label for="city" class="control-label">City :</label>
+                    <select name="city" id="city" class="form-control" >
+                        <option class='option' >
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="pin" class="control-label">PIN :</label>
+                    <input type="text" id="pin" name="pin" width="5px" class="form-control"
+                         />
+                </div>
+                <div class="col-sm-2">
+                    <label for="stateCode" class="control-label">State Code :</label>
+                    <input type="text" id="stateCode" style="width: 80px;" name="stateCode" onlyNumbers width="5px" class="form-control"
+                         />
+                </div>
+                <div class="col-sm-4">
+                    <label for="stateName" class="control-label">State Name :</label>
+                    <input type="text" id="stateName" name="stateName" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <label for="adhar" class="control-label">ADHAR :</label>
+                    <input type="text" id="adhar" name="adhar" width="5px" class="form-control"
+                        />
+                </div>
+                <div class="col-sm-4">
+                    <label for="pan" class="control-label">PAN :</label>
+                    <input type="text" id="pan" name="pan" width="5px" class="form-control"
+                        />
+                </div>
+                <div class="col-sm-4">
+                    <label for="gstTIN" class="control-label">GST TIN :</label>
+                    <input type="text" id="gstTIN" name="gstTIN" width="5px" class="form-control"
+                         />
+                </div>
+            </div>
+            <div class="row form-group">
+                <button type="button" class="btn btn-primary" >
+                    Save
+                </button>
+                <!-- <a (click)="this.test('E:/Quotation Format.pdf')">abc</a> -->
+            </div>
+            <div class="row form-group">
+                <table>
+                    <thead>
+                        <td><b>Description</b></td>
+                        <td></td>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td></td> 
+                            <td>
+                                <input type="radio" checked=false name="radiogroup" [id]=""
+                                     [value]=""
+                                     />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <div class="row form-group">
+            <input type='file' #resumeInput [disabled]="">
+        </div>
+        <div class="row form-group">
+            <button type="button" class="btn btn-primary"  [disabled]="">
+                Save Document
+            </button>
+            <!-- <a (click)="this.test('E:/Quotation Format.pdf')">abc</a> -->
+        </div>
+        <div class="row form-group">
+            <ul>
+                <li >
+                    <a ></a>
+                </li>
+            </ul>
+        </div>
+    </form>
+</body>

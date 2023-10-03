@@ -1,0 +1,867 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">Retail Invoice</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SearchINV"  class="control-label">SEARCH INV:</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SearchINV" name="SearchINV" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="InvoiceNo"  class="control-label">INV. No.</label>
+                </div>   
+                <div class="col-sm-1">
+                    <input type="text" id="InvoiceNo" name="InvoiceNo" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="InvDate"  class="control-label">INV. DATE.</label>
+                </div>   
+                <div class="col-sm-2">
+                    <input type="date" id="InvDate" name="InvDate" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="F21Date"  class="control-label">F-21 DATE.</label>
+                </div>   
+                <div class="col-sm-2">
+                    <input type="date" id="F21Date" name="F21Date" class="form-control"
+                />
+                </div>
+            </div>  
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SalesBook"  class="control-label">SALES BOOK:</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SalesBook" name="SalesBook" class="form-control"
+                />
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="SalesBookName" name="SalesBookName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="BookNo"  class="control-label">BOOK NO:</label>
+                </div>
+                <div class="col-sm-2">
+                  <select class="form-control" id="BookNo" name="BookNo">
+                    <option></option>
+                  </select>
+                </div>
+                <div class="col-sm-1">
+                    <label for="DO"  class="control-label">D.O. :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="DO" name="DO" class="form-control" />
+               
+                </div>
+               
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DoDate"  class="control-label">D.O. DATE:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="DoDate" name="DoDate" class="form-control" />
+               
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SalesBook"  class="control-label">PROD SALE QTY</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SalesBook" name="SalesBook" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="SalesBook"  class="control-label">TAX CODE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SalesBookName" name="SalesBookName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="BookNo"  class="control-label">PROP. NO.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SalesBookName" name="SalesBookName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-2">
+                    <label for="DO"  class="control-label">D.O. ALLOT DATE:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="DO" name="DO" class="form-control"
+                />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="A/CNameCode"  class="control-label">A/C NAME :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="A/CNameCode" name="A/CNameCode" class="form-control"
+                />
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="A/CName" name="A/CName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="IrnNo"  class="control-label">IRN NO:</label>
+                </div>
+                <div class="col-sm-3">
+                  <textarea id="IrnNo" name="IrnNo" class="form-control"></textarea>
+                </div>
+                
+               
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="AckNo"  class="control-label">ACK NO. :</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="AckNo" name="AckNo" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="Date"  class="control-label">DATE :</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="Date" name="Date" class="form-control"
+                />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="AdreesL-1"  class="control-label">ADDRESS L-1 :</label>
+                </div>
+                <div class="col-sm-2">
+                    <textarea id="AdreesL-1" name="AdreesL-1" class="form-control"></textarea>
+                </div>
+                <div class="col-sm-1">
+                    <label for="AdreesL-2"  class="control-label">L-2 :</label>
+                </div>
+                <div class="col-sm-2">
+                    <textarea id="AdreesL-2" name="AdreesL-2" class="form-control"></textarea>
+                </div>
+                <div class="col-sm-1">
+                    <label for="AdreesL-3"  class="control-label">L-3 :</label>
+                </div>
+                <div class="col-sm-2">
+                    <textarea id="AdreesL-3" name="AdreesL-3" class="form-control"></textarea>
+                </div>
+
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="AreaCode"  class="control-label">AREA CODE :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="AreaCode" name="AreaCode" class="form-control"
+                />
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="AreaName" name="AreaName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="Pincode"  class="control-label">PINCODE :</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Pincode" name="Pincode" class="form-control"
+                />
+                </div>
+                <div class="col-sm-1">
+                    <label for="City"  class="control-label">CITY :</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="City" name="City" class="form-control"
+                />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Rto"  class="control-label">RTO :</label>
+                </div>
+                <div class="col-sm-2">
+                    <select id="Rto" name="Rto" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RtoCode" name="RtoCode" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="Mobile"  class="control-label">MOBLIE:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Mobile" name="Mobile" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="PhoneO"  class="control-label">PHONE(O):</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="PhoneO" name="PhoneO" class="form-control"/>
+                </div>
+                
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Vehicle"  class="control-label">VEHICLE :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Vehicle" name="Vehicle" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Vehicle" name="Vehicle" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="VehicleName" name="VehicleName" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <input type="checkbox" id="M.TAX.TOKEN.NO" name="M.TAX.TOKEN.NO">
+                    <label for="M.TAX.TOKEN.NO"  class="control-label" style="margin-left: 5px;font-weight: bold;font-size: 15px;">M.TAX.TOKEN.NO.->:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="MTAXTOKENNO" name="MTAXTOKENNO" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="ChasisNo"  class="control-label">CHASIS NO:</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="ChasisNo" name="ChasisNo" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="EngNo"  class="control-label">ENG. NO.:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ChasisNo" name="ChasisNo" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="ShortChasis"  class="control-label">SHORT CHASIS:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ShortChasis" name="ShortChasis" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="AgentEnqNo"  class="control-label">AGENT ENQ. NO.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="AgentEnqNo" name="AgentEnqNo" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="RtoPaidAmt"  class="control-label">RTO PAID AMT.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RtoPaidAmt" name="RtoPaidAmt" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="RtoPaidAmt"  class="control-label">TO  PAY RTO</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RtoPaidAmt" name="RtoPaidAmt" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="RtoRemark"  class="control-label">RTO REMARK</label>
+                </div>
+                <div class="col-sm-2">
+                   <textarea id="RtoRemark" name="RtoRemark" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="InsurancePaid"  class="control-label">INSURANCE PAID</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="InsurancePaid" name="InsurancePaid" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="PaidNo"  class="control-label">PAID NO.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="PaidNo" name="PaidNo" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="MafgDate"  class="control-label">Mafg.DATE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="MafgDate" name="MafgDate" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="MTax"  class="control-label">M. TAX</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="MTax" name="MTax" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <input type="checkbox" id="HPA" name="HPA">
+                    <label for="HPA"  class="control-label" style="margin-left: 10PX;font-weight: bold;font-size: 15px;">H.P.A WITH</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="HPA" name="HPA" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="HPA" name="HPA" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="LoanAmt"  class="control-label">LOAN AMT</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="LoanAmt" name="LoanAmt" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Agent"  class="control-label">AGENT</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Agent" name="Agent" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="AgentName" name="AgentName" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="Location"  class="control-label">LOCATION</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Location" name="Location" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="LocationName" name="LocationName" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Branch"  class="control-label">BRANCH</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Branch" name="Branch" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="BranchName" name="BranchName" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="CusProfile"  class="control-label">CUS.PROFILE</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CusProfile" name="CusProfile" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="CusProfileName" name="CusProfileName" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SchemeCode"  class="control-label">SCHEME CODE</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SchemeCode" name="SchemeCode" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="SchemeName" name="SchemeName" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="MeterSrNo"  class="control-label">Meter Sr.No</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="MeterSrNo" name="MeterSrNo" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="BatterySrNo"  class="control-label">Battery Sr.No</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="BatterySrNo" name="BatterySrNo" class="form-control"/>
+                </div>
+                
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SchemeAmt"  class="control-label">SCHEME AMT</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SchemeAmt" name="SchemeAmt" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="SchimeAmt"  class="control-label">SCHIMEAMT</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SchimeAmt" name="SchimeAmt" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="ACBalance"  class="control-label">A/C BALANCE</label> 
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ACBalance" name="ACBalance" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="Rate"  class="control-label">RATE</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Rate" name="Rate" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="ReceiptBank"  class="control-label">RECEIPT-BANK</label> 
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ReceiptBank" name="ReceiptBank" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="Cash"  class="control-label">CASH</label> 
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Cash" name="Cash" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="FreeAcce"  class="control-label">FREE ACCE[Y/N]</label> 
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="FreeAcce" name="FreeAcce" class="form-control"/>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <input type="checkbox" id="ClearAC" name="ClearAC">
+                    <label for="ClearAC"  class="control-label" style="margin-left: 10PX;font-weight: bold;font-size: 15px;">CLEAR A/C</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="checkbox" id="Acessories" name="Acessories">
+                    <label for="Acessories"  class="control-label" style="margin-left: 10PX;font-weight: bold;font-size: 15px;">ACCESSORIES</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="checkbox" id="WithMeter" name="WithMeter">
+                    <label for="WithMeter"  class="control-label" style="margin-left: 10PX;font-weight: bold;font-size: 15px;">WITH METER</label>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Narration"  class="control-label">NARRATION</label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" id="Narration" name="Narration" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <button id="Print" name="Print">PRINT</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="SaleLetter" name="SaleLetter">SALE LETTER</button>
+                </div>
+
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <button id="Invoice" name="Invoice">INVOICE</button>
+                </div>
+                <div class="col-sm-1">
+                    <label for="INVNO"  class="control-label">INV NO.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="INVNO" name="INVNO" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <button id="CancelInvoice" name="CancelInvoice">CANCEL INVOICE</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="PrintAccessBill" name="PrintAccessBill">Print->Access Bill</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="MeterBill" name="MeterBill">METER BILL</button>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <button id="Account" name="Account">ACCOUNT</button>
+                </div>
+                <div class="col-sm-2">
+                    <input type="checkbox" id="ACStatus" name="ACStatus">
+                    <label for="ACStatus"  class="control-label" style="margin-left: 10px;font-weight: bold; font-size: 15px;">A/C STATUS-></label>
+                </div>
+                <div class="col-sm-2">
+                    <button id="Inv+Ac" name="Inv+Ac">INV + A/C</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="Form22" name="Form22">FORM-22</button>
+                </div>
+            </div>  
+        </fieldset>
+
+        <fieldset style="border: solid black 1px;margin-bottom: 10px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="BasicValue(1)" class="control-label">BASIC VALUE(1):</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="BasicValue(1)" name="BasicValue(1)" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="CreditNote" class="control-label">CREDIT NOTE:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CreditNote" name="CreditNote" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="BodyKit(2)" class="control-label">BODY KIT(2):</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="BodyKit(2)" name="BodyKit(2)" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="TAXABLEAMT" class="control-label">TAXABLE AMT.:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="TAXABLEAMT" name="TAXABLEAMT" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="GSTCODE" class="control-label">GSTCODE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="GSTCODE" name="GSTCODE" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="GSTCODE1" name="GSTCODE1" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="CGST" class="control-label">CGST</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CGST" name="CGST" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="CGSTR" class="control-label">CGSTR</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CGSTR" name="CGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CGSTR1" name="CGSTR1" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="SGST" class="control-label">SGST</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SGST" name="SGST" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="SGSTR" class="control-label">SGSTR</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="SGSTR" name="SGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="SGSTR1" name="SGSTR1" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="GSTCESS" class="control-label">GSTCESS</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="GSTCESS" name="GSTCESS" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="GSTCESSR" class="control-label">GSTCESSR</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="GSTCESSR" name="GSTCESSR" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="IGSTR" class="control-label">IGSTR</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="IGSTR" name="IGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="FreeAcce" class="control-label">FREE ACCESSORIES[Y/N] </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="FreeAcce" name="FreeAcce" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Kit" class="control-label">KIT[Y/N] :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Kit" name="Kit" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="InvoiceTotal" class="control-label">INVOICE TOTAL</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="InvoiceTotal" name="InvoiceTotal" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="CashDiscount" class="control-label">CASH DISCOUNT </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CashDiscount" name="CashDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="Insurance" class="control-label">INSURANCE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Insurance" name="Insurance" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="HpaCharges" class="control-label">HPA CHARGES</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="HpaCharges" name="HpaCharges" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="LifeTimeMTax" class="control-label">LIFE TIME M. TAX</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="LifeTimeMTax" name="LifeTimeMTax" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="LifeTimeMTax1" name="LifeTimeMTax1" class="form-control">
+                </div>
+
+                <div class="col-sm-2">
+                    <label for="NoPLATECHARGE" class="control-label">No. PLATE CHARGE </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="NoPLATECHARGE" name="NoPLATECHARGE" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="CRTemp" class="control-label">C.R. TEMP</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CRTemp" name="CRTemp" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="RTOAmt" class="control-label">RTO% AMT</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RTOAmt" name="RTOAmt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="RTOAmt1" name="RTOAmt1" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="HandlingCharge" class="control-label">HANDLING CHARGE </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="HandlingCharge" name="HandlingCharge" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="HandlingCharge1" name="HandlingCharge1" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="GSTHandlingCharge" class="control-label">GST HANDLING CHARGE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="GSTHandlingCharge" name="GSTHandlingCharge" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="GSTHandlingCharge1" name="GSTHandlingCharge1" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="ExtraWarranty" class="control-label">EXTRA WARRANTY</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="ExtraWarranty" name="ExtraWarranty" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="TotalAmount" class="control-label">TOTAL AMOUNT</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="TotalAmount" name="TotalAmount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="BasicDiscount" class="control-label">BASIC DISCOUNT</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="BasicDiscount" name="BasicDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="OtherCharges" class="control-label">OTHER CHARGES</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="OtherCharges" name="OtherCharges" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="TotalVehicle" class="control-label">TOTAL VEHICLE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="TotalVehicle" name="TotalVehicle" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Accessory" class="control-label">ACCESSORY</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Accessory" name="Accessory" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory1" name="Accessory1" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory2" name="Accessory2" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory3" name="Accessory3" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory4" name="Accessory4" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory5" name="Accessory5" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Accessory6" name="Accessory6" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Accessory7" name="Accessory7" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Meter" class="control-label">METER</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Meter" name="Meter" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter1" name="Meter1" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter2" name="Meter2" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter3" name="Meter3" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter4" name="Meter4" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter5" name="Meter5" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="Meter6" name="Meter6" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Meter7" name="Meter7" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="GrandTotal" class="control-label">GRAND TOTAL </label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="GrandTotal" name="GrandTotal" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="AccessoryMeter" class="control-label">ACCESSORY + METER</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="AccessoryMeter" name="AccessoryMeter" class="form-control">
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <input type="text" id="" name="" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="UsersBooking" class="control-label">USERS BOOKING</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="UsersBooking" name="UsersBooking" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DO" class="control-label">D.O.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="DO" name="DO" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Invoice" class="control-label">INVOICE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Invoice" name="Invoice" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="BankDB" class="control-label">BANK D.B.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="BankDB" name="BankDB" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Amount" class="control-label">AMOUNT</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="Amount" name="Amount" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Date" class="control-label">DATE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="Date" name="Date" class="form-control">
+                </div>
+            </div>
+            
+        </fieldset>
+
+    </form>
+</body>

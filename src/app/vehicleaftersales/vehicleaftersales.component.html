@@ -1,0 +1,447 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">VEHICLE AFTER SALES</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="FindChasis"  class="control-label">Find Chasis</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="FindChasis" name="FindChasis">
+                </div>
+                <div class="col-sm-1">
+                    <label for="InvoiceNo"  class="control-label">Invoice No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="InvoiceNo" name="InvoiceNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DONo"  class="control-label">D.O. No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DONo" name="DONo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ACNo"  class="control-label">A/C No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="ACNo" name="ACNo">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ACName" name="ACName">
+                </div>
+
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="FindChasis"  class="control-label">Inv Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="FindChasis" name="FindChasis">
+                </div>
+                <div class="col-sm-1">
+                    <label for="TaxInvNo"  class="control-label">Tax Inv No</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="TaxInvNo" name="TaxInvNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ChasisNo"  class="control-label">Chasis No.</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ChasisNo" name="ChasisNo">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="VehCode"  class="control-label">Veh. Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="VehCode" name="VehCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ProdCode"  class="control-label">Prod. Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ProdCode" name="ProdCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ProdName"  class="control-label">Prod. Name</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ProdName" name="ProdName">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="EngineNo"  class="control-label">Engine No.</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="EngineNo" name="EngineNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="TankNo"  class="control-label">Tank No.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="TankNo" name="TankNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="MafgDate"  class="control-label">Mafg. Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="MafgDate" name="MafgDate">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="ColorCode"  class="control-label">Color Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ColorCode" name="ColorCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ColorName"  class="control-label">ColorName</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ColorName" name="ColorName">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <button id="" name="">RTO PANDING</button>
+                </div>
+                <div class="col-sm-3">
+                   
+                    <button id="" name="">INSURANCE DEATILS</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="" name="">LIFE TIME TAX</button>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <button id="" name="">CR TEMP</button>
+                </div>
+                <div class="col-sm-3">
+                    <button id="" name="">RTO No PLATE ORDER</button>
+                </div>
+                <div class="col-sm-3">
+                    <button id="" name="">ACCESSORIES CASH PAYMENT</button>
+                </div>
+            </div>
+
+            
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="text-align: center;background-color: aquamarine;">INSURANCE DETAILS</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="InsuranceCoCodeName"  class="control-label">Insurance Co. Code/Name</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="InsuranceCoCode" name="InsuranceCoCode" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="InsuranceCoName" name="InsuranceCoName" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="CoverNote">Cover Note</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CoverNote" name="CoverNote" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="PolicyNo">Policy No.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label class="control-label" for="PolicyNo">Insurance Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="PolicyNo">AMT. Paid.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="PolicyNo">Chaque No.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="PolicyNo">Chaque Dt</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label class="control-label" for="PolicyNo">Insurance Co. A/C</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="PolicyNo">A/CJournal</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="PolicyNo" name="PolicyNo" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                   <button id="btn"  name="PassJVInAC"> PASS J.V. IN A/C</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="text-align: center;background-color: aquamarine;">R.T.O. DETAILS</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="RTOTranNo"  class="control-label">R.T.O. TRAN No.</label>   
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="RTOTranNo" name="RTOTranNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="RTOTrDt"  class="control-label">R.T.O.TR.Dt.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="RTOTrDt" name="RTOTrDt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="RTOBankRef"  class="control-label">R.T.O. BANK REF.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="RTOBankRef" name="RTOBankRef" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="RTOPaidAmount"  class="control-label">R.T.O. PAID AMOUNT.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="RTOPaidAmount" name="RTOPaidAmount" class="form-control">
+                </div>
+                
+                <div class="col-sm-1">
+                    <label for="RTONo"  class="control-label">R.T.O.No.</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RTONo" name="RTONo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">DB CODE</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="DBCode" name="DBCode" class="form-control">
+                </div>
+                
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="ACNo"  class="control-label">A/C No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ACNo" name="ACNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DocNo"  class="control-label">Doc. No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="DocNo" name="DocNo" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <button id="btn" name="PassRtoEntry">PASS ENTRY</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="text-align: center;background-color: aquamarine;">LIFE TIME MUNICIPAL TAX DETAILS</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="MTaxReceipt"  class="control-label">M Tax Receipt</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="MTaxReceipt" name="MTaxReceipt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="MTaxTokenNo"  class="control-label">M Tax Token No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="MTaxTokenNo" name="MTaxTokenNo" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="MTaxReceiptDate"  class="control-label">M Tax Receipt Date</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="MTaxReceiptDate" name="MTaxReceiptDate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="ToPayAmount"  class="control-label">To Pay Amount</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="ToPayAmount" name="ToPayAmount" class="form-control">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="text-align: center;background-color: aquamarine;">CR. TEMP</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="RefNo"  class="control-label">REF NO.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="RefNo" name="RefNo" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="CrTempDate"  class="control-label">Cr. Temp Date</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="CrTempDate" name="CrTempDate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="CrTempDistinct"  class="control-label">Cr. Temp Distinct</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CrTempDistinct" name="CrTempDistinct" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="RefNo"  class="control-label">DB CODE.</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RefNo" name="RefNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="CrTempDate"  class="control-label">A/C No.</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="CrTempDate" name="CrTempDate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="CrTempDistinct"  class="control-label">Cr. Temp. No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CrTempDistinct" name="CrTempDistinct" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="RefNo"  class="control-label">AMOUNT</label>   
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="RefNo" name="RefNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="CrTempDate"  class="control-label">DOC. No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="CrTempDistinct" name="CrTempDistinct" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <button id="btn" name="PassCrTemp">PASS ENTRY</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="text-align: center;background-color: aquamarine;">RTO No PLATE ORDER</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="RefNo"  class="control-label">RTO APPLICATION No.</label>   
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="RefNo" name="RefNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="RefNo"  class="control-label">App. Dt.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="RefNo" name="RefNo" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="RefNo"  class="control-label">RTO No.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="RefNo" name="RefNo" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="RegistrationDate"  class="control-label"> REGISTRATION DATE</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="RegistrationDate" name="RegistrationDate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="HSRPOrderDate"  class="control-label">HSRP ORDER DATE</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="HSRPOrderDate" name="HSRPOrderDate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="ReceiptDate"  class="control-label">RECEIVED DATE</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="ReceiptDate" name="ReceiptDate" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DelChalanNo"  class="control-label">DEL CHALAN NO.</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="DelChalanNo" name="DelChalanNo" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="DeliveryDate"  class="control-label">DELIVERY DATE</label>   
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="DeliveryDate" name="DeliveryDate" class="form-control">
+                </div>
+            </div>
+        </fieldset>
+        
+    </form>
+</body>

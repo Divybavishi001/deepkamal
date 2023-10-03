@@ -1,0 +1,310 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">MULTIPLE  &nbsp;  TAX  &nbsp;  INVOICE</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="SaleNo"  class="control-label">Sale No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="SaleNo" name="SaleNo">
+                </div>
+                <div class="col-sm-2">
+                    <label for="InvoiceDate"  class="control-label">Invoice Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="InvoiceDate" name="InvoiceDate">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DONo"  class="control-label">DO No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DONo" name="DONo">
+                </div>
+                <div class="col-sm-2">
+                    <label for="DOAllotDate"  class="control-label">DO/ Allot Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="DOAllotDate" name="DOAllotDate">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="A/CNo"  class="control-label">A/C No</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="A/CNo" name="A/CNo">
+                </div>
+                <div class="col-sm-3">
+                    <select id="A/CName" name="A/CName" class="form-control">
+                        <option>
+
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-1">
+                    <label for="GSTTTINNo"  class="control-label">GSTTINNo.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="GSTTTINNo" name="GSTTTINNo">
+                </div>
+                <div class="col-sm-4">
+                    <label for="GSTTTINNo"  class="control-label">IF SOLD OUT OF GUJARAT THEN CHANGE GST CODE</label>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="BookingReceipt"  class="control-label">Booking Receipt</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="BookingReceipt" name="BookingReceipt">
+                </div>
+                <div class="col-sm-1">
+                    <label for="AgentCode"  class="control-label">Agent Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="AgentCode" name="AgentCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="SalesMan"  class="control-label">Sales Man</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="SalesMan" name="SalesMan">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Location"  class="control-label">LOCATION</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="Location" name="Location">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="SellingBranch"  class="control-label">Selling Branch</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="SellingBranch" name="SellingBranch">
+                </div>
+                <div class="col-sm-1">
+                    <label for="HPACode"  class="control-label">HPA Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="HPACode" name="HPACode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ProfilCode"  class="control-label">Profile Code</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ProfilCode" name="ProfilCode">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: 1px black solid;" id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;background-color: blanchedalmond;" border="2px">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th scope="col">Short Chasis</th>
+                        <th scope="col">Vehicle Code</th>
+                        <th scope="col">Chasis No.</th>
+                        <th scope="col">Engine No.</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Basic Value</th>
+                        <th scope="col">GST CD</th>
+                        <th scope="col">CGST%</th>
+                        <th scope="col">SGST%</th>
+                        <th scope="col">IGST%</th>
+                        <th scope="col">GST CESS%</th>
+                        <th scope="col">CGST AMT.</th>
+                        <th scope="col">SGST AMT.</th>
+                        <th scope="col">IGST AMT.</th>
+                        <th scope="col">GCESS AMT.</th>
+                        <th scope="col">TOTAL GST</th>
+                        <th scope="col">INV. Amt.</th>
+                        <th scope="col">DISC.</th>
+                        <th scope="col">Tot Amt.</th>
+                        <th scope="col">Lot No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+
+                        </td>
+                        <td >
+                            <input type="text" id="ShortChasis" name="ShortChasis"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="VehicleCode" name="VehicleCode" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="ChasisNo" name="ChasisNo" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="EngineNo" name="EngineNo" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Location"  name="Location" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="BasicValue" name="BasicValue" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTCD" name="GSTCD" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="CGST" name="CGST" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SGST" name="SGST" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="IGST" name="IGST" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTCESS" name="GSTCESS" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="CGSTAMT" name="CGSTAMT" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SGSTAMT" name="SGSTAMT" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="IGSTAMT" name="IGSTAMT" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GCESSAMT"name="GCESSAMT" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="TOTALGST" name="TOTALGST" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="INVAmt" name="INVAmt" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="DISC" name="DISC" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="TotAmt" name="TotAmt" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="LotNo" name="LotNo" class="form-control">
+                        </td>
+                        
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                   <br/><br/>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2">TOTAL BASIC VALUE</td>
+                        <td>CGST AMT.</td>
+                        <td>SGST AMT.</td>
+                        <td>IGST AMT.</td>
+                        <td>GSTCESS</td>
+                        <td>TOT.AMOUNT</td>
+                        <td>DISCOUNT</td>
+                        <td>BILL AMOUNT</td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2">
+                            <input type="text" id="TotalBasicValue" name="TotalBasicValue" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="CGSTAmt" name="CGSTAmt" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SGSTAmt" name="SGSTAmt" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="IGSTAmt" name="IGSTAmt" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="GSTCESS" name="GSTCESS" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="TotalAmount" name="TotalAmount" class="form-control"> 
+                        </td>
+                        <td>
+                            <input type="text" id="Discount" name="Discount" class="form-control"> 
+                        </td>
+                        <td>
+                            <input type="text" id="BillAmount" name="BillAmount" class="form-control"> 
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            Diffrence
+                        </td>
+                        <td colspan="2">
+                            <input type="text" id="Diffrence" name="Diffrence" class="form-control">
+                        </td>
+
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+    </form>
+</body>

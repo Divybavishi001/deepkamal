@@ -1,0 +1,62 @@
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-9">
+                <h1 class="text-white mb-4">Apply for a job</h1>
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body">
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Select Company :</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <select id="companyName" name="companyName" class="form-control"
+                                    [(ngModel)]="this.connectService.connectData.companyName"
+                                    [disabled]="this.loginService.dbConfing.gAgentYN == 'Y'">
+                                    <option *ngFor="let companyName of this.companyList"
+                                    
+                                        [value]="companyName.companyName">{{companyName.companyName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Select Year :</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <select id="year" name="year" class="form-control"
+                                    [(ngModel)]="this.connectService.connectData.year"
+                                    [disabled]="this.loginService.dbConfing.gAgentYN == 'Y'">
+                                    <option *ngFor="let year of this.yearList" [value]="year.FinYear">{{year.FinYear}}
+                                    </option>
+                                </select>&nbsp;
+                            </div>
+                        </div>
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Branch :</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input type="text" id="branchCode" class="form-control"
+                                    style="width:10%;display: inline!important;"
+                                    [(ngModel)]="this.connectService.connectData.branchCode"
+                                    (change)="this.getBranchDetails();"
+                                    [disabled]="this.loginService.dbConfing.gAgentYN == 'Y'"> &nbsp;
+                                <input type="text" id="branchName" [disabled]="true" class="form-control"
+                                    style="width:40%;display: inline!important;"
+                                    [(ngModel)]="this.connectService.connectData.branchName">&nbsp;
+                                <input type="text" id="branchId" class="form-control"
+                                    style="width:10%;display: inline!important;"
+                                    [disabled]="this.loginService.dbConfing.gAgentYN == 'Y'">
+                            </div>
+                        </div>
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="button" class="btn btn-primary btn-lg"
+                            (click)="this.saveConnect();">Connect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

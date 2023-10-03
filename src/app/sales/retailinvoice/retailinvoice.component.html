@@ -1,0 +1,158 @@
+<mat-card *ngIf="isVisibleParent">
+    <div class="container">
+        <table class="tb" matSort>
+            <thead>
+                <tr>
+                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                            Invoice No <mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                            DO No<mat-icon>sort</mat-icon></button></th>
+
+                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                            Sale Date<mat-icon>sort</mat-icon></button></th>
+
+                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                            Receipt No<mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="Area"><button mat-button>
+                            Ac No<mat-icon>sort</mat-icon></button></th>
+
+                    <th class="col" mat-sort-header="City"><button mat-button>
+                            Ac Name<mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="City"><button mat-button>
+                            Vehicle Code<mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="City"><button mat-button>
+                            Vehicle Name<mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="City"><button mat-button>
+                            Chasis No<mat-icon>sort</mat-icon></button></th>
+                    <th class="col" mat-sort-header="City"><button mat-button>
+                            Engine No<mat-icon>sort</mat-icon></button></th>
+
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+                            (click)="this.newItem()">Add New</button>
+                    </td>
+
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control">
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
+                    <td class="col-sm-1">
+                        <button mat-icon-button color="primary"
+                            (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
+                        <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
+                    </td>
+                    <td>
+                        {{obj.sInvNo}}
+                    </td>
+                    <td>
+
+                        {{obj.DONO}}
+                    </td>
+
+                    <td>
+                        {{obj.sSaleDt}}
+                    </td>
+
+                    <td>
+                        {{obj.sReceiptNo}}
+                    </td>
+                    <td>
+                        {{obj.ACNO}}
+                    </td>
+                    <td>
+                        {{obj.ACNAME}}
+                    </td>
+                    <td>
+                        {{obj.VEHICLECODE}}
+                    </td>
+                    <td>
+                        {{obj.ItemName}}
+                    </td>
+                    <td>
+                        {{obj.CHASISNO}}
+                    </td>
+                    <td>
+                        {{obj.ENGINENO}}
+                    </td>
+                    
+                </tr>
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+
+
+
+            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
+                (previous)="onPrevious($event)"></app-pagination>
+
+        </table>
+    </div>
+</mat-card>
+<div class="example-container" *ngIf="isVisibleChild">
+    <div class="row">
+        <div class="col-sm-2">
+            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+                (click)="this.saveledgeraccount()">Save</button>
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+                (click)="this.back()">Cancle</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <mat-form-field hintLabel="Max 10 characters">
+                <mat-label>Enter some input</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-2">
+            <mat-form-field>
+                <mat-label>Select me</mat-label>
+                <mat-select>
+                    <mat-option value="option">Option</mat-option>
+                </mat-select>
+                <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

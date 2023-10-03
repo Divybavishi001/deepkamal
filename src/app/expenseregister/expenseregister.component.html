@@ -1,0 +1,370 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">EXPENSE &nbsp; REGISTER</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">DB CODE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Branch"  class="control-label">SearchDoc.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="Branch" name="Branch">
+                </div>
+                <div class="col-sm-1">
+                    <label for="VerBranch"  class="control-label">PROMPT.Dt</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="SaleNo" name="SaleNo">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">Document No.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1 ">
+                    <label for="DBCode"  class="control-label">Doc. Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">Inv No.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">Inv. Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="DBCode" name="DBCode">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">RCM CODE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1 ">
+                    <label for="DBCode"  class="control-label">GAT TIN</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-2">
+                    <input type="radio" id="html" name="fav_language" value="HTML">
+                    <label for="html" style="font-size: 15px;margin-left: 10px;font-weight: bold;">O.G.C.Purchase</label><br>
+                   
+                </div>
+                <div class="col-sm-2">
+                    <input type="radio" id="css" name="fav_language" value="CSS">
+                    <label for="css" style="font-size: 15px;margin-left: 10px;font-weight: bold;">R.D. Purchase</label><br>
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">TDS-[Y/N]:</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">A/C:</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">TDS %</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">LIMIT</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">DOC NO.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">TDS.CODE</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">TDS.AMT.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-3">
+                    <label for="DBCode"  class="control-label">ENTRY DIFFRENCE ENTRY NOT SAVED</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">TDS. BASIC AMOUNT</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">Branch.CD</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">Branch.ID</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DBCode"  class="control-label">Ver.Branch</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-2">
+                    
+                </div>
+                
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <button id="XpassJV" name="XpassJV">XPASS J.V.</button>
+                </div>
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">Upload By Suppliers[Y/N]</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                
+            </div>
+        </fieldset>
+        <fieldset style="border: 1px black solid;" id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;background-color: blanchedalmond;" border="2px">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Ac No.</th>
+                        <th scope="col">A/C Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">DC</th>
+                        <th scope="col">Nar1</th>
+                        <th scope="col">Nar2</th>
+                        <th scope="col">BALANCE</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+
+                        </td>
+                        <td >
+                            <input type="text" id="Code" name="Code"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Name" name="Name" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="HSNNo" name="HSNNo" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTCD" name="GSTCD" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="CGSTR"  name="CGSTR" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SGSTR" name="SGSTR" class="form-control">
+                        </td>
+                  
+                        <td >
+                            <input type="text" id="IGSTR" name="IGSTR" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTCESSR" name="GSTCESSR" class="form-control">
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                </tbody>
+             
+            </table>
+        </fieldset>
+        <fieldset style="border: 1px black solid;" id="row">
+            <table class="table" border="2px">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Ac No.</th>
+                        <th scope="col">A/C Name</th>
+                        <th scope="col">HSN No.</th>
+                        <th scope="col">GST CD</th>
+                        <th scope="col">DC</th>
+                        <th scope="col">AMOUNT</th>
+                        <th scope="col">CGSTR %</th>
+                        <th scope="col">SGSTR %</th>
+                        <th scope="col">IGSTR %</th>
+                        <th scope="col">GST TOTAL</th>
+                        <th scope="col">ROUND OFF</th>
+                        <th scope="col">TOTAL AMOUNT</th>
+                        <th scope="col">NAR-1</th>
+                        <th scope="col">NAR-2</th>
+                        <th scope="col">BAL. DIFF.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            <input type="text" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SrNo" name="SrNo" style="width: 60px;"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="AcNo" name="AcNo" style="width: 80px;" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="AcName" name="AcName" style="width: 190px;" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="HSNNo" name="HSNNo" style="width: 60px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTCD" name="GSTCD" style="width: 60px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="DC" name="DC" style="width: 60px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Amount" name="Amount" style="width: 80px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="CGSTR"  name="CGSTR" style="width: 60px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SGSTR" name="SGSTR" style="width: 60px;" class="form-control">
+                        </td>
+                  
+                        <td >
+                            <input type="text" id="IGSTR" name="IGSTR" style="width: 60px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="GSTTotal" name="GSTTotal" style="width: 80px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="RoundOff" name="RoundOff"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="TotalAmount" name="TotalAmount"   class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="NAR1" name="NAR1" style="width: 200px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="NAR2" name="NAR2" style="width: 200px;" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="BalDiff" name="BalDiff" style="width: 90px;" class="form-control">
+                        </td>
+                        
+                        
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                   
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control">
+                        </td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    
+                    
+                        
+
+                    </tr>
+                    
+                    
+                </tfoot>
+            </table>
+        </fieldset>
+    </form>
+</body>

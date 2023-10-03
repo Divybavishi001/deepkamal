@@ -1,0 +1,22 @@
+#row {
+    margin-top: 10px;
+}
+
+#button{
+    margin-left: 20px;
+}
+#btnimg{
+    width: 20px;
+    margin-right: 5px;
+}
+td{
+    background-color: blanchedalmond;
+}
+table{
+    background-color: blanchedalmond;
+    display: block; overflow-x: auto; margin-top: 10px; white-space: nowrap;
+    
+}
+th{
+    background-color: blanchedalmond;
+}

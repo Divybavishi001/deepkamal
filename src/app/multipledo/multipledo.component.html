@@ -1,0 +1,225 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">MULTIPLE  &nbsp;  D.O. </h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="ACHead"  class="control-label">A/C. &nbsp; HEAD</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ACHead" name="ACHead">
+                </div>
+                <div class="col-sm-2">
+                    <label for="MultipleDOSr"  class="control-label">Multiple D.O. Sr.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="MultipleDOSr" name="MultipleDOSr">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Date"  class="control-label">DATE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="Date" name="Date">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="NoBooking"  class="control-label">NO. Booking</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="NoBooking" name="NoBooking">
+                </div>
+                <div class="col-sm-1">
+                    <label for="DORaised"  class="control-label">D.O.Raised</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="DORaised" name="DORaised">
+                </div>
+                <div class="col-sm-1">
+                    <label for="NewDO"  class="control-label">New D.O.</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="NewDO" name="NewDO">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Disc"  class="control-label">DISC[Y/N]</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="Disc" name="Disc">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="DBCode"  class="control-label">DB CODE</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="DBCode" name="DBCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="SalePrice"  class="control-label">Sale Price</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="SalePrice" name="SalePrice">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="SalesManCode"  class="control-label">SalesMan Code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="SalesManCode" name="SalesManCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="SalesManName" name="SalesManName">
+                </div>
+                <div class="col-sm-2">
+                    <label for="Agentcode"  class="control-label">Agent Code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="Agentcode" name="Agentcode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="AgentName" name="AgentName">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="Location"  class="control-label">Location</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="Location" name="Location">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="LocationName" name="LocationName">
+                </div>
+                <div class="col-sm-2">
+                    <label for="ProductCode"  class="control-label">Product Code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="ProductCode" name="ProductCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ProductName" name="ProductName">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="VehicleCode"  class="control-label">Vehicle Code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="VehicleCode" name="VehicleCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="VehicleName" name="VehicleName">
+                </div>
+                <div class="col-sm-2">
+                    <label for="BranchCode"  class="control-label">Branch Code</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="BranchCode" name="BranchCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="BranchName" name="BranchName">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="HPA"  class="control-label">HPA</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="HPA" name="HPA">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="HPA" name="HPA">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Amount"  class="control-label">Amount</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="Amount" name="Amount">
+                </div>
+            </div>
+            
+        </fieldset>
+        <fieldset style="border: 1px black solid;" id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;background-color: blanchedalmond;" border="2px">
+                <thead>
+                    <tr>
+                        <th class="col"></th>
+                        <th>DO NO</th>
+                        <th>DO Dt.</th>
+                        <th>Allot Dt.</th>
+                        <th>Vehicle Code</th>
+                        <th>Booking Receipt</th>
+                        <th>Prop. No.</th>
+                        <th>Enq. No.</th>
+                        <th>A/C. Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- <input type="text" class="form-control"> -->
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="DONO" name="DONO">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="DODt" name="DODt">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="AllotDt" name="AllotDt">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="VehicleCode" name="VehicleCode">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="BookingReceipt" name="BookingReceipt">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="PropNo" name="PropNo">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="EnqNo" name="EnqNo">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="ACBalance" name="ACBalance">
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </fieldset>
+    </form>
+</body>
+      

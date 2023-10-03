@@ -1,0 +1,160 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container"> <br />
+    <h1 style="text-align: center;">FIND  &nbsp;  CHASIS </h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+             <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Save 
+            </button>
+            </div> 
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+         
+        
+        <fieldset style="border: solid black 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="VehicleCode"  class="control-label">VehicleName</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="VehicleCode" name="VehicleCode">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="VehicleName" name="VehicleName">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ShortChasis"  class="control-label">ShortChasis</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ShortChasis" name="ShortChasis">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="ChasisNo"  class="control-label">Chasis No</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="ChasisNo" name="ChasisNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="EngineNo"  class="control-label">Engine No</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="EngineNo" name="EngineNo">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="background-color: aquamarine;text-align: center;">LOT &nbsp; RECEIVED</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="TankCylinder"  class="control-label">TankCylinder</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="TankCylinder" name="TankCylinder">
+                </div>
+                <div class="col-sm-1">
+                    <label for="KitNo"  class="control-label">Kit No</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="KitNo" name="KitNo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="InstDate"  class="control-label">Inst. Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="InstDate" name="InstDate">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="background-color: aquamarine;text-align: center;">ACCESSORIES</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="Amount"  class="control-label">Amount</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="Amount" name="Amount">
+                </div>
+                <div class="col-sm-2">
+                    <label for="DateOfFitting"  class="control-label">Date Of Fitting</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="DateOfFitting" name="DateOfFitting">
+                </div>
+                <div class="col-sm-2">
+                    <label for="AccessorySetNo"  class="control-label">Accessory Set No.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="AccessorySetNo" name="AccessorySetNo">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="border: solid black 1px;" id="row">
+            <h3 style="background-color: aquamarine;text-align: center;">DO / ALLOTMENT</h3>
+            <div class="row form-group" id="row">
+                <div class="col-sm-1">
+                    <label for="DONo"  class="control-label">DO No.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="DONo" name="DONo">
+                </div>
+                <div class="col-sm-1">
+                    <label for="ACCode"  class="control-label">A/C Code.</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="ACCode" name="ACCode">
+                </div>
+                <div class="col-sm-1">
+                    <label for="Name"  class="control-label">Name</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="Name" name="Name">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="AllotmentDate"  class="control-label">Allotment Date</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="AllotmentDate" name="AllotmentDate">
+                </div>
+                <div class="col-sm-2">
+                    <label for="WithAccessories"  class="control-label">With Accessories</label>
+                </div>
+                <div class="col-sm-2">
+                    <select id="WithAccessories" name="WithAccessories" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="WithMeter"  class="control-label">With Meter</label>
+                </div>
+                <div class="col-sm-2">
+                    <select id="WithMeter" name="WithMeter" class="form-control">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</body>

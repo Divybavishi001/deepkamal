@@ -1,0 +1,387 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <div class="col-sm-12">
+    <h1 style="text-align: center;">MONTHLY  &nbsp;  SALES</h1>
+    </div>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+    <!-- <page-action (getActionName)="this.GetActionName($event);"></page-action> -->
+        <!-- <app-page-action (getActionName)="this.GetActionName($event);"></app-page-action> -->
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+        <fieldset style="border: 1px black solid;width: 100%;" id="row">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <label class="control-label" for="GenerateReport">(1) GENERATE REPORT</label>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label" for="EnterJV">(2) ENTER JV</label>
+                </div>
+                <div class="col-sm-2">
+                    <button id="Report" name="Report">Report</button>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label" for="MonthlySales">MONTHLY SALES</label>
+                </div>
+                <div class="col-sm-1">
+                   <input type="text" id="MonthlySales" name="MonthlySales" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label class="control-label" for="DBCode">DB CODE</label>
+                </div>
+                <div class="col-sm-1">
+                   <input type="text" id="DBCode" name="DBCode" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    <button id="MonthlySalesReport" name="MonthlySalesReport">MONTHLY SALES REPORT</button>
+                </div>
+                <div class="col-sm-2">
+                    <button id="EnterJV" name="EnterJV">ENTER J.V.</button>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label" for="MonthlySales">JOURNAL DATE</label>
+                </div>
+                <div class="col-sm-2">
+                   <input type="date" id="MonthlySales" name="MonthlySales" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label" for="MonthlySales">MONTH END DATE</label>
+                </div>
+                <div class="col-sm-2">
+                   <input type="date" id="MonthlySales" name="MonthlySales" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group"></div>
+        </fieldset>
+        <fieldset style="border: 1px black solid;width: 100%;" id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;background-color: blanchedalmond;" border="2px">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Dbcode</th>
+                        <th scope="col">sBasicValue</th>
+                        <th scope="col">sBodyValue</th>
+                        <th scope="col">sBodyKit</th>
+                        <th scope="col">saccessories</th>
+                        <th scope="col">sExtraAccessories</th>
+                        <th scope="col">sMasterFlag</th>
+                        <th scope="col">SKIT</th>
+                        <th scope="col">sTaxableAmt</th>
+                        <th scope="col">SalesTax</th>
+                        <th scope="col">VATCESS</th>
+                        <th scope="col">CGST</th>
+                        <th scope="col">SGST</th>
+                        <th scope="col">IGST</th>
+                        <th scope="col">GSTCESS</th>
+                        <th scope="col">SCYLINDER</th>
+                        <th scope="col">STAXABLE5P</th>
+                        <th scope="col">SALETAX5PA</th>
+                        <th scope="col">vatcess5PA</th>
+                        <th scope="col">sTotinvamt</th>
+                        <th scope="col">sinsurance</th>
+                        <th scope="col">sHPACharge</th>
+                        <th scope="col">sLifetimeTax</th>
+                        <th scope="col">sCrTemp</th>
+                        <th scope="col">sHandlingCharge</th>
+                        <th scope="col">srto</th>
+                        <th scope="col">SEXTWARANTY</th>
+                        <th scope="col">SAGENTFEE</th>
+                        <th scope="col">SRTOSPCHG</th>
+                        <th scope="col">slnvAmt</th>
+                        <th scope="col">sBasicDiscount</th>
+                        <th scope="col">sOtherCharge1</th>
+                        <th scope="col">sGRANDTOTAL</th>
+                        <th scope="col">sProposalDiscount</th>
+                        <th scope="col">CashDiscount</th>
+                        <th scope="col">HANDLINGGSTNET</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+
+                        </td>
+                        <td >
+                            <input type="text" id="Month" name="Month"  class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="Dbcode" name="Dbcode" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sBasicValue" name="sBasicValue" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="sBodyValue" name="sBodyValue" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="sBodyKit"  name="sBodyKit" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="saccessories" name="saccessories" class="form-control">
+                        </td>
+                  
+                        <td >
+                            <input type="text" id="sExtraAccessories" name="sExtraAccessories" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="sMasterFlag" name="sMasterFlag" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SKIT" name="SKIT" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="sTaxableAmt" name="sTaxableAmt" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="SalesTax" name="SalesTax" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="VATCESS" name="VATCESS" class="form-control">
+                        </td>
+                        <td >
+                            <input type="text" id="CGST" name="CGST" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SGST" name="SGST" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="IGST" name="IGST" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="GSTCESS" name="GSTCESS" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SCYLINDER" name="SCYLINDER" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="STAXABLE5P" name="STAXABLE5P" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SALETAX5PA" name="SALETAX5PA" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="vatcess5PA" name="vatcess5PA" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sTotinvamt" name="sTotinvamt" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sinsurance" name="sinsurance" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sHPACharge" name="sHPACharge" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sLifetimeTax" name="sLifetimeTax" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sCrTemp" name="sCrTemp" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sHandlingCharge" name="sHandlingCharge" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="srto" name="srto" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SEXTWARANTY" name="SEXTWARANTY" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SAGENTFEE" name="SAGENTFEE" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="SRTOSPCHG" name="SRTOSPCHG" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="slnvAmt" name="slnvAmt" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sBasicDiscount" name="sBasicDiscount" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sOtherCharge1" name="sOtherCharge1" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sGRANDTOTAL" name="sGRANDTOTAL" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="sProposalDiscount" name="sProposalDiscount" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="CashDiscount" name="CashDiscount" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" id="HANDLINGGSTNET" name="HANDLINGGSTNET" class="form-control">
+                        </td>
+                        
+
+                        
+                        
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                   <br/><br/>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    
+                        
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                        
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                        
+
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+    </form>
+</body>

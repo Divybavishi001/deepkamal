@@ -1,0 +1,21 @@
+
+#row{
+    margin-top: 10px;
+}
+
+button{
+    
+    color: black;
+    margin-left: 10px;
+    background-color: rgb(225, 228, 52);
+}
+button:hover {
+    background-color: aqua;
+}
+#button{
+    margin-left: 20px;
+}
+#btnimg{
+    width: 20px;
+    margin-right: 5px;
+}

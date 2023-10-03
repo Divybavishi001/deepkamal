@@ -1,0 +1,86 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">Day Book Type</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmAgentEnquiry">
+
+         <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="" (click)="saveDatbooktype()">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Save 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+<div class="row form-group" style="margin-top: 10px;" >
+    <div class="col-sm-4" *ngIf="isVisibleParent">
+        <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;width: auto;" border="2px">
+            <thead>
+                <tr>
+                <th class="col">CODE</th> 
+                <th class="col">NAME</th>
+                <th class="th-lg">Edit</th>
+                </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of this.LstDaybookType; let i = index">
+                <td>
+                    {{obj.dbtype}}
+                </td>
+                <td>
+                    {{obj.dbname}}
+                </td>
+                <td>
+                    {{obj.active}}
+                </td>
+                <td><input type="button" id='btnEdit{{obj.ID}}' title="Edit" value="Edit"
+                    (click)="this.editItem(obj);">
+                </td>
+                <td><input type="button" id='btnEdit{{obj.ID}}' title="Edit" value="Edit"
+                    (click)="this.dltItem(obj);">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-sm-8" *ngIf="isVisibleChild">
+    <div class="row form-group">
+    <div class="col-sm-1">
+        <label class="control-label" for="code">Code.</label>
+    </div>
+    <div class="col-sm-2">
+    <input type="text" id="code" name="code" class="form-control" #dbtype
+        [(ngModel)]="this.DatbooktypeService.objBooktype.dbtype">
+
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label" for="name">Name</label>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" id="name" name="name" class="form-control" #dbname
+        [(ngModel)]="this.DatbooktypeService.objBooktype.dbname">
+
+    </div>
+    <div class="col-sm-2"> 
+        <input type="checkbox" id="ACTIVE" name="ACTIVE" #active
+        [(ngModel)]="this.DatbooktypeService.objBooktype.active">
+        <label class="control-label" for="ACTIVE">ACTIVE</label>
+    </div>
+    </div>
+</div>
+</div>

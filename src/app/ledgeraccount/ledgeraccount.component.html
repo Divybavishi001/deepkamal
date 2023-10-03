@@ -1,0 +1,624 @@
+<head>
+    <link href=
+        "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        rel="stylesheet" />
+</head>
+<body class="container" > <br />
+    <h1 style="text-align: center;">LEDGER ACOUNT</h1>
+    <form class="form-horizontal" role="form" autocomplete="false" #frmVehiclePurchase="" id="frmledgeraccount">
+        <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+        </div>
+            <div class="col-sm-2">
+                <button type="button" class="ui circular teal button" [disabled]="" (click)="saveledgeraccount()">
+                    <img src="../../assets/images/folder.png" id="btnimg" >
+                    Save 
+                </button>
+            
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+        <div class="container" *ngIf="isVisibleParent">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;width: auto;" border="2px">
+                <thead>
+                    <tr>
+                    <th class="col">Account No.</th> 
+                    <th class="col">Name</th>
+                    <th class="th-lg">Mobile</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
+                    <td>
+                        {{obj.ACNO}}
+                    </td>
+                    <td>
+                        {{obj.FirstName}}
+                    </td>
+                    <td>
+                        {{obj.mobile}}
+                    </td>
+                    <td><input type="button" id='btnEdit{{obj.ID}}' title="Edit" value="Edit"
+                        (click)="this.editItem(obj);">
+                    </td>
+                    <!-- <td><input type="button" id='btnEdit{{obj.ID}}' title="Edit" value="Edit"
+                        (click)="this.dltItem(obj);">
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+        <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
+        (previous)="onPrevious($event)"></app-pagination>
+        </div>
+        
+        <div class="container" *ngIf="isVisibleChild">
+        <fieldset style="border: black solid 1px;" id="row">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <input type="radio" id="acname" name="acname"/>
+                    <label for="acname" class="control-label" style="margin-left: 8px;">A/C Name</label>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <input type="radio" id="balancesheetgroup" name="balancesheetgroup" />
+                    <label for="balancesheetgroup" class="control-label" style="margin-left: 8px;">Balance Sheet Group</label>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <input type="radio" id="trandingheads" name="trandingheads" />
+                    <label for="trandingheads" class="control-label" style="margin-left: 8px;">Tranding Heads</label>
+                    
+                </div>
+                <div class="col-sm-3">
+                    <input type="radio" id="balancesheetgroupfour" name="balancesheetgroupfour" />
+                    <label for="balancesheetgroupfour" class="control-label" style="margin-left: 8px;">Balance Sheet Group Four</label>
+                    
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+                
+            </div>
+        
+        </fieldset>
+        <fieldset style="border: black solid 1px;">
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="acno" class="control-label">AcNo</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="acno" name="acno" #ACNO
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.ACNO" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <label for="searchac" class="control-label">Search A/C</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="searchac" name="searchac" class="form-control">
+                </div>
+                <div class="col-sm-1">
+                    <label for="status" class="control-label">Status</label>
+
+                </div>
+                <div class="col-sm-2">
+                    <select id="status" name="status" class="form-control">
+                        <option>
+
+                        </option>
+                    </select>
+                </div>
+                
+
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="enquiryno" class="control-label">Enquiry No</label>
+
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="enquiryno" name="enquiryno">
+                </div>
+                <div class="col-sm-2">
+                    <label for="agentenquiryno" class="control-label">Agent Enq. No</label>
+
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="agentenquiryno"
+                    #AgentEnqNo
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.AgentEnqNo" name="agentenquiryno">
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="firstName" class="control-label">First Name :</label>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="firstName" name="firstName" width="5px"
+                    #FirstName
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.FirstName" class="form-control"
+                />
+                </div>
+                <div class="col-sm-2">
+                    <label for="middleName" class="control-label">Middle Name :</label>
+                   
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="middleName" name="middleName" width="5px"
+                    #MiddleName
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.MiddleName" class="form-control"
+                    />
+                </div>
+                <div class="col-sm-2">
+                    <label for="lastName" class="control-label">Last Name :</label>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="lastName" name="lastName" width="5px"
+                    #LastName
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.LastName" class="form-control"
+                        />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="visitorName" class="control-label">Full Name:</label>
+                    
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="visitorName" disabled="true" name="visitorName" width="5px"
+                    #ACNAME
+                    [(ngModel)]="this.ledgeraccountservice.objledgeraccount.ACNAME"
+                        class="form-control"  />
+                </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="grp" class="control-label">GRP</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="grp" name="grp" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="sgrp" class="control-label">SGRP</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="sgrp" name="sgrp" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="ssgrp" class="control-label">SSGRP</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="ssgrp" name="ssgrp" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="sssgrp" class="control-label">SSSGRP</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="sssgrp" name="sssgrp" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="grpfour" class="control-label">GRP FOUR</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="grpfour" name="grpfour" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="sgrpfour" class="control-label">SGRP FOUR</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="sgrpfour" name="sgrpfour" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="ssgrpfour" class="control-label">SSGRP FOUR</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="ssgrpfour" name="ssgrpfour" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="sssgrpfour" class="control-label">SSSGRP FOUR</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="sssgrpfour" name="sssgrpfour" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="opbal" class="control-label">Op Bal</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="opbal" name="opbal" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="drcr" class="control-label">Dr/Cr</label>
+            </div>
+            <div class="col-sm-2">
+                <select id="drcr" class="form-control">
+                    <option>
+
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <label for="crdays" class="control-label">Cr. Days</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="crdays" name="crdays" class="form-control">
+            </div>
+            
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="dbcode" class="control-label">DB Code</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="dbcode" name="dbcode" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="actpassiv" class="control-label">Act./Passiv-[A/P]</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="actpassiv" name="actpassiv" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="type" class="control-label">Type:</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="type" name="type" class="form-control">
+            </div>
+            
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="multibooking" class="control-label">Multi Booking</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="multibooking" name="multibooking" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="branchcode" class="control-label">Branch Code</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="branchcode" name="branchcode" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="verbranch" class="control-label">VER BRANCH</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="verbranch" name="verbranch" class="form-control">
+            </div>
+            
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="gsttin" class="control-label">GST TIN</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="gsttin" name="gsttin" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="selectacgrp" class="control-label">Select A/C GRP</label>
+                
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="selectacgrp" name="selectacgrp" class="form-control">
+            </div>
+            <div class="col-sm-2">
+               <button  id="aclock" name="aclock">A/C Lock</button>
+                
+            </div>
+           
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <input type="checkbox" id="closeac" name="closeac">
+                <label class="control-label" style="margin-left: 10px;font-size: 16px;font-weight: bold;">Close A/c</label>
+
+            </div>
+            <div class="col-sm-2">
+                <label for="flagno" class="control-label">FLAG NO.</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="flagno" name="flagno" class="form-control" >              
+            </div>
+            <div class="col-sm-1">
+                <label for="mergewith" class="control-label">MERGE WITH</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="mergewith" name="mergewith" class="form-control" >              
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            
+            <div class="col-sm-2">
+                <label for="newyrac" class="control-label">NEW Yr A/C No</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="newyrac" name="newyrac" class="form-control" >              
+            </div>
+            <div class="col-sm-1">
+                <label for="userac" class="control-label">USER A/C</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="userac" name="userac" class="form-control" >              
+            </div>
+            <div class="col-sm-1">
+                <label for="bankid" class="control-label">Bank ID</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="bankid" name="bankid" class="form-control">
+
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            
+            <div class="col-sm-2">
+                <label for="ifsccode" class="control-label">IFSC </label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="ifsccode" name="ifsccode" class="form-control" >              
+            </div>
+            <div class="col-sm-1">
+                <label for="Acno" class="control-label">A/C No.</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="Acno" name="Acno" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="limitrs" class="control-label">LIMIT Rs.</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="limitrs" name="limitrs" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="limitrs1" name="limitrs1" class="form-control">
+            </div>
+            
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <input type="checkbox" id="tdsdeductable" name="tdsdeductable" >
+                <label for="tdsdeductable" class="control-label" style="margin-left: 10px;font-size: 15px; font-weight: bold;">TDS DEDUCTABLE?</label>
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="effectfromdt" class="control-label">EFFECT FROM</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="date" id="effectfromdt" name="effectfromdt" class="form-control">
+                
+            </div>
+            <div class="col-sm-1">
+                <label for="effecttodt" class="control-label">TO DATE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="date" id="effecttodt" name="effecttodt" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="tdscode" class="control-label"> TDS CODE%</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="tdscode" name="tdscode" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label for="hsnno" class="control-label">HSN No</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="hsnno" name="hsnno" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="gstcode" class="control-label">GST CODE</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="gstcode" name="gstcode" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="gstcode1" name="gstcode1" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <label for="rcmcode" class="control-label">RCM CODE</label>
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="rcmcode" name="rcmcode" class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="rcmcode1" name="rcmcode1" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-1">
+                <label for="add1" class="control-label">Address (1) </label>
+                
+            </div>
+            <div class="col-sm-3">
+                <textarea class="form-control" name="add1" id="add1"></textarea>
+            </div>
+            <div class="col-sm-1">
+                <label for="add2" class="control-label">Address (2) </label>
+            </div>
+        
+            <div class="col-sm-3">
+                
+                <textarea id="add2" name="add2" width="5px" class="form-control"></textarea>
+            </div>
+            <div class="col-sm-1">
+                <label for="add3" class="control-label">Address (3) </label>
+            </div>
+       
+            <div class="col-sm-3">
+                
+               <textarea id="add3" name="add3" width="5px" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="pincode" class="control-label">PINCODE</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="pincode" name="pincode" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <label for="areaCode" class="control-label">Area Code :</label>
+                
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="areaCode" style="width: 80px;" name="areaCode" onlyNumbers 
+                    width="5px" class="form-control"  />
+            </div>
+            <div class="col-sm-3">
+                
+                <input type="text" id="areaName" name="areaName" width="5px" class="form-control"
+                />
+            </div>
+            <div class="col-sm-1">
+                <label for="city" class="control-label">City :</label>
+               
+            </div>
+            <div class="col-sm-2">
+                <select name="city" id="city" class="form-control" >
+                    <option class='option' >
+                    </option>
+                </select>
+            </div>
+        
+            
+    </div>
+    <div class="row form-group" id="row">
+            <div class="col-sm-2">
+                <label for="statecode" class="control-label">State :</label>
+                
+            </div>
+            <div class="col-sm-1">
+                <input type="text" id="statecode" style="width: 80px;" name="statecode" onlyNumbers 
+                    width="5px" class="form-control"  />
+            </div>
+            <div class="col-sm-2">
+                
+                <input type="text" id="statename" name="statename" width="5px" class="form-control"
+                />
+            </div>
+            <div class="col-sm-1">
+                <label for="phoneO" class="control-label">Phone(O):</label>
+                
+            </div>
+            <div class="col-sm-2">
+                
+                <input type="text" id="phoneO" name="phoneO" width="5px" class="form-control"
+                />
+            </div>
+            <div class="col-sm-1">
+                <label for="phoneR" class="control-label">Phone(R):</label>
+                
+            </div>
+            <div class="col-sm-2">
+                
+                <input type="text" id="phoneR" name="phoneR" width="5px" class="form-control"
+                />
+            </div>
+    </div>
+   
+    <div class="row form-group" id="row">
+        <div class="col-sm-2">
+            <label for="fax" class="control-label">FAX:</label>
+            
+        </div>
+        <div class="col-sm-2">
+            
+            <input type="text" id="fax" name="fax" width="5px" class="form-control"
+            />
+        </div>
+        <div class="col-sm-1">
+            <label for="mobile" class="control-label">Mobile</label>
+            
+        </div>
+        <div class="col-sm-2">
+            
+            <input type="text" id="mobile" name="mobile" width="5px" class="form-control"
+            />
+        </div>
+        <div class="col-sm-1">
+            <label for="email" class="control-label">Email:</label>
+            
+        </div>
+        <div class="col-sm-3">
+            
+            <input type="text" id="email" name="email" width="5px" class="form-control"
+            />
+        </div>
+    </div>
+    <div class="row form-group" id="row">
+        <div class="col-sm-2">
+            <label for="adhar" class="control-label">ADHAR:</label>
+            
+        </div>
+        <div class="col-sm-2">
+            
+            <input type="text" id="adhar" name="adhar" width="5px" class="form-control"
+            />
+        </div>
+        <div class="col-sm-1">
+            <label for="pan" class="control-label">PAN:</label>
+            
+        </div>
+        <div class="col-sm-2">
+            
+            <input type="text" id="pan" name="pan" width="5px" class="form-control"
+            />
+        </div>
+    </div>
+    <div class="row form-group" id="row">
+        <div class="col-sm-2">
+            <label for="form6061" class="control-label">FORM-60/61[60/61]:</label>
+            
+        </div>
+        <div class="col-sm-1">
+            
+            <input type="text" id="form6061" name="form6061" width="5px" class="form-control"
+            />
+        </div>
+        <div class="col-sm-2">
+            <label for="acknowledgment" class="control-label">Acknowledgment:</label>
+            
+        </div>
+        <div class="col-sm-2">
+            
+            <input type="text" id="acknowledgment" name="acknowledgment" width="5px" class="form-control"
+            />
+        </div>
+        <div class="col-sm-2">
+            <input type="checkbox" id="active" name="active">
+            <label for="active" class="control-label" style="margin-left: 10px;font-size: 16px;font-weight: bold;">ACTIVE</label>
+        </div>
+        <div class="col-sm-2">
+            <button id="newbooking" name="newbooking">New Booking</button>
+        </div>
+
+    </div>
+
+
+        
+        </fieldset>
+    </div>
+
+    </form>
+</body>

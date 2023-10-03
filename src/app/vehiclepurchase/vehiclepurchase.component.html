@@ -1,0 +1,758 @@
+
+<head>
+    <link href=
+    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    rel="stylesheet" />
+</head>
+
+<body class="container" > <br />
+    <h1>Vehicle Purchase :</h1>
+    <form class="form-horizontal" role="form" autocomplete="false"  id="frmVehiclePurchase">
+        <div class="row form-group">
+            <div class="col-sm-2">
+            <button type="button" id="button" class="ui circular teal button"  [disabled]="">
+                <img src="../../assets/images/new-document.png" id="btnimg" >
+              New 
+            </button>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="ui circular teal button" [disabled]="">
+                <img src="../../assets/images/folder.png" id="btnimg" >
+                Open 
+            </button>
+            </div>
+            <div class="col-sm-2">
+              <button type="button" class="ui circular teal button" [disabled]="" (click)="this.router.navigate(['']);">
+                <img src="../../assets/images/close.png" id="btnimg" >
+                Close 
+              </button>
+            </div>
+        </div>
+
+        
+        <!-- <page-action></page-action> -->
+        <!-- <div class="form-group">
+            <div class="col-sm-6">
+                <label for="dbCode" class="control-label">Search Doc. :</label>
+               <input type="text" id="searchDoc" name="searchDoc" width="5px" class="form-control"
+                    [disabled]="!this.isNew" [(ngModel)]="this.searchDoc" (change)="this.searchDocument();" /> 
+                
+                <input type="text" id="searchDoc" name="searchDoc" width="5px" class="form-control" />
+            </div>
+        </div> -->
+        <fieldset >
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="dbCode" class="control-label">Search Doc. :</label>
+                  <!-- <input type="text" id="searchDoc" name="searchDoc" width="5px" class="form-control"
+                        [disabled]="!this.isNew" [(ngModel)]="this.searchDoc" (change)="this.searchDocument();" />  -->
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="searchDoc" name="searchDoc"  class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2"> 
+                    <label for="dbCode" class="control-label">DB Code :</label>
+                    <!-- <input type="text" id="dbCode" onlyNumbers name="dbCode" width="5px" class="form-control"
+                        [disabled]="!this.isNew" [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.dbCode"
+                        (change)="this.getDBName();" /> -->
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="dbCode" onlyNumbers name="dbCode"  class="form-control" />
+                </div>
+                    <!-- <input type="text" id="dbName" name="dbName" class="form-control" [disabled]="!this.isNew"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.dbName" /> -->
+                <div class="col-sm-2">
+                    <input type="text" id="dbName" name="dbName"  class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                    <label for="receivedDate" class="control-label">Received Date :</label>
+                </div>
+                <div class="col-sm-2">
+                    <!-- <input type="date" class="form-control" id="receivedDate" name="receivedDate" width="35px"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.receivedDate"> -->
+                    <input type="date" class="form-control" id="receivedDate" name="receivedDate">                      
+                </div>
+            </div>
+            
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="documentNo" class="control-label">Document No :</label>
+                    <!-- <input type="text" id="documentNo" width="15px" name="documentNo" class="form-control"
+                        disabled="true" [disabled]="!this.isNew"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.documentNo" /> -->
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="documentNo" name="documentNo" class="form-control"
+                    disabled="true"  >
+                      <!-- <input type="date" id="documentDate" class="form-control" name="documentDate"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.documentDate" /> -->
+                </div>
+                <div class="col-sm-2">
+                    <label for="documentNo" class="control-label" >Date :</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="date" id="documentDate"  class="form-control" name="documentDate" >
+                </div>
+                <div class="col-sm-2">
+                    <label for="purchaseBranch" class="control-label">PUR. BRANCH :</label>
+                </div>
+                <div class="col-sm-1">
+                     <!-- <input type="text" class="form-control" id="purchaseBranch" onlyNumbers name="purchaseBranch"
+                    width="35px" [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.purchaseBranch"> -->
+                    <input type="text" class="form-control" id="purchaseBranch" onlyNumbers name="purchaseBranch" >
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="invoceNo" class="control-label">Invoice No :</label>
+                    <!-- <input type="text" id="documentNo" width="15px" name="documentNo" class="form-control"
+                        disabled="true" [disabled]="!this.isNew"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.documentNo" /> -->
+                </div>
+                <div class="col-sm-2">
+                   <!-- <input type="text" id="invoceNo" width="15px" name="invoceNo" class="form-control"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.invoceNo" /> -->
+                   
+                        <input type="text" id="invoceNo"  name="invoceNo" class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                    <label for="invoceNo" class="control-label">Invoice Date :</label>
+                </div>
+                <div class="col-sm-2">
+                    <!-- <input type="date" id="invoiceDate" class="form-control" name="invoiceDate"
+                    [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.invoiceDate" /> -->
+                   
+                    <input type="date" id="invoiceDate" class="form-control" name="invoiceDate"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="purchaseBranch" class="control-label">VER. BRANCH :</label>
+                </div>
+                <div class="col-sm-1">
+                    <!-- <input type="text" class="form-control" id="purchaseBranch" onlyNumbers name="purchaseBranch"
+                    width="35px" [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.purchaseBranch"> -->
+                    <input type="text" class="form-control" id="verBranch" onlyNumbers name="verBranch" >
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                
+                <div class="col-sm-2">
+                    <label for="acCode" class="control-label">A/C Code:</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" onlyNumbers id="acCode" name="acCode" 
+                        maxlength="9" >
+                </div>
+                    <!-- <label for="acCode" class="control-label">Name:</label> -->
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="acName" name="acName" disabled="true">
+                </div>
+                    <!-- <label for="taxCode" class="control-label" style="margin-left: 200px;">Tax Code :</label> -->
+                    <!-- <input type="text" class="form-control" onlyNumbers id="taxCode" name="taxCode" width="35px"
+                    [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.taxCode"> -->
+                    <!-- <select name="taxCode" id="taxCode" style="margin-left: 30px; width: 50px;" class="form-control"> -->
+                        <!-- <option class='option'> -->
+                            <!-- {{tax.code}} -->
+                        <!-- </option> -->
+                    <!-- </select> -->
+                    <!-- <input type="text" class="form-control" id="taxName" name="taxName" style="width: 190px;" width="35px" disabled="true"> -->
+                <!-- </div> -->
+            </div>
+            <!-- <div class="row-form-group" style="margin-top: 10px;">
+               
+               
+            </div> -->
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="lotNo" class="control-label">Lot No :</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" id="lotNo" name="lotNo"  onlyNumbers class="form-control" />
+                </div>
+                <div class="col-sm-1">
+
+                    <label for="rd" class="control-label">R. D. :</label>
+                </div>
+                <div class="col-sm-1">
+  
+                    <input type="text" id="rd" name="rd" style="width: 50px; margin-left: 20px;" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                    <label for="transit" class="control-label">TRANSIT -[T/N]:</label>
+                </div>
+                <div class="col-sm-1">
+                    <select name="transit" id="transit" style="width: 40px; margin-left: 20px;" class="form-control">
+                        <option value="T">T</option>
+                        <option value="N">N</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="uploadByParty" class="control-label">UPLOAD BY PARTY [Y/N] :</label>
+                    <!-- <input type="text" id="uploadByParty" name="uploadByParty" width="15px" maxlength="1"
+                    class="form-control" [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.uploadByParty" /> -->
+                </div>
+                <div class="col-sm-1">
+                    <select name="uploadByPartyYN" id="uploadByPartyYN" style="width: 50px;" class="form-control">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                    </select>
+                </div>
+                    <!-- <input type="text" class="form-control" id="transit" maxlength="1" name="transit" width="35px"
+                    [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.transit"
+                    (keypress)="inputValidatorForTransit($event)"> -->
+
+                    
+                        <!-- <label for="fDate" class="control-label" style="margin-left: 205px;">F.DATE :</label> -->
+                        <!-- <input type="date" id="fDate" style="margin-left: 38px;" name="fDate" class="form-control" /> -->
+                    
+                <!-- </div> -->
+               
+                
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="truckNo" class="control-label" >Truck No :</label>
+                </div>
+                <div class="col-sm-2">
+                      <!-- <input type="text" class="form-control" id="truckNo" name="truckNo" width="35px"
+                        [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.truckNo"> -->
+                     <input type="text" class="form-control" id="truckNo"  name="truckNo" > 
+                </div>
+                <div class="col-sm-1">
+                    <label for="transporterNo" class="control-label">Transporter </label>
+                </div>
+                <div class="col-sm-1">
+                    <select name="transporterNo" id="transporterNo" class="form-control" >
+                        <option class='option' > 
+                            <!-- {{tranporter.transportercd}}-->
+                             </option> 
+                    </select>
+                    
+                    <!-- <input type="text" id="transporterNo" onlyNumbers width="15px" name="transporterNo" class="form-control"
+                    [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.transporterNo" /> -->
+
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" id="transporterName" class="form-control" name="transporterName"  disabled="true" />
+                </div>
+            </div>
+            <div class="row form-group" id="row">
+                <div class="col-sm-2">
+                    <label for="plant" class="control-label" >Plant :</label>    
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="plant"  name="plant" class="form-control"/>
+                </div>
+                <div class="col-sm-1">
+                    <label for="stForm" class="control-label" >ST. FORM :</label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control"   id="stForm" name="stForm" width="35px">
+                </div>
+            </div>   
+            <div class="row form-group" id="row">
+                <div class="col-sm-3">
+                    <input type="file" >
+                </div>
+               
+                <div class="col-sm-2">
+                   <button id="transportexcel" name="transportexel">Transpost Exel</button>
+                    
+                </div>
+            </div>     
+
+
+                   
+                    <!-- <input type='file' #resumeInput> -->
+                 
+                    <!-- <input type="text" class="form-control" id="uploadByPartyYN" maxlength="1" name="uploadByPartyYN"
+                    width="35px" [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.uploadByPartyYN"> -->
+               
+                    <!-- <input type="button" id="btnTransferExcel" name="btnTransferExcel" value="Transfer Excel"
+                        text="Transfer Excel"> -->
+
+                   
+                   
+
+                
+            <!-- </div> -->
+            
+            
+           
+        </fieldset>
+        <fieldset style="border: 1px black solid; " id="row">
+            <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;" border="2px">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th scope="col">v Code</th>
+                        <th scope="col">Vehicle <br/>Name</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Net <br/>Amt</th>
+                        <th scope="col">GSTCD</th>
+                        <th scope="col">CGSTR</th>
+                        <th scope="col">SGSTR</th>
+                        <th scope="col">IGSTR</th>
+                        <th scope="col">GST<br/>CESSR</th>
+                        <th scope="col">CGST<br/> AMT.</th>
+                        <th scope="col">SGST<br/> AMT.</th>
+                        <th scope="col">IGST <br/>AMT.</th>
+                        <th scope="col">GCESS<br/> AMT.</th>
+                        <th scope="col">TOT <br/>GST</th>
+                        <th scope="col">Tot.<br/> Amt.</th>
+                        <th scope="col">Lot <br/>No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            <input type="button" text="Add" name="btnAdd" id="btnAdd" value="+">
+                               
+                            &nbsp;
+                            <input type="button" text="delete" name="btnDelete" id="btnDelete" value="-" >
+                            &nbsp;<br/>
+                            <input type="button" text="Add Detail" name="btnAddDetail" id="btnAddDetail"
+                                value="Add Details" >
+                        </td>
+                        <td style="width:80px;">
+                            <!-- <input type="text" autocomplete="false" style="width:150px;" name="{{ 'vCode' + i }}"
+                            id="{{ 'vCode' + i }}"
+                            
+                            (change)="getVCode(this.vehiclePurchaseService.listPurchaseDetails[i].vCode,i)"
+                            [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].vCode"> -->
+
+                            <select class="form-control"  >
+                                
+                                <option value="">Select</option>
+                                <option class='option'  >
+                                    <!-- {{item.ItemCode}} -->
+                                </option>
+                            </select>
+                            <!-- <datalist id="dynmicUserIds"> -->
+                            <!-- <option *ngFor="let item of this.lstVcode" [value]="item">{{item.ItemCode}}</option> -->
+                            <!-- </datalist> -->
+                            <!-- <ul>
+                            <li *ngFor="let item of this.lstVcode">
+                                <a>{{item.ItemCode}}</a>
+                            </li>
+                        </ul> -->
+                            <!-- (keyup)="this.getVCodeSuggestiveSearch(this.vehiclePurchaseService.listPurchaseDetails[i].vCode,i)" -->
+                        </td>
+                        <td>
+                            <input type="text" autocomplete="false" style="width:200px;" class="form-control" >
+                               
+                                
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="new-qty" style="width:50px;" name="{{ 'qty' + i }}"
+                                id="{{ 'qty' + i }}" (blur)="this.getnetAmtValue(obj)" onlyNumbers maxlength="5"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].qty"> -->
+                                <input type="text" autocomplete="new-qty"  class="form-control">
+
+                        </td>
+                        <td>
+                            <input type="text" autocomplete="new-rate"   class="form-control">  
+                               
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="{{ 'netAmt' + i }}" id="{{ 'netAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].netAmt"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" onlyNumbers disabled="true" style="width:50px;"
+                                name="{{ 'gstcd' + i }}" id="{{ 'gstcd' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].gstcd"> -->
+                            <input type="text" autocomplete="false" onlyNumbers disabled="true"   class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:50px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'cgstr' + i }}" id="{{ 'cgstr' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].cgstr"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:50px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'sgstr' + i }}" id="{{ 'sgstr' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].sgstr"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:50px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'igstr' + i }}" id="{{ 'igstr' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].igstr"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:50px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'gstcessr' + i }}" id="{{ 'gstcessr' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].gstcessr"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'cgstAmt' + i }}" id="{{ 'cgstAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].cgstAmt"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'sgstAmt' + i }}" id="{{ 'sgstAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].sgstAmt"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'igstAmt' + i }}" id="{{ 'igstAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].igstAmt"> -->
+                             <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'gcessAmt' + i }}" id="{{ 'gcessAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].gcessAmt"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">  
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'totGST' + i }}" id="{{ 'totGST' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].totGST"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                appTwoDigitDecimaNumberDirective name="{{ 'totAmt' + i }}" id="{{ 'totAmt' + i }}"
+                                [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].totAmt"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="new-lotNo" style="width:50px;"
+                                appTwoDigitDecimaNumberDirective name="{{ 'lotNo' + i }}" id="{{ 'lotNo' + i }}"
+                                disabled="true" [(ngModel)]="this.vehiclePurchaseService.listPurchaseDetails[i].lotNo"> -->
+                            <input type="text" autocomplete="new-lotNo"  class="form-control">  
+                        </td>
+                    </tr>
+                </tbody>
+                    <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>NET<br/> AMOUNT</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>CGST<br/> AMT</td>
+                        <td>SGST<br/> AMT</td>
+                        <td>IGST<br/> AMT</td>
+                        <td>GCESS<br/> AMT</td>
+                        <td>Total<br/> GST</td>
+                        <td>Total</td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="netAmount" id="netAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.netAmount"> -->
+                            <input type="text" autocomplete="false" style="width:100px;" disabled="true"  class="form-control">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="cgstAmount" id="cgstAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.cgstAmount"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="sgstAmount" id="sgstAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.sgstAmount"> -->
+                            <input type="text" autocomplete="false" disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="igstAmount" id="igstAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.igstAmount"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="gstCessAmount" id="gstCessAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.gstCessAmount"> -->
+                            <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                                name="totalGSTAmount" id="totalGSTAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.totalGSTAmount"> -->
+                                <input type="text" autocomplete="false"  disabled="true"  class="form-control">
+                        </td>
+                        <td>
+                            <!-- <input type="text" autocomplete="false" style="width:100px;"
+                                appTwoDigitDecimaNumberDirective disabled="true" name="totalGridAmount"
+                                id="totalGridAmount"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.totalGridAmount"> -->
+                            <input type="text" autocomplete="false"   class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="3">
+                            <input type="file">
+                            
+
+                        </td>
+                        <td colspan="2">
+                            <button>Create Excel Data</button>
+                        </td>
+                        <td></td>
+                        <td>Remark:</td>
+                        <td colspan="4">
+                             <!-- <textarea type="text" autocomplete="false" rows="3" cols="60" name="remark" id="remark"
+                                [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.remark"></textarea> -->
+                                <textarea type="text" autocomplete="false" rows="3" cols="60" name="remark" id="remark">
+
+                                </textarea>
+                        </td>
+                        <td></td>
+                        <td>Other Charge : <br /><br />Discount :<br /><br />Grant Total:</td>
+                        <td><!-- <input type="text" autocomplete="false" style="width:100px;"
+                            appTwoDigitDecimaNumberDirective name="otherCharge" id="otherCharge"
+                            (change)="this.calculateOtherChargeAndDiscount()"
+                            [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.otherCharge"> -->
+                        <input type="text" autocomplete="false" style="width:100px;" name="otherCharge" id="otherCharge" > 
+                        <br /><br />
+                        <!-- <input type="text" autocomplete="false" style="width:100px;"
+                            appTwoDigitDecimaNumberDirective name="discount" id="discount"
+                            (change)="this.calculateOtherChargeAndDiscount()"
+                            [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.discount"> -->
+                        <input type="text" autocomplete="false" style="width:100px;" name="discount" id="discount">
+                        <br /><br />
+                        <!-- 
+                            <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                            name="grantTotal" id="grantTotal"
+                            [(ngModel)]="this.vehiclePurchaseService.objVehiclePurchase.grantTotal"> -->
+                            <input type="text" autocomplete="false" style="width:100px;" disabled="true"
+                            name="grantTotal" id="grantTotal"></td>
+                        
+                       
+
+                    </tr>
+                </tfoot>
+            </table>
+            <!-- <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" (click)="openPopup()">Show Data
+        </button> -->
+            <div class="modal modal-xl" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl" style="width: 100%!important;overflow-y: scroll; max-height:85%;"
+                    role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Purchase Details</h4>
+                            <!-- <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                Close
+                            </button> -->
+                            <button type="button" class="btn btn-danger">
+                                Close
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table" style="display: block;overflow-x: auto;white-space: nowrap;margin-top: 10px;"
+                                    border="2px">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No</th>
+                                            <th scope="col">Chasis No.</th>
+                                            <th scope="col">Engine No.</th>
+                                            <th scope="col">Color</th>
+                                            <th scope="col">Mfg. Date</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Tank</th>
+                                            <th scope="col">Do No.</th>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Inward</th>
+                                            <th scope="col">Inward Doc. Date</th>
+                                            <th scope="col">Batt. No.</th>
+                                            <th scope="col">HSN No.</th>
+                                            <th scope="col">Kit No.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr *ngFor="let obj of this.vehiclePurchaseService.listVehicleDetails; let i = index"> -->
+                                        <tr>
+                                            <td>
+                                                <!-- <input type="text" autocomplete="false" style="width:30px;"
+                                                    name="{{ 'psRnO'+i }}" readonly id="{{ 'psRnO'+i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].psRnO"> -->
+                                                <input type="text" autocomplete="false" style="width:30px;">
+
+                                            </td>
+                                            <td>
+                                                <!-- <input type="text" autocomplete="false" style="width:170px;"
+                                                    name="{{ 'chasisNo'+i }}" id="{{ 'chasisNo'+i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].chasisNo"> -->
+                                                <input type="text" autocomplete="false" style="width:170px;">
+                                                    
+                                            </td>
+                                            <td>
+                                                <!-- <input type="text" autocomplete="false" style="width:130px;"
+                                                    name="{{ 'engineNo'+i }}" id="{{ 'engineNo'+i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].engineNo"> -->
+                                                <input type="text" autocomplete="false" style="width:130px;">
+                                            </td>
+                                            <td>
+                                                <!-- <select class="form-control" style="width:150px;"
+                                                    name="{{ 'color' + i }}" id="{{ 'color' + i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].color">
+                                                    <option value="">Select</option>
+                                                    <option class='option' *ngFor='let item of this.lstColor'
+                                                        [value]="item.COLORCODE">
+                                                        {{item.COLORNAME}}</option>
+                                                </select> -->
+                                                <select class="form-control" style="width:150px;">
+                                                    
+                                                    <option value="">Select</option>
+                                                    <option class='option'>
+                                                        </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <!-- <input type="date" class="form-control" id="{{ 'mafgDate' + i }}"
+                                                    name="{{ 'mafgDate' + i }}" width="35px"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].mafgDate"> -->
+                                                <input type="date" class="form-control" >
+                                            </td>
+                                            <td>
+                                                <!-- <select class="form-control" style="width:150px;"
+                                                    name="{{ 'location' + i }}" id="{{ 'location' + i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].location">
+                                                    <option value="">Select</option>
+                                                    <option class='option' *ngFor='let item of this.lstLocation'
+                                                        [value]="item.LocationCode">
+                                                        {{item.LocationName}}</option>
+                                                </select> -->
+                                                <select class="form-control" style="width:150px;">
+                                                    <option value="">Select</option>
+                                                    <option class='option'>
+                                                        
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <!-- <input type="text" autocomplete="false" style="width:150px;"
+                                                    name="{{ 'kitNo'+i }}" id="{{ 'kitNo'+i }}"
+                                                    [(ngModel)]="this.vehiclePurchaseService.listVehicleDetails[i].kitNo"> -->
+                                                <input type="text" autocomplete="false" style="width:150px;"> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer" style="margin-top: 10px;">
+                            <!-- <button type="button" class="btn btn-primary" (click)="saveVehicleDetails()">
+                                Ok
+                            </button> -->
+                            <button type="button" class="btn btn-primary" >
+                                Ok
+                            </button>
+                            <button type="button" class="btn btn-danger" >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-6">
+                <input type="text" id="lastName" class="form-control" ng-model="student.lastName" />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="dob" class="col-sm-3 control-label">DoB</label>
+            <div class="col-sm-2">
+                <input type="date" id="dob" class="form-control" ng-model="student.DoB" />
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-2">
+                <select id="gender" class="form-control" ng-model="student.gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <span><b>Training Location</b></span>
+                <div class="radio">
+                    <label><input value="online" type="radio" name="training"
+                            ng-model="student.trainingType" />Online</label>
+                </div>
+                <div class="radio">
+                    <label><input value="onsite" type="radio" name="training"
+                            ng-model="student.trainingType" />OnSite</label>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <span><b>Main Subjects</b></span>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.maths" />Maths</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.physics" />Physics</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.chemistry" />Chemistry</label>
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3" />
+        <input type="reset" value="Reset" ng-click="resetForm()" class="btn" /> <br />
+         -->
+
+        </fieldset>
+    </form>
+
+</body>
+
