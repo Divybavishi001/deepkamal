@@ -1,6 +1,8 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { BankreceiptService } from './bankreceipt.service';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-bankreceipt',
@@ -8,10 +10,13 @@ import { BankreceiptService } from './bankreceipt.service';
   styleUrls: ['./bankreceipt.component.css']
 })
 export class BankreceiptComponent implements OnInit {
+  @ViewChild(MatSort) sort!: MatSort; // Add '!' to indicate that it will be initialized later
   constructor(public router :Router,
-    public bankreceiptservice :BankreceiptService){}
+    public bankreceiptservice :BankreceiptService
+){  this.dataSource = new MatTableDataSource<any>([]);
+}
     public LstBankreceipt  : any=[];
-  
+    dataSource: MatTableDataSource<any>;
     // FOR PAGINATION
     public lstDummyQuoteListing: any = [];
     public itemsToDisplay: any = [];
@@ -23,6 +28,8 @@ export class BankreceiptComponent implements OnInit {
     public isVisibleChild:boolean=false;
   
     public ngOnInit(): void {
+      this.dataSource = new MatTableDataSource(this.itemsToDisplay);
+      this.itemsToDisplay.sort((a : any, b : any) => a.AcNo - b.AcNo);
       this.bankreceiptservice.resetService();
       this.GETAfterSalesDetails();
       

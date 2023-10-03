@@ -42,7 +42,6 @@ import { FinancecosegmentComponent } from './financecosegment/financecosegment.c
 import { SchememasterComponent } from './schememaster/schememaster.component';
 import { CustomerprofilemasterComponent } from './customerprofilemaster/customerprofilemaster.component';
 import { DaybooktypeComponent } from './daybooktype/daybooktype.component';
-import { SortingDemoComponent } from './sorting-demo/sorting-demo.component';
 
 
 const routes: Routes = [
@@ -74,7 +73,6 @@ const routes: Routes = [
     path: 'purchase', loadChildren:()=>import('./purchase/purchase.module')
     .then(mod=>mod.PurchaseModule)
    },
-   {path: 'sort',component:SortingDemoComponent},
    { path: 'journal', component: JournalComponent},
   { path: 'login', component: LoginComponent }, 
   { path: 'vehiclepurchase', component: VehiclepurchaseComponent },

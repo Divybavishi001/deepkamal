@@ -80,7 +80,6 @@ import { TruckmasterComponent } from './truckmaster/truckmaster.component';
 import { DaybooktypeComponent } from './daybooktype/daybooktype.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { SortPipe } from './sort.pipe';
-import { SortingDemoComponent } from './sorting-demo/sorting-demo.component';
 
 
 @NgModule({
@@ -140,7 +139,7 @@ import { SortingDemoComponent } from './sorting-demo/sorting-demo.component';
     TruckmasterComponent,
     DaybooktypeComponent,
     SortPipe,
-    SortingDemoComponent,
+    
     
 
 

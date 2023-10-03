@@ -1,37 +1,37 @@
 <mat-card *ngIf="isVisibleParent">
     <div class="container">
-        <table class="tb" matSort>
+        <table class="tb" mat-table [dataSource]="dataSource" matSort>
             <thead>
                 <tr>
                     <th><button mat-button>Action<mat-icon></mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         Ac No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         Ac Name<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="EnquiryNo"><button mat-button>
                         Doc No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="ENQUIRYDT"><button mat-button>
                         Doc Date<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="Mobile"><button mat-button>
                         Amount<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="Vehicle Name"><button mat-button>
                         Vehicle Code<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="Area"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="Area"><button mat-button>
                         Vehicle Name <mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         Gst CD<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         PaySleep No<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         PaySleep Date<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         Clear YN<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th class="col" mat-header-cell *matHeaderCellDef mat-sort-header="City"><button mat-button>
                         Clear Date<mat-icon>sort</mat-icon></button></th>
                     <!-- <th class="col" mat-sort-header="City"><button mat-button>
                         Clear Date<mat-icon>sort</mat-icon></button></th> -->
@@ -83,6 +83,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
+                <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"> -->
                     <td class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
