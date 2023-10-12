@@ -12,13 +12,14 @@ import { PaginationModule } from '../pagination/pagination.module';
   declarations: [
     InsuranceComponent,
     RtoComponent,
-    CrtempComponent
+    CrtempComponent,
   ],
   imports: [
     CommonModule,
     AftersalesRoutingModule,
     MatModule,
-    PaginationModule
+    PaginationModule,
+    
   ]
 })
 export class AftersalesModule { }

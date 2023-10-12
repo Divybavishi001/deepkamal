@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { DelivryorderService } from './delivryorder.service';
 import { Router } from '@angular/router';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-delivryorder',
@@ -9,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class DelivryorderComponent implements OnInit{
   constructor(public router :Router,
-    public Deliveryorderservice : DelivryorderService){}
+    public Deliveryorderservice : DelivryorderService,
+    public paginationservice:PaginationService){}
     public LstDo : any = [];
+    public searchText :any =[];
 
 
    // FOR PAGINATION
@@ -38,12 +41,38 @@ export class DelivryorderComponent implements OnInit{
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstDo = data["Table"];
-          this.lstDummyQuoteListing = this.LstDo;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstDo.length / this.perPage);
+          this.updatePaginationData(this.LstDo);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstDo : this.filterRecords(this.LstDo);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){

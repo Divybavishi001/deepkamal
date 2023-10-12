@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { AccountcreationService } from './accountcreation.service';
 import { Router } from '@angular/router';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-accountcreation',
@@ -9,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AccountcreationComponent implements OnInit {
   constructor(public router: Router ,
-    public accountcreationservice :AccountcreationService){}
+    public accountcreationservice :AccountcreationService,
+    public paginationservice: PaginationService){}
     public LstCreateAc : any = [];
+    public searchText :any =[];
 
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
@@ -37,12 +40,38 @@ export class AccountcreationComponent implements OnInit {
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstCreateAc = data["Table"];
-          this.lstDummyQuoteListing = this.LstCreateAc;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstCreateAc.length / this.perPage);
+          this.updatePaginationData(this.LstCreateAc);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstCreateAc : this.filterRecords(this.LstCreateAc);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){
@@ -70,40 +99,32 @@ export class AccountcreationComponent implements OnInit {
     debugger;
     this.isVisibleChild=true;
     this.isVisibleParent=false;
+    
+    if (obj.ACNO != null){this.accountcreationservice.objledgeraccount.ACNO = obj.ACNO.toString()} ;
+    if (obj.AgentEnqNo != null){this.accountcreationservice.objledgeraccount.AgentEnqNo = obj.AgentEnqNo.toString()} ;
+    if (obj.FirstName != null){this.accountcreationservice.objledgeraccount.FirstName = obj.FirstName.toString()} ;
+    if (obj.MiddleName != null){this.accountcreationservice.objledgeraccount.MiddleName = obj.MiddleName.toString()} ;
+    if (obj.LastName != null){this.accountcreationservice.objledgeraccount.LastName = obj.LastName.toString()} ;
+    if (obj.ACNAME != null){this.accountcreationservice.objledgeraccount.ACNAME = obj.ACNAME.toString()} ;
+    if (obj.GRP != null){this.accountcreationservice.objledgeraccount.GRP = obj.GRP.toString()} ;
+    if (obj.SGRP != null){this.accountcreationservice.objledgeraccount.SGRP = obj.SGRP.toString()} ;
+    if (obj.SSGRP != null){this.accountcreationservice.objledgeraccount.SSGRP = obj.SSGRP.toString()} ;
+    if (obj.SSSGRP != null){this.accountcreationservice.objledgeraccount.SSSGRP = obj.SSSGRP.toString()} ;
+    if (obj.GRP_FOUR != null){this.accountcreationservice.objledgeraccount.GRP_FOUR = obj.GRP_FOUR.toString()} ;
+    if (obj.SGRP_FOUR != null){this.accountcreationservice.objledgeraccount.SGRP_FOUR = obj.SGRP_FOUR.toString()} ;
+    if (obj.SSGRP_FOUR != null){this.accountcreationservice.objledgeraccount.SSGRP_FOUR = obj.SSGRP_FOUR.toString()} ;
+    if (obj.SSSGRP_FOUR != null){this.accountcreationservice.objledgeraccount.SSSGRP_FOUR = obj.SSSGRP_FOUR.toString()} ;
+    if (obj.OPBAL != null){this.accountcreationservice.objledgeraccount.OPBAL = obj.OPBAL.toString()} ;
+    
 
-    this.accountcreationservice.objledgeraccount.ACNO = obj.ACNO.toString();
-    this.accountcreationservice.objledgeraccount.AgentEnqNo = obj.AgentEnqNo.toString();
-    this.accountcreationservice.objledgeraccount.FirstName = obj.FirstName.toString();
-    this.accountcreationservice.objledgeraccount.MiddleName = obj.MiddleName.toString();
-    this.accountcreationservice.objledgeraccount.LastName = obj.LastName.toString();
-    this.accountcreationservice.objledgeraccount.ACNAME = obj.ACNAME.toString();
   }
-  // for paginate
-  public onGoTo(page: number): void {
-    this.current = page
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onNext(page: number): void {
-    this.current = page + 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onPrevious(page: number): void {
-    this.current = page - 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  public paginate(current: number, perPage: number): any {
-    return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-  }
-  //new button
   public newItem(){
     debugger;
     this.accountcreationservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
     
-  }
+  } 
   public back(){
     this.isVisibleChild=false;
     this.isVisibleParent=true;

@@ -1,14 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root{
+    --primary-color : #26408B;
+    --secondary-color: #0F084B;
+    --third-color : #0D0221;
+    --fourth-color : #1773ea;
+
+
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;padding: 0; box-sizing: border-box;background-color: rgb(242, 248, 250);}
 
 
 ::-webkit-scrollbar {
     display: auto;
 }
 .tb{
+
     display: block;
     overflow-y: scroll;
     white-space: nowrap;
@@ -18,7 +28,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 
-th{
+#th{
     text-align: center;
     font-weight: 100;
     border: 1px solid lightgray;
@@ -29,20 +39,22 @@ th{
     background-color: rgb(152, 223, 247);   
     
 }
-td{
+#td{
     border: 1px solid lightgray;
     padding-left: 10px;    
     padding-right: 10px;    
     padding-top: 3px;    
     padding-bottom: 3px;   
 }
-tr:nth-child(odd){
+#tr:nth-child(odd){
     background-color: rgb(238, 243, 245);
 }
-tr:hover{
+#tr:hover{
     background-color: rgb(225, 241, 247);
 }
 .example-container mat-form-field + mat-form-field {
     margin-left: 8px;
   }
+
+
   

@@ -1,4 +1,4 @@
-host {
+:host {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,9 +23,9 @@ host {
     background-color: #343a40;
     color: #f8f9fa;
   }
-  .pagination-container {
-    display: flex;
-    flex-direction: row; /* Ensure it's set to 'row' */
+   .pagination-container{
+   display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin: 7px;

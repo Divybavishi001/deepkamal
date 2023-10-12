@@ -62,8 +62,7 @@
                 </tr>
             </tbody>
         </table>
-        <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-        (previous)="onPrevious($event)"></app-pagination>
+        <app-pagination [recordsPerPage]="10"></app-pagination>
         </div>
         
         <div class="container" *ngIf="isVisibleChild">

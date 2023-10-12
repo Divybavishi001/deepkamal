@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { BookingreceiptService } from './bookingreceipt.service';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-bookingreceipt',
@@ -9,8 +10,10 @@ import { BookingreceiptService } from './bookingreceipt.service';
 })
 export class BookingreceiptComponent {
   constructor(public router:Router,
-    public bookingreceiptservice : BookingreceiptService){}
+    public bookingreceiptservice : BookingreceiptService,
+    public paginationservice:PaginationService){}
   public LstBookingreceipt  : any=[];
+  public searchText :any =[];
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
   public itemsToDisplay: any = [];
@@ -36,12 +39,38 @@ export class BookingreceiptComponent {
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstBookingreceipt = data["Table"];
-          this.lstDummyQuoteListing = this.LstBookingreceipt;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstBookingreceipt.length / this.perPage);
+          this.updatePaginationData(this.LstBookingreceipt);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstBookingreceipt : this.filterRecords(this.LstBookingreceipt);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){
@@ -77,24 +106,7 @@ export class BookingreceiptComponent {
     this.bookingreceiptservice.Objbookingreceipt.LastName = obj.LastName.toString();
     this.bookingreceiptservice.Objbookingreceipt.ACNAME = obj.ACNAME.toString();
   }
-  // for paginate
-  public onGoTo(page: number): void {
-    this.current = page
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onNext(page: number): void {
-    this.current = page + 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onPrevious(page: number): void {
-    this.current = page - 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  public paginate(current: number, perPage: number): any {
-    return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-  }
+ 
   //new button
   public newItem(){
     debugger;

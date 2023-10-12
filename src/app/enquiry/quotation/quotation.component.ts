@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { QuotationService } from './quotation.service';
 import { Router } from '@angular/router';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-quotation',
@@ -9,8 +10,10 @@ import { Router } from '@angular/router';
 })
 export class QuotationComponent {
   constructor(public router:Router,
-  public quotationservice :QuotationService){}
+  public quotationservice :QuotationService,
+  public paginationservice: PaginationService){}
   public LstQuoatation : any = [];
+  public searchText :any =[];
 
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
@@ -36,12 +39,38 @@ export class QuotationComponent {
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstQuoatation = data["Table"];
-          this.lstDummyQuoteListing = this.LstQuoatation;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstQuoatation.length / this.perPage);
+          this.updatePaginationData(this.LstQuoatation);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstQuoatation : this.filterRecords(this.LstQuoatation);
+    this.updatePaginationData(records);
   }
   // save items
   public saveQuatation(){
@@ -78,22 +107,8 @@ export class QuotationComponent {
     this.enquiryservice.objEnquiry.EnquiryNo = obj.EnquiryNo.toString(); */
     
   }
-  // for paginate
-  public onGoTo(page: number): void {
-    this.current = page
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
+  public back(){
+    this.isVisibleChild=false;
+    this.isVisibleParent=true;
   }
-  
-  public onNext(page: number): void {
-    this.current = page + 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onPrevious(page: number): void {
-    this.current = page - 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  public paginate(current: number, perPage: number): any {
-    return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-  } 
 }

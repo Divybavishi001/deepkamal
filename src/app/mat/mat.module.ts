@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
- import { CommonModule } from '@angular/common';
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -14,6 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 // Material Layout
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -40,8 +42,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {  MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+
 
 
 
@@ -49,8 +53,10 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatNativeDateModule,
   MatFormFieldModule,
   MatInputModule,
+  FormsModule,
   MatRadioModule,
   MatSelectModule,
   MatSliderModule,
@@ -90,11 +96,13 @@ const MaterialComponents = [
 @NgModule({
   declarations: [],
   imports: [
-     CommonModule,
-    MaterialComponents
+    MaterialComponents,
+    CommonModule
+    
   ],
   exports: [
     MaterialComponents
+
   ]
 })
 export class MatModule { }

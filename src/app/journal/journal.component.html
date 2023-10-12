@@ -2,123 +2,124 @@
     <div class="container">
         <table class="tb" matSort>
             <thead>
-                <tr>
-                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
-                        DB Code<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
-                        DB Name<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
-                        Doc No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
-                        Doc Date<mat-icon>sort</mat-icon></button></th>
-                    <!-- <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                <tr id="tr">
+                    <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
+                            DB Code<mat-icon>sort</mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
+                            DB Name<mat-icon>sort</mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
+                            Doc No<mat-icon>sort</mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                            Doc Date<mat-icon>sort</mat-icon></button></th>
+                    <!-- <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                         RTO Tr No<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                         RTO Tr Dt<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
                         RTO Bank Ref<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="Area"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Area"><button mat-button>
                         RTO Paid  <mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO Paid db<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO P Ac No<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO P Doc No<mat-icon>sort</mat-icon></button></th> -->
-                    
+
 
                 </tr>
-                <tr>
-                    <td class="col-sm-2">
+                <tr id="tr">
+                    <td id="td" class="col-sm-2">
                         <button mat-raised-button style="background-color: #1773ea;color: #eee;"
                             (click)="this.newItem()">Add New</button>
                     </td>
 
-                    <td>
+                    <td id="td" colspan="4">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
+                        (input)="search()" placeholder="Search">
+                      </td>
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
+                        <input type="text" class="form-control">
+                    </td> -->
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <!-- <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
-                    <td class="col-sm-1">
+                <tr id="tr" *ngFor="let obj of this.itemsToDisplay; let i = index">
+                    <td id="td" class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.DBCODE}}
                     </td>
-                    <td>
+                    <td id="td">
 
                         {{obj.DBNAME}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.DocNo}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.Docdt}}
                     </td>
-                    <!-- <td>
+                    <!-- <td id="td">
                         {{obj.RTOTRNO}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.RTOTRDT}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.RTOBANKREF}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.Rtopaid}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopaiddb}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopacno}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopDocNo}}
                     </td> -->
-                    
+
                 </tr>
 
             </tbody>
@@ -128,42 +129,174 @@
 
 
 
-            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-                (previous)="onPrevious($event)"></app-pagination>
-
+            <app-pagination [recordsPerPage]="10"></app-pagination>
         </table>
     </div>
 </mat-card>
 <div class="example-container" *ngIf="isVisibleChild">
-    <div class="row">
+
+    <div class="row head" >
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+            <button mat-raised-button id="button"
                 (click)="this.saveledgeraccount()">Save</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
+            <button mat-raised-button id="button" (click)="this.back()">Back</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+            <button mat-raised-button id="button"
                 (click)="this.back()">Cancle</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <mat-form-field hintLabel="Max 10 characters">
-                <mat-label>Enter some input</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-2">
-            <mat-form-field>
-                <mat-label>Select me</mat-label>
-                <mat-select>
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-                <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-            </mat-form-field>
-        </div>
+
+    <div class="row card1" >
+        <mat-card id="card" class="col-5">
+            <div class="row">
+                <div class="col-sm-4">
+                    <mat-label>DB Code</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>DB Name</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <mat-label>Document No.</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>DB Date</mat-label>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <mat-label>Narration</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </mat-card>
+        <mat-card id="card" class="col-5">
+            <div class="row">
+                <div class="col-sm-3">
+                    <mat-label>Branch Id</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Branch Code</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <mat-label>Verchual Branch</mat-label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-checkbox class="example-margin" color="primary">FIN REIMB.</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <button mat-raised-button id="btn">Journal</button>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <button mat-raised-button id="btn">Dabit Note</button>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <button mat-raised-button id="btn">Credit Note</button>
+                    
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <button mat-raised-button id="btn">Create Template</button>
+                    
+                </div>
+                <div class="col-sm-5">
+                    <button mat-raised-button id="btn">Use Template</button>
+                </div>
+                
+            </div>
+        </mat-card>
     </div>
+    <div class="row">
+        <mat-card>
+            <div class="container">
+                <table class="tb" matSort>
+                    <thead>
+                        <tr id="tr">
+                            
+                            <th id="th" class="col">Action</th>
+                            <th id="th" class="col">Ac No</th>
+                            <th id="th" class="col">Ac Name</th>
+                            <th id="th" class="col">Amount</th>
+                            <th id="th" class="col">DC</th>
+                            <th id="th" class="col">Particulers-1</th>
+                            <th id="th" class="col">Particulers-2</th>
+                            <th id="th" class="col">Balance</th>
+                            <th id="th" class="col">Entry Diff.</th>
+                            <th id="th" class="col">Sr. No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="tr">
+                            <td id="td" class="col-sm-1">
+                                <button mat-icon-button color="primary"
+                                (click)="addRow()"><mat-icon>add</mat-icon></button>&nbsp;
+                            </td>
+                            <td id="td">
+                                <input type="text" name="AcName" id="AcName" #acno [(ngModel)]="this.journalservice.objRto.acno" >
+                            </td>
+                            <td id="td">
+                                <input type="text" name="AcNo" id="AcNo" #ACNAME [(ngModel)]="this.journalservice.objRto.ACNAME" >
+                            </td>
+        
+                            <td id="td">
+                                <input type="text" name="Amount" id="Amount" #amount [(ngModel)]="this.journalservice.objRto.amount" >
+                            </td>
+        
+                            <td id="td">
+                                <input type="text" name="DC" id="DC" #DocNo [(ngModel)]="this.journalservice.objRto.DocNo" (input)="addRow()">
+                            </td>
+                             <td id="td">
+                                <input type="text" name="Particulers-1" id="Particulers-1" #DBCODE [(ngModel)]="this.journalservice.objRto.DBCODE" (input)="addRow()">
+                            </td>
+                            <td id="td">
+                                <input type="text" name="Particulers-2" id="Particulers-2" #DBNAME [(ngModel)]="this.journalservice.objRto.DBNAME" (input)="addRow()">
+                            </td>
+                            <td id="td">
+                                <input type="text" name="Balance" id="Balance" #Nar1 [(ngModel)]="this.journalservice.objRto.Nar1" (input)="addRow()">
+                            </td>
+                            
+                            <td id="td">
+                                <input type="text" name="EntryDiff" id="EntryDiff" #Nar2 [(ngModel)]="this.journalservice.objRto.Nar2" (input)="addRow()">
+                            </td>
+                            <td id="td">
+                                <input type="text" name="SrNo" id="SrNo" #Nar3 [(ngModel)]="this.journalservice.objRto.Nar3" (input)="addRow()">
+                            </td>
+                            
+        
+                        </tr>
+        
+                    </tbody>
+                    <tfoot>
+        
+                    </tfoot>
+        
+        
+        
+                    
+                </table>
+            </div>
+        </mat-card>
+        
+        
+    </div>
+
 </div>

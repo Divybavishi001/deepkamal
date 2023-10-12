@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CashreceiptService } from './cashreceipt.service';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-cashreceipt',
@@ -9,8 +10,10 @@ import { CashreceiptService } from './cashreceipt.service';
 })
 export class CashreceiptComponent implements OnInit{
   constructor(public router:Router,
-    public cashreceiptservice :CashreceiptService){}
+    public cashreceiptservice :CashreceiptService,
+    public paginationservice: PaginationService){}
   public LstCashReceipt  : any=[];
+  public searchText ="";
   
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
@@ -37,12 +40,38 @@ export class CashreceiptComponent implements OnInit{
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstCashReceipt = data["Table"];
-          this.lstDummyQuoteListing = this.LstCashReceipt;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstCashReceipt.length / this.perPage);
+          this.updatePaginationData(this.LstCashReceipt);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstCashReceipt : this.filterRecords(this.LstCashReceipt);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){
@@ -78,24 +107,7 @@ export class CashreceiptComponent implements OnInit{
     this.cashreceiptservice.objCashReceipt.LastName = obj.LastName.toString();
     this.cashreceiptservice.objCashReceipt.ACNAME = obj.ACNAME.toString();
   }
-  // for paginate
-  public onGoTo(page: number): void {
-    this.current = page
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onNext(page: number): void {
-    this.current = page + 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onPrevious(page: number): void {
-    this.current = page - 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  public paginate(current: number, perPage: number): any {
-    return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-  }
+ 
   //new button
   public newItem(){
     debugger;

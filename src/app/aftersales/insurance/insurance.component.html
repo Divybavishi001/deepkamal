@@ -2,120 +2,121 @@
     <div class="container">
         <table class="tb" matSort>
             <thead>
-                <tr>
-                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                <tr id="tr">
+                    <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         Invoice No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             Ac No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             Ac Name<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
                             Insurance Company Code <mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                         Insurance PolicyNo<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                         Insurance Date<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
                             Insurance Paid<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="Area"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Area"><button mat-button>
                         Insurance Paid ChNo <mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         Insurance Paid ChDt<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             Insurance AcNo<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             Ac JV No<mat-icon>sort</mat-icon></button></th>
                     
 
                 </tr>
-                <tr>
-                    <td class="col-sm-2">
+                <tr id="tr">
+                    <td id="td" class="col-sm-2">
                         <button mat-raised-button style="background-color: #1773ea;color: #eee;"
                             (click)="this.newItem()">Add New</button>
                     </td>
 
-                    <td>
+                    <td id="td" colspan="6">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
+                           (input)="search()" placeholder="Search">
+                    </td>
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
+                    </td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
-                    <td class="col-sm-1">
+                <tr id="tr" *ngFor="let obj of itemsToDisplay; let i = index">
+                    <td id="td" class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.SINVNO}}
                     </td>
-                    <td>
+                    <td id="td">
 
                         {{obj.ACNO}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.ACNAME}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.inscocode}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.InsPolicyNo}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.insdt}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.InsPAID}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.inspaidchno}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.inspaidchdt}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.insuracno}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.acjvno}}
                     </td>
                     
@@ -128,8 +129,7 @@
 
 
 
-            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-                (previous)="onPrevious($event)"></app-pagination>
+            <app-pagination [recordsPerPage]="10"></app-pagination>
 
         </table>
     </div>

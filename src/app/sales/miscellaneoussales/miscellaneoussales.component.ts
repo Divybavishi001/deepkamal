@@ -1,6 +1,7 @@
 import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { MiscellaneoussalesService } from './miscellaneoussales.service';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-miscellaneoussales',
@@ -9,8 +10,10 @@ import { MiscellaneoussalesService } from './miscellaneoussales.service';
 })
 export class MiscellaneoussalesComponent {
   constructor(public router:Router,
-    public miscellaneousservice : MiscellaneoussalesService){}
+    public miscellaneousservice : MiscellaneoussalesService,
+    public paginationservice:PaginationService){}
   public LstMiscellSales  : any=[];
+  public searchText :any =[];
   
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
@@ -37,12 +40,38 @@ export class MiscellaneoussalesComponent {
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstMiscellSales = data["Table"];
-          this.lstDummyQuoteListing = this.LstMiscellSales;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstMiscellSales.length / this.perPage);
+          this.updatePaginationData(this.LstMiscellSales);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstMiscellSales : this.filterRecords(this.LstMiscellSales);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){

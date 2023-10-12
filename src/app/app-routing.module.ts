@@ -17,7 +17,7 @@ import { MiscellaneoussalesComponent } from './miscellaneoussales/miscellaneouss
 import { MultipledoComponent } from './multipledo/multipledo.component';
 import { FindchasisComponent } from './findchasis/findchasis.component';
 import { VehicleaccessoryComponent } from './vehicleaccessory/vehicleaccessory.component';
-// import { CashreceiptComponent } from './cashreceipt/cashreceipt.component';
+import { CashreceiptComponent } from './cashreceipt/cashreceipt.component';
 import { CashbankcontraComponent } from './cashbankcontra/cashbankcontra.component';
 import { PaysleepComponent } from './paysleep/paysleep.component';
 import { ExpenseregisterComponent } from './expenseregister/expenseregister.component';
@@ -42,9 +42,11 @@ import { FinancecosegmentComponent } from './financecosegment/financecosegment.c
 import { SchememasterComponent } from './schememaster/schememaster.component';
 import { CustomerprofilemasterComponent } from './customerprofilemaster/customerprofilemaster.component';
 import { DaybooktypeComponent } from './daybooktype/daybooktype.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 const routes: Routes = [
+
   {
     path: 'admin', loadChildren:()=>import('./admin/admin.module')
     .then(mod=>mod.AdminModule)
@@ -75,26 +77,26 @@ const routes: Routes = [
    },
    { path: 'journal', component: JournalComponent},
   { path: 'login', component: LoginComponent }, 
-  { path: 'vehiclepurchase', component: VehiclepurchaseComponent },
+  // { path: 'vehiclepurchase', component: VehiclepurchaseComponent },
   // { path: 'ExpenseRegister', component: ExpenseRegisterComponent },
   { path: 'connect', component: ConnectComponent },
   // { path: 'AgentLogin', component: AgentLoginComponent },
-  { path: 'Mainmenu', component: MainMenuComponent },
-  { path: 'enquieyagent', component: EnquiryAgentComponent },
-  { path: 'ledgeraccount', component: LedgeraccountComponent},
-  { path: 'bookingreceipt', component: BookingreceiptComponent},
-  { path: 'deliveryorder', component: DeliveryorderComponent},
-  { path: 'retailinvoice', component: RetailinvoiceComponent},
-  { path: 'vehicleaftersales', component: VehicleaftersalesComponent},
-  { path: 'multiplevehicletax', component: MultiplevehicletaxComponent },
-  { path: 'miscellaneoussales', component: MiscellaneoussalesComponent},
-  { path: 'multipledo', component: MultipledoComponent},
-  { path: 'findchasis', component: FindchasisComponent},
-  { path: 'vehicleaccessory', component: VehicleaccessoryComponent},
-  // { path: '', component: CashreceiptComponent},
-  { path: 'cashbankcontra', component: CashbankcontraComponent},
-  { path: 'paysleep', component: PaysleepComponent},
-  { path: 'expenceregister', component: ExpenseregisterComponent},
+  // { path: 'Mainmenu', component: MainMenuComponent },
+  // { path: 'enquieyagent', component: EnquiryAgentComponent },
+  // { path: 'ledgeraccount', component: LedgeraccountComponent},
+  // { path: 'bookingreceipt', component: BookingreceiptComponent},
+  // { path: 'deliveryorder', component: DeliveryorderComponent},
+  // { path: 'retailinvoice', component: RetailinvoiceComponent},
+  // { path: 'vehicleaftersales', component: VehicleaftersalesComponent},
+  // { path: 'multiplevehicletax', component: MultiplevehicletaxComponent },
+  // { path: 'miscellaneoussales', component: MiscellaneoussalesComponent},
+  // { path: 'multipledo', component: MultipledoComponent},
+  // { path: 'findchasis', component: FindchasisComponent},
+  // { path: 'vehicleaccessory', component: VehicleaccessoryComponent},
+  // { path: 'cash', component: CashreceiptComponent},
+  // { path: 'cashbankcontra', component: CashbankcontraComponent},
+  // { path: 'paysleep', component: PaysleepComponent},
+  // { path: 'expenceregister', component: ExpenseregisterComponent},
   
   // { path: '', component: TransportexpComponent},
   { path: 'agentenquirycancel', component: AgentenquirycancelComponent},

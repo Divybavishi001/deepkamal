@@ -1,18 +1,21 @@
-
 .toolbar-item-spacer {
     flex: 1 1 auto;
 }
 
 .app-container {
-    height: 90%;
+    height: 100%;
     margin: 0;
-    
 }  
+.app-container1 {
+    height: auto;
+    background-color: var(--primary-color);
+    color: #eee;
+    width: 100%;
+} 
 .app-sidenav {
     width: auto;
-    background-color: #21263c;
+    background-color: var(--primary-color);
     color: #eee;
-    
 }
 .app-sidenav-content {
     display: flex;

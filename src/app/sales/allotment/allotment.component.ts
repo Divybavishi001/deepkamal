@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AllotmentService } from './allotment.service';
 import { ImplicitReceiver } from '@angular/compiler';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-allotment',
@@ -10,8 +11,10 @@ import { ImplicitReceiver } from '@angular/compiler';
 })
 export class AllotmentComponent implements OnInit {
   constructor(public router :Router,
-    public allotmentservice : AllotmentService){}
+    public allotmentservice : AllotmentService,
+    public paginationservice: PaginationService){}
     public LstAllot : any = [];
+    public searchText :any =[];
 
 
    // FOR PAGINATION
@@ -39,13 +42,39 @@ export class AllotmentComponent implements OnInit {
          if (data != null && data["Table"][0] != undefined) {
            console.log(data["Table"]);
            this.LstAllot = data["Table"];
-           this.lstDummyQuoteListing = this.LstAllot;
-           this.itemsToDisplay = this.paginate(this.current, this.perPage);
-           this.total = Math.ceil(this.LstAllot.length / this.perPage);
+           this.updatePaginationData(this.LstAllot);
          }
          //this.loaderService.hide();
        });
    }
+   private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstAllot : this.filterRecords(this.LstAllot);
+    this.updatePaginationData(records);
+  }
    // save items
    public saveledgeraccount(){
      
@@ -80,24 +109,7 @@ export class AllotmentComponent implements OnInit {
      this.allotmentservice.objAllotment.LastName = obj.LastName.toString();
      this.allotmentservice.objAllotment.ACNAME = obj.ACNAME.toString();
    }
-   // for paginate
-   public onGoTo(page: number): void {
-     this.current = page
-     this.itemsToDisplay = this.paginate(this.current, this.perPage)
-   }
    
-   public onNext(page: number): void {
-     this.current = page + 1
-     this.itemsToDisplay = this.paginate(this.current, this.perPage)
-   }
-   
-   public onPrevious(page: number): void {
-     this.current = page - 1
-     this.itemsToDisplay = this.paginate(this.current, this.perPage)
-   }
-   public paginate(current: number, perPage: number): any {
-     return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-   }
    //new button
    public newItem(){
      debugger;

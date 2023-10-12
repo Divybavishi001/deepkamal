@@ -2,83 +2,84 @@
     <div class="container">
         <table class="tb" matSort >
             <thead>
-                <tr>
-                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                <tr id="tr" id="tr">
+                    <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
                            AC No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             AC Name<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                             Mobile<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
                         Address<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="Area"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Area"><button mat-button>
                             Area<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             City<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             State<mat-icon>sort</mat-icon></button></th>
                 </tr>
-                <tr>
-                    <td class="col-sm-2">
+                <tr id="tr" id="tr">
+                    <td id="td" class="col-sm-2">
                         <button mat-raised-button  style="background-color: #1773ea;color: #eee;" (click)="this.newItem()">Add New</button>
                     </td>
                     
-                    <td>
+                    <td id="td" colspan="6">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
+                           (input)="search()" placeholder="Search">
+                    </td>
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
+                    </td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
-                    <td class="col-sm-1">
+                <tr id="tr" id="tr" *ngFor="let obj of itemsToDisplay;let i = index">
+                    <td id="td" class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.ACNO}}
                     </td>
-                    <td>
+                    <td id="td">
 
                         {{obj.ACNAME}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.Mobile}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.add1}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.add3}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.CITY}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.state}}
                     </td>
                 </tr>
@@ -90,14 +91,13 @@
 
 
 
-            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-                (previous)="onPrevious($event)"></app-pagination>
+            <app-pagination [recordsPerPage]="10"></app-pagination>
 
         </table>
     </div>
 </mat-card>
         <div class="example-container" *ngIf="isVisibleChild">
-            <div class="row">
+            <div class="row headbtn">
                 <div class="col-sm-2">
                     <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.saveledgeraccount()">Save</button>
                 </div>
@@ -108,8 +108,82 @@
                     <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Cancle</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-2">
+            <div class="row maincard1 ">
+                <mat-card class="col-sm-5 card1">
+                    <div class="row cardrow">
+                        <div class="col-sm-3">
+                            <mat-label>AC NO</mat-label>
+                            <input type="text" name="AcNo" id="AcNo" #ACNO 
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNO" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <mat-label>Enquiry No</mat-label>
+                            <input type="text" name="EnquiryNo" id="EnquiryNo" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Agent Enquiry No</mat-label>
+                            <input type="text" name="AgentEnqNo" id="AgentEnqNo" #AgentEnqNo
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.AgentEnqNo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" name="FirstName" id="FirstName" #FirstName
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.FirstName" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Middle Name</mat-label>
+                            <input type="text" name="MiddleName" id="MiddleName" #MiddleName
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.MiddleName" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Last Name</mat-label>
+                            <input type="text" name="LastName" id="LastName" #LastName
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.LastName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-10">
+                            <!-- <mat-label>Visitor Name</mat-label> -->
+                            <input type="text" name="VisitorName" id="VisitorName" #ACNAME [disabled]="true"
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNAME" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="row cardrow">
+                        
+                        <div class="col-sm-3">
+                            <mat-label>Op. Bal</mat-label>
+                            <input type="text" name="OPBAL" id="OPBAL" #OPBAL 
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.OPBAL" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <mat-label>Cr. Days</mat-label>
+                            <input type="text" name="CrDays" id="CrDays" #crdays
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.crdays"  class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-checkbox>Close A/C</mat-checkbox>
+                         </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-5">
+                            <mat-label>GSTIN</mat-label>
+                            <input type="text" name="GSTIN" id="GSTIN" #GSTTIN
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.GSTTIN" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <mat-label>Merge With</mat-label>
+                            <input type="text" name="MergeWith" id="MergeWith" class="form-control">
+                        </div>
+                    </div>
+
+                </mat-card>
+
+            </div>
+
+                <!-- <div class="col-sm-2">
                     <mat-form-field hintLabel="Max 10 characters">
                         <mat-label>Enter some input</mat-label>
                         <input matInput #input maxlength="10" placeholder="Ex. Nougat">
@@ -124,6 +198,6 @@
                         </mat-select>
                         <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                     </mat-form-field>
-                </div>
-            </div>
+                </div> -->
+            
         </div>

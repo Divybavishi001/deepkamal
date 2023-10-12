@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PaginationService } from './pagination.service';
+import { PaginationService2 } from './pagination2.service';
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.css']
+  selector: 'app-pagination2',
+  templateUrl: './pagination2.component.html',
+  styleUrls: ['./pagination2.component.css']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent2 implements OnInit {
   @Input() recordsPerPage = 10;
   @Input() maxPageButtons = 10; // maximum number of page buttons to display
 
@@ -14,7 +14,7 @@ export class PaginationComponent implements OnInit {
   currentPage = 1;
   totalRecords = 0;
 
-  constructor(private paginationService2: PaginationService) {}
+  constructor(private paginationService2: PaginationService2) {}
 
   ngOnInit() {
     this.paginationService2.getData().subscribe(data => {

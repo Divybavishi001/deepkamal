@@ -1,3 +1,5 @@
+
+
 <mat-sidenav-container *ngIf="showNavbar" class="app-container">
     <mat-sidenav #sidenav opened mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
         <mat-nav-list>
@@ -14,11 +16,11 @@
 
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="master/item" >
+                    <a mat-list-item routerLink="dashboard/master/item" >
                         <mat-icon class="icons">post_add</mat-icon>
                         <span class="app-list-item">Item</span>
                     </a>
-                    <a mat-list-item routerLink="enquiry/quotation">
+                    <a mat-list-item routerLink="dashboard/enquiry/quotation">
                         <mat-icon class="icons">invert_colors</mat-icon>
                         <span class="app-list-item">COLOR</span>
                     </a>
@@ -48,15 +50,15 @@
 
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="enquiry/enquiry" >
+                    <a mat-list-item routerLink="../enquiry/enquiry" >
                         <mat-icon class="icons">find_in_page</mat-icon>
                         <span class="app-list-item">Enquiry</span>
                     </a>
-                    <a mat-list-item routerLink="enquiry/quotation">
+                    <a mat-list-item routerLink="dashboard/enquiry/quotation">
                         <mat-icon class="icons">book</mat-icon>
                         <span class="app-list-item">Quotation</span>
                     </a>
-                    <a mat-list-item routerLink="enquiry/followup">
+                    <a mat-list-item routerLink="dashboard/enquiry/followup">
                         <mat-icon class="icons">alarm_on</mat-icon>
                         <span class="app-list-item">Follow Up</span>
                     </a>
@@ -76,28 +78,28 @@
                     <span class="app-list-item">Sales</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="sales/accountcreation" class="app-list-item">
+                    <a mat-list-item routerLink="/sales/accountcreation" class="app-list-item">
                         <mat-icon class="icons">person_add</mat-icon>
                         <span class="app-list-item">Account Creation</span>
                     </a>
-                    <a mat-list-item routerLink="sales/bookingreceipt" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/sales/bookingreceipt" class="app-list-item">
                         <mat-icon class="icons">event_available</mat-icon>
                         <span class="app-list-item">Booking Receipt</span>
                     </a>
                     
-                    <a mat-list-item routerLink="sales/deliveryorder" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/sales/deliveryorder" class="app-list-item">
                         <mat-icon class="icons">delivery_dining</mat-icon>
                         <span class="app-list-item">Delivery Order</span>
                     </a>
-                    <a mat-list-item routerLink="sales/allotment"class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/sales/allotment"class="app-list-item">
                         <mat-icon class="icons">vpn_key</mat-icon>
                         <span class="app-list-item">Allotment</span>
                     </a>
-                    <a mat-list-item routerLink="sales/retailinvoice" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/sales/retailinvoice" class="app-list-item">
                         <mat-icon class="icons">book</mat-icon>
                         <span class="app-list-item">Retail Invoice</span>
                     </a>
-                    <a mat-list-item routerLink="sales/miscellaneoussales" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/sales/miscellaneoussales" class="app-list-item">
                         <mat-icon class="icons">build_circle</mat-icon>
                         <span class="app-list-item">Miscellaneous Sales</span>
                     </a>
@@ -110,15 +112,15 @@
                     <span class="app-list-item">After Sales</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="aftersales/insurance" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/aftersales/insurance" class="app-list-item">
                         <mat-icon class="icons">savings</mat-icon>
                         <span class="app-list-item">Insurance</span>
                     </a>
-                    <a mat-list-item routerLink="aftersales/rto" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/aftersales/rto" class="app-list-item">
                         <mat-icon class="icons">event_available</mat-icon>
                         <span class="app-list-item">RTO</span>
                     </a>
-                    <a mat-list-item routerLink="aftersales/crtemp" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/aftersales/crtemp" class="app-list-item">
                         <mat-icon class="icons">event_note</mat-icon>
                         <span class="app-list-item">CR Temp</span>
                     </a>
@@ -142,31 +144,31 @@
 
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="account/cashreceipt" >
+                    <a mat-list-item routerLink="dashboard/account/cashreceipt" >
                         <mat-icon class="icons">
                             monetization_on
                             </mat-icon>
                         <span class="app-list-item">Cash Receipt</span>
                     </a>
-                    <a mat-list-item routerLink="account/cashpayments">
+                    <a mat-list-item routerLink="dashboard/account/cashpayments">
                         <mat-icon class="icons">
                             payments
                             </mat-icon>
                         <span class="app-list-item">Cash Payments</span>
                     </a>
-                    <a mat-list-item routerLink="account/bankreceipt">
+                    <a mat-list-item routerLink="dashboard/account/bankreceipt">
                         <mat-icon class="icons">
                             receipt
                             </mat-icon>
                         <span class="app-list-item">Bank Receipt</span>
                     </a>
-                    <a mat-list-item routerLink="account/bankpayments">
+                    <a mat-list-item routerLink="dashboard/account/bankpayments">
                         <mat-icon class="icons">
                             wallet
                             </mat-icon>
                         <span class="app-list-item">Bank Payments</span>
                     </a>
-                    <a mat-list-item routerLink="account/cashbankcontra">
+                    <a mat-list-item routerLink="dashboard/account/cashbankcontra">
                         <mat-icon class="icons">
                             exposure
                             </mat-icon>
@@ -186,11 +188,11 @@
                     <span class="app-list-item">Purchase</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list class="app-list-item">
-                    <a mat-list-item routerLink="purchase/vehiclepurchase" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/purchase/vehiclepurchase" class="app-list-item">
                         <mat-icon class="icons">delivery_dining</mat-icon>
                         <span class="app-list-item">Vehicle Purchase</span>
                     </a>
-                    <a mat-list-item routerLink="purchase/miscellaneouspurchase" class="app-list-item">
+                    <a mat-list-item routerLink="dashboard/purchase/miscellaneouspurchase" class="app-list-item">
                         <mat-icon class="icons">book</mat-icon>
                         <span class="app-list-item">Miscellaneous Purchase</span>
                     </a>
@@ -222,14 +224,57 @@
                     book_4 </mat-icon>
                 <span class="app-list-item">Journal</span>
             </mat-list-item>
-            <mat-list-item routerLink="/daybooktype" >
+            <mat-list-item routerLink="dashboard/daybooktype" >
                 <mat-icon class="icons" style="margin-left: 8px;">trending_up</mat-icon>
                 <span class="app-list-item">Reports</span>
             </mat-list-item>
         </mat-nav-list>
         
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="sidenav">
+        <mat-toolbar class="app-container1">
+    
+            <span style="font-size: 25PX;font-weight: bold;">Bajaj Autolink</span>
+            
+            <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="changeuser">
+                <mat-icon class="icons">account_circle</mat-icon>
+            </button>
+        
+            <mat-menu #changeuser [overlapTrigger]="false" yPosition="below">
+                <button mat-menu-item routerLink="dashboard/admin/login">
+                    <mat-icon class="icons">person</mat-icon><span>Admin Login</span>
+                </button>
+            </mat-menu>
+            <span class="toolbar-item-spacer"></span>
+            <!-- <button mat-icon-button matTooltip="Like">
+                <mat-icon class="icons">favorite</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Share">
+                <mat-icon class="icons">share</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Notifications">
+                <mat-icon class="icons">notifications</mat-icon>
+            </button> -->
+            <span>Welcome,{{ 'UserName' }}</span>
+            <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+                <mat-icon class="icons">account_circle</mat-icon>
+            </button>
+            <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+                <button mat-menu-item routerLink="#">
+                    <mat-icon class="icons">person</mat-icon><span>My Account</span>
+                </button>
+                <button mat-menu-item routerLink="#">
+                    <mat-icon class="icons">settings</mat-icon><span>Settings</span>
+                </button>
+                <button mat-menu-item routerLink="#">
+                    <mat-icon class="icons">help</mat-icon><span>Help</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item routerLink="#">
+                    <mat-icon class="icons">exit_to_app</mat-icon>Logout
+                </button>
+            </mat-menu>
+        </mat-toolbar>
         <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
             <mat-icon>menu</mat-icon>
         </button>
@@ -237,3 +282,5 @@
     </mat-sidenav-content>
     
 </mat-sidenav-container>
+
+

@@ -2,123 +2,124 @@
     <div class="container">
         <table class="tb" matSort #tableSort="matSort">
             <thead>
-                <tr>
-                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
-                    <th class="col" mat-sort-header="SINVNO">
+                <tr id="tr">
+                    <th id="th" ><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="SINVNO">
                         <button mat-button>
                         Invoice No<mat-icon>sort</mat-icon>
                         </button>
                     </th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         Ac No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         Ac Name<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
                         Chasis No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                         RTO Tr No<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Mobile"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                         RTO Tr Dt<mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="Vehicle Name"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
                         RTO Bank Ref<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="Area"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="Area"><button mat-button>
                         RTO Paid  <mat-icon>sort</mat-icon></button></th>
 
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO Paid db<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO P Ac No<mat-icon>sort</mat-icon></button></th>
                     
-                    <th class="col" mat-sort-header="City"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
                         RTO P Doc No<mat-icon>sort</mat-icon></button></th>
                     
 
                 </tr>
-                <tr>
-                    <td class="col-sm-2">
+                <tr id="tr">
+                    <td id="td" class="col-sm-2">
                         <button mat-raised-button style="background-color: #1773ea;color: #eee;"
                             (click)="this.newItem()">Add New</button>
                     </td>
 
-                    <td>
+                    <td id="td" colspan="6">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
+                           (input)="search()" placeholder="Search">
+                    </td>
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
+                    </td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
-                    <td class="col-sm-1">
+                <tr id="tr" *ngFor="let obj of itemsToDisplay; let i = index">
+                    <td id="td" class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.SINVNO}}
                     </td>
-                    <td>
+                    <td id="td">
 
                         {{obj.ACNO}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.ACNAME}}
                     </td>
 
-                    <td>
+                    <td id="td">
                         {{obj.CHASISNO}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.RTOTRNO}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.RTOTRDT}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.RTOBANKREF}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.Rtopaid}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopaiddb}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopacno}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.rtopDocNo}}
                     </td>
                     
@@ -131,8 +132,7 @@
 
 
 
-            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-                (previous)="onPrevious($event)"></app-pagination>
+            <app-pagination [recordsPerPage]="10"></app-pagination>
 
         </table>
     </div>
@@ -151,13 +151,26 @@
                 (click)="this.back()">Cancle</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 10px;">
         <div class="col-sm-2">
-            <mat-form-field hintLabel="Max 10 characters">
-                <mat-label>Enter some input</mat-label>
+            <mat-form-field >
+                <mat-label>RTO Transport No</mat-label>
                 <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                
             </mat-form-field>
+        </div>
+        <div class="col-sm-3">
+            <mat-form-field class="example-form-field">
+                <mat-label>RTO Tranport Date</mat-label>
+                <input matInput [matDatepicker]="datepicker">
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
         </div>
         <div class="col-sm-2">
             <mat-form-field>
@@ -165,7 +178,7 @@
                 <mat-select>
                     <mat-option value="option">Option</mat-option>
                 </mat-select>
-                <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+                
             </mat-form-field>
         </div>
     </div>

@@ -1,6 +1,8 @@
 import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { BankpaymentsService } from './bankpayments.service';
+import { PaginationService } from 'src/app/pagination/pagination.service';
+
 @Component({
   selector: 'app-bankpayments',
   templateUrl: './bankpayments.component.html',
@@ -8,8 +10,10 @@ import { BankpaymentsService } from './bankpayments.service';
 })
 export class BankpaymentsComponent implements OnInit {
 constructor(public router:Router,
-  public bankpaymentservice : BankpaymentsService){}
+  public bankpaymentservice : BankpaymentsService,
+  public paginationservice: PaginationService){}
   public  LstBankPayment : any=[];
+  public searchText ="";
   
   // FOR PAGINATION
   public lstDummyQuoteListing: any = [];
@@ -36,12 +40,38 @@ constructor(public router:Router,
         if (data != null && data["Table"][0] != undefined) {
           console.log(data["Table"]);
           this.LstBankPayment = data["Table"];
-          this.lstDummyQuoteListing = this.LstBankPayment;
-          this.itemsToDisplay = this.paginate(this.current, this.perPage);
-          this.total = Math.ceil(this.LstBankPayment.length / this.perPage);
+          this.updatePaginationData(this.LstBankPayment);
         }
         //this.loaderService.hide();
       });
+  }
+  private updatePaginationData(records: any[]): void {
+    this.paginationservice.setData(records);
+    this.paginationservice.goToPage(1);
+    this.updateDisplayedRecords();
+  }
+
+  private updateDisplayedRecords(): void {
+    this.paginationservice.getCurrentPage().subscribe(page => {
+      const start = (page - 1) * 10;
+      const end = start + 10;
+      this.paginationservice.getData().subscribe(data => {
+        this.itemsToDisplay = data.slice(start, end);
+      });
+    });
+  }
+
+  private filterRecords(records: any[]): any[] {
+    return records.filter((item: any) =>
+      Object.values(item).some(val =>
+        val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
+  }
+
+  public search(): void {
+    let records = !this.searchText ? this.LstBankPayment : this.filterRecords(this.LstBankPayment);
+    this.updatePaginationData(records);
   }
   // save items
   public saveledgeraccount(){
@@ -77,24 +107,7 @@ constructor(public router:Router,
     this.bankpaymentservice.objBankPayment.LastName = obj.LastName.toString();
     this.bankpaymentservice.objBankPayment.ACNAME = obj.ACNAME.toString();
   }
-  // for paginate
-  public onGoTo(page: number): void {
-    this.current = page
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
   
-  public onNext(page: number): void {
-    this.current = page + 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  
-  public onPrevious(page: number): void {
-    this.current = page - 1
-    this.itemsToDisplay = this.paginate(this.current, this.perPage)
-  }
-  public paginate(current: number, perPage: number): any {
-    return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-  }
   //new button
   public newItem(){
     debugger;

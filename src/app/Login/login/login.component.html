@@ -1,4 +1,4 @@
-<section class="vh-100">
+<!-- <section class="vh-100">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -9,20 +9,18 @@
                 <form id="frmLogin">
                     <div class="form-outline mb-4">
                         <label class="form-label" for="username">Username</label>
-                        <input type="text" id="username" name="username" [(ngModel)]="this.username"
+                        <input type="text" id="username" name="username" 
                             class="form-control form-control-lg" placeholder="Username" />
                         
                     </div>
-                    <!-- Password input -->
                     <div class="form-outline mb-3">
                         <label class="form-label" for="password">Password</label>
-                        <input type="password" id="password" name="password" [(ngModel)]="this.password"
+                        <input type="password" id="password" name="password" 
                             class="form-control form-control-lg" placeholder="Enter password" />
                         
                     </div>
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="button" class="btn btn-primary btn-lg" (click)="this.logIn();"
-                        [disabled]="!(this.username.trim() !='' && this.password.trim() !='')"
+                        <button type="button" class="btn btn-primary btn-lg" 
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                     </div>
                 </form>
@@ -30,4 +28,37 @@
         </div>
     </div>
 
-</section>
+</section> -->
+<div class="login-page">
+    <div class="content px20">
+      <form class="login-form" #myForm="ngForm" >
+        <div class="text-center">
+          <h2 class="app-name">Material Admin</h2>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexFill>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Email" [(ngModel)]="this.username">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput type="password" placeholder="Password" [(ngModel)]="this.password">
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column" class="mt20 mb20">
+          <mat-checkbox color="primary" >Remember Me</mat-checkbox>
+          <a href="javascript:void(0)">Forgot Password</a>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexFill>
+            <button type="submit" mat-raised-button color="primary" class="w-100" routerLink="/dashboard">Login</button>
+            <button type="button" mat-button color="primary" class="w-100" 
+            >Sign Up</button>
+          </div>
+        </div>
+        <!-- (click)="this.logIn();"
+            [disabled]="!(this.username.trim() !='' && this.password.trim() !='')" -->
+      </form>
+    </div>
+  </div>
+  

@@ -2,73 +2,76 @@
     <div class="container">
         <table class="tb" matSort >
             <thead>
-                <tr>
-                    <th><button mat-button>Action<mat-icon></mat-icon></button></th>
-                    <th class="col" mat-sort-header="EnquiryNo"><button mat-button>
+                <tr id="tr">
+                    <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
                            AC No<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             AC Name<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             Do No.<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             Do Date.<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             Vehicle Code<mat-icon>sort</mat-icon></button></th>
-                    <th class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             Vehicle Name<mat-icon>sort</mat-icon></button></th>
                 </tr>
-                <tr>
-                    <td class="col-sm-2">
+                <tr id="tr">
+                    <td id="td" class="col-sm-2">
                         <button mat-raised-button  style="background-color: #1773ea;color: #eee;" (click)="this.newItem()">Add New</button>
                     </td>
+                    <td id="td" colspan="6">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
+                           (input)="search()" placeholder="Search">
+                    </td>
                     
-                    
-                    <td>
+                    <!-- <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
                     </td>
-                    <td>
+                    <td id="td">
                         <input type="text" class="form-control">
-                    </td>
+                    </td> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let obj of this.itemsToDisplay; let i = index">
-                    <td class="col-sm-1">
+                <tr id="tr" *ngFor="let obj of this.itemsToDisplay; let i = index">
+                    <td id="td" class="col-sm-1">
                         <button mat-icon-button color="primary"
                             (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.ACNO}}
                     </td>
-                    <td>
+                    <td id="td">
 
                         {{obj.ACNAME}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.DONo}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.DoDate}}
                     </td>
                     
-                    <td>
+                    <td id="td">
                         {{obj.VehicleCode}}
                     </td>
-                    <td>
+                    <td id="td">
                         {{obj.ItemName}}
                     </td>
                     
@@ -82,8 +85,7 @@
 
 
 
-            <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-                (previous)="onPrevious($event)"></app-pagination>
+            <app-pagination [recordsPerPage]="10"></app-pagination>
 
         </table>
     </div>

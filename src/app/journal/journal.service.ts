@@ -19,6 +19,7 @@ export class JournalService extends DataServiceService{
    "BRANCHCD" : "0",
    "vertualBranch" : "0",
    "acno" : "0",
+   "ACNAME" : "",
    "amount" : "0",
    "Nar1" : "",
    "Nar2" : "",
@@ -38,6 +39,7 @@ export class JournalService extends DataServiceService{
       "BRANCHCD" : "0",
       "vertualBranch" : "0",
       "acno" : "0",
+      "ACNAME" : "",
       "amount" : "0",
       "Nar1" : "",
       "Nar2" : "",
@@ -46,6 +48,7 @@ export class JournalService extends DataServiceService{
       "DocDt" : "0",
     }
   }
+  public listRtodetails = [this.objRto];
   getJournalTransaction(data:any): Observable<any> {
     debugger
     var param = { "DBCODE": data };

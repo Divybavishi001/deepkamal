@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { RtoService } from './rto.service';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-rto',
@@ -10,9 +11,11 @@ import { MatSort } from '@angular/material/sort';
 })
 export class RtoComponent {
   constructor(public router :Router,
-    public rtoservice :RtoService){}
+    public rtoservice :RtoService,
+    public paginationservice:PaginationService){}
     @ViewChild(MatSort, { static: true }) sort !: MatSort;
     public LstRto  : any=[];
+    public searchText :any =[];
   
     // FOR PAGINATION
     public lstDummyQuoteListing: any = [];
@@ -39,12 +42,38 @@ export class RtoComponent {
           if (data != null && data["Table"][0] != undefined) {
             console.log(data["Table"]);
             this.LstRto = data["Table"];
-            this.lstDummyQuoteListing = this.LstRto;
-            this.itemsToDisplay = this.paginate(this.current, this.perPage);
-            this.total = Math.ceil(this.LstRto.length / this.perPage);
+            this.updatePaginationData(this.LstRto);
           }
           //this.loaderService.hide();
         });
+    }
+    private updatePaginationData(records: any[]): void {
+      this.paginationservice.setData(records);
+      this.paginationservice.goToPage(1);
+      this.updateDisplayedRecords();
+    }
+  
+    private updateDisplayedRecords(): void {
+      this.paginationservice.getCurrentPage().subscribe(page => {
+        const start = (page - 1) * 10;
+        const end = start + 10;
+        this.paginationservice.getData().subscribe(data => {
+          this.itemsToDisplay = data.slice(start, end);
+        });
+      });
+    }
+  
+    private filterRecords(records: any[]): any[] {
+      return records.filter((item: any) =>
+        Object.values(item).some(val =>
+          val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+        )
+      );
+    }
+  
+    public search(): void {
+      let records = !this.searchText ? this.LstRto : this.filterRecords(this.LstRto);
+      this.updatePaginationData(records);
     }
     // save items
     public saveledgeraccount(){
@@ -80,24 +109,7 @@ export class RtoComponent {
       this.rtoservice.objRto.LastName = obj.LastName.toString();
       this.rtoservice.objRto.ACNAME = obj.ACNAME.toString();
     }
-    // for paginate
-    public onGoTo(page: number): void {
-      this.current = page
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
     
-    public onNext(page: number): void {
-      this.current = page + 1
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
-    
-    public onPrevious(page: number): void {
-      this.current = page - 1
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
-    public paginate(current: number, perPage: number): any {
-      return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-    }
     //new button
     public newItem(){
       debugger;

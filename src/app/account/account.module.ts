@@ -10,14 +10,13 @@ import { BankreceiptComponent } from './bankreceipt/bankreceipt.component';
 import { BankpaymentsComponent } from './bankpayments/bankpayments.component';
 import { CashbankcontraComponent } from './cashbankcontra/cashbankcontra.component';
 
-
 @NgModule({
   declarations: [
     CashreceiptComponent,
     CashpaymentsComponent,
     BankreceiptComponent,
     BankpaymentsComponent,
-    CashbankcontraComponent
+    CashbankcontraComponent,
   ],
   imports: [
     CommonModule,

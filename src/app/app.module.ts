@@ -45,7 +45,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatTreeModule} from '@angular/material/tree';
+import{MatTreeModule} from '@angular/material/tree';
 import  {FormsModule } from '@angular/forms'; 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
@@ -80,6 +80,7 @@ import { TruckmasterComponent } from './truckmaster/truckmaster.component';
 import { DaybooktypeComponent } from './daybooktype/daybooktype.component';
 import { PaginationModule } from './pagination/pagination.module';
 import { SortPipe } from './sort.pipe';
+import { AggridComponent } from './aggrid/aggrid.component';
 
 
 @NgModule({
@@ -139,6 +140,7 @@ import { SortPipe } from './sort.pipe';
     TruckmasterComponent,
     DaybooktypeComponent,
     SortPipe,
+    AggridComponent,
     
     
 

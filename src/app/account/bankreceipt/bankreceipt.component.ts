@@ -1,8 +1,7 @@
-import { Component ,OnInit, ViewChild} from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { BankreceiptService } from './bankreceipt.service';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { PaginationService } from 'src/app/pagination/pagination.service';
 
 @Component({
   selector: 'app-bankreceipt',
@@ -10,13 +9,12 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./bankreceipt.component.css']
 })
 export class BankreceiptComponent implements OnInit {
-  @ViewChild(MatSort) sort!: MatSort; // Add '!' to indicate that it will be initialized later
   constructor(public router :Router,
-    public bankreceiptservice :BankreceiptService
-){  this.dataSource = new MatTableDataSource<any>([]);
-}
+    public bankreceiptservice :BankreceiptService,
+    public paginationservice: PaginationService){}
     public LstBankreceipt  : any=[];
-    dataSource: MatTableDataSource<any>;
+    public searchText ="";
+  
     // FOR PAGINATION
     public lstDummyQuoteListing: any = [];
     public itemsToDisplay: any = [];
@@ -28,8 +26,6 @@ export class BankreceiptComponent implements OnInit {
     public isVisibleChild:boolean=false;
   
     public ngOnInit(): void {
-      this.dataSource = new MatTableDataSource(this.itemsToDisplay);
-      this.itemsToDisplay.sort((a : any, b : any) => a.AcNo - b.AcNo);
       this.bankreceiptservice.resetService();
       this.GETAfterSalesDetails();
       
@@ -44,12 +40,38 @@ export class BankreceiptComponent implements OnInit {
           if (data != null && data["Table"][0] != undefined) {
             console.log(data["Table"]);
             this.LstBankreceipt = data["Table"];
-            this.lstDummyQuoteListing = this.LstBankreceipt;
-            this.itemsToDisplay = this.paginate(this.current, this.perPage);
-            this.total = Math.ceil(this.LstBankreceipt.length / this.perPage);
+            this.updatePaginationData(this.LstBankreceipt);
           }
           //this.loaderService.hide();
         });
+    }
+    private updatePaginationData(records: any[]): void {
+      this.paginationservice.setData(records);
+      this.paginationservice.goToPage(1);
+      this.updateDisplayedRecords();
+    }
+  
+    private updateDisplayedRecords(): void {
+      this.paginationservice.getCurrentPage().subscribe(page => {
+        const start = (page - 1) * 10;
+        const end = start + 10;
+        this.paginationservice.getData().subscribe(data => {
+          this.itemsToDisplay = data.slice(start, end);
+        });
+      });
+    }
+  
+    private filterRecords(records: any[]): any[] {
+      return records.filter((item: any) =>
+        Object.values(item).some(val =>
+          val !== null && (val as any).toString().toLowerCase().includes(this.searchText.toLowerCase())
+        )
+      );
+    }
+  
+    public search(): void {
+      let records = !this.searchText ? this.LstBankreceipt : this.filterRecords(this.LstBankreceipt);
+      this.updatePaginationData(records);
     }
     // save items
     public saveledgeraccount(){
@@ -85,24 +107,7 @@ export class BankreceiptComponent implements OnInit {
       this.bankreceiptservice.objBankReceipt.LastName = obj.LastName.toString();
       this.bankreceiptservice.objBankReceipt.ACNAME = obj.ACNAME.toString();
     }
-    // for paginate
-    public onGoTo(page: number): void {
-      this.current = page
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
     
-    public onNext(page: number): void {
-      this.current = page + 1
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
-    
-    public onPrevious(page: number): void {
-      this.current = page - 1
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
-    }
-    public paginate(current: number, perPage: number): any {
-      return [...this.lstDummyQuoteListing.slice((current - 1) * perPage).slice(0, perPage)]
-    }
     //new button
     public newItem(){
       debugger;

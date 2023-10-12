@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatModule } from '../mat/mat.module';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 import { EnquiryRoutingModule } from './enquiry-routing.module';
 import { EnquiryComponent } from './enquiry/enquiry.component';
@@ -13,6 +14,7 @@ import { PaginationModule } from '../pagination/pagination.module';
     EnquiryComponent,
     QuotationComponent,
     FollowupComponent,
+    FilterPipe,
     
   ],
   imports: [
