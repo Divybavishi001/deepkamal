@@ -1,3 +1,8 @@
+<div class="container">
+    <span style="font-size: 20px;font-weight: 500;">Enquiry</span>
+</div>
+
+
 <mat-card *ngIf="isVisibleParent">
     <div class="container">
 
@@ -118,24 +123,25 @@
 <div class="example-container" *ngIf="isVisibleChild">
     <div class="row headbtn">
         <div class="col-sm-2">
-            <button  class="hbtn" (click)="this.saveEnquiry();back()">Save</button>
+            <button class="hbtn" (click)="this.saveEnquiry();back()">Save</button>
         </div>
         <div class="col-sm-2">
-            <button  class="hbtn" (click)="this.back()">Back</button>
+            <button class="hbtn" (click)="this.back()">Back</button>
         </div>
         <div class="col-sm-2">
-            <button  class="hbtn" (click)="this.back()">Cancle</button>
+            <button class="hbtn" (click)="this.back()">Cancle</button>
         </div>
     </div>
     <div class="row maincard1">
-        <div class="col-sm-5" style="margin-right: 10px;">
-            <div class="row " >
-                <mat-card class="card1" >
+        <div class="col-md-5" style="margin-right: 10px;">
+            <div class="row ">
+                <mat-card class="card1">
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Brach Code</mat-label>
-                            <input type="text" name="BranchCode" id="BranchCode"  #branch
-                             [(ngModel)]="enquiryservice.objEnquiry.branch" class="form-control" placeholder="ex. 01">
+                            <input type="text" name="BranchCode" id="BranchCode" #branch
+                                [(ngModel)]="enquiryservice.objEnquiry.branch" class="form-control"
+                                placeholder="ex. 01">
                         </div>
                         <div class="col-sm-8">
                             <mat-label>Brach Name</mat-label>
@@ -143,10 +149,10 @@
                               class="form-control"
                                 placeholder="ex. Income Tax"> -->
                             <mat-select name="EnquiryType" id="EnquiryType" class="form-control" #Branchname
-                            [(ngModel)]="this.enquiryservice.objEnquiry.Branchname" 
-                            (change)="this.getBranchDetail($event);" placeholder="Select">
+                                [(ngModel)]="this.enquiryservice.objEnquiry.Branchname"
+                                (change)="this.getBranchDetail($event);" placeholder="Select">
                                 <mat-option *ngFor='let BranchCd of this.lstBranchCode'
-                                 value="BranchCd.Branchname">{{BranchCd.Branchname}}</mat-option>
+                                    value="BranchCd.Branchname">{{BranchCd.Branchname}}</mat-option>
                             </mat-select>
                         </div>
                     </div>
@@ -154,68 +160,67 @@
                         <div class="col-sm-4">
                             <mat-label>Enquiry No</mat-label>
                             <input type="text" name="BranchCode" id="BranchCode" #EnquiryNo
-                            [(ngModel)]="this.enquiryservice.objEnquiry.EnquiryNo" class="form-control" placeholder="ex. 1003">
+                                [(ngModel)]="this.enquiryservice.objEnquiry.EnquiryNo" class="form-control"
+                                placeholder="ex. 1003">
                         </div>
                         <div class="col-sm-5">
                             <mat-label> Enquiry Date</mat-label>
                             <input type="date" name="BranchName" id="BranchName" #EnquiryDt
-                            [(ngModel)]="this.enquiryservice.objEnquiry.EnquiryDt" class="form-control">
+                                [(ngModel)]="this.enquiryservice.objEnquiry.EnquiryDt" class="form-control">
                         </div>
                     </div>
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Sales Man Code</mat-label>
-                            <input type="text" name="BranchCode" id="BranchCode" class="form-control"
-                            #SalesManCode [(ngModel)]="this.enquiryservice.objEnquiry.SalesManCode"
-                             placeholder="ex. 07">
+                            <input type="text" name="BranchCode" id="BranchCode" class="form-control" #SalesManCode
+                                [(ngModel)]="this.enquiryservice.objEnquiry.SalesManCode" placeholder="ex. 07">
                         </div>
                         <div class="col-sm-8">
                             <mat-label>Sales Man Name</mat-label>
-                            
-                            <mat-select name="BranchName" id="BranchName" class="form-control" 
-                             
-                            (change)="this.getSalesManDetail($event);" placeholder="Select">
+
+                            <mat-select name="BranchName" id="BranchName" class="form-control"
+                                (change)="this.getSalesManDetail($event);" placeholder="Select">
                                 <mat-option *ngFor='let salesman of this.lstSalesMan'
-                                 value="salesman.SMname">{{salesman.SMname}}</mat-option>
+                                    value="salesman.SMname">{{salesman.SMname}}</mat-option>
                             </mat-select>
                         </div>
                     </div>
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Enquiry Type</mat-label>
-                            <mat-select name="EnquiryType" id="EnquiryType"   class="form-control" 
-                            (change)="this.getinqsource($event);" placeholder="Select">
+                            <mat-select name="EnquiryType" id="EnquiryType" class="form-control"
+                                (change)="this.getinqsource($event);" placeholder="Select">
                                 <mat-option *ngFor='let inqtype of this.lstinqtype'
-                                 value="inqtype.TYPENAME">{{inqtype.TYPENAME}}</mat-option>
+                                    value="inqtype.TYPENAME">{{inqtype.TYPENAME}}</mat-option>
                             </mat-select>
                         </div>
                         <div class="col-sm-5">
                             <mat-label>Payment Type</mat-label>
                             <mat-select name="PaymentType" id="PaymentType" #PayTypeCOde
-                            [(ngModel)]="this.enquiryservice.objEnquiry.PayTypeCOde"  class="form-control" placeholder="Select">
+                                [(ngModel)]="this.enquiryservice.objEnquiry.PayTypeCOde" class="form-control"
+                                placeholder="Select">
                                 <mat-option value="one">Cash</mat-option>
                                 <mat-option value="two">Finance</mat-option>
                                 <mat-option value="three">Finance-Self</mat-option>
                             </mat-select>
-                            
+
                         </div>
                     </div>
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Source Of Enquiry</mat-label>
-                            <mat-select name="SourceOfEnquiry" id="SourceOfEnquiry"  class="form-control" 
-                            
-                            (change)="this.getinqsource($event);" placeholder="Select">
+                            <mat-select name="SourceOfEnquiry" id="SourceOfEnquiry" class="form-control"
+                                (change)="this.getinqsource($event);" placeholder="Select">
                                 <mat-option *ngFor='let source of this.lstsource'
-                                 value="source.SourceName">{{source.SourceName}}</mat-option>
+                                    value="source.SourceName">{{source.SourceName}}</mat-option>
                             </mat-select>
                         </div>
                         <div class="col-sm-5">
                             <mat-label>Sub Type</mat-label>
-                            <mat-select name="SourceOfEnquiry" id="SourceOfEnquiry"  class="form-control" 
-                            (change)="this.getinqsource($event);" placeholder="Select">
+                            <mat-select name="SourceOfEnquiry" id="SourceOfEnquiry" class="form-control"
+                                (change)="this.getinqsource($event);" placeholder="Select">
                                 <mat-option *ngFor='let source of this.lstsource'
-                                 value="source.Sub_Source_Name">{{source.Sub_Source_Name}}</mat-option>
+                                    value="source.Sub_Source_Name">{{source.Sub_Source_Name}}</mat-option>
                             </mat-select>
                         </div>
                     </div>
@@ -232,25 +237,23 @@
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Agent</mat-label>
-                            <input type="text" name="AgentCd" id="AgentCd" 
-                             class="form-control" disabled>
+                            <input type="text" name="AgentCd" id="AgentCd" class="form-control" disabled>
                         </div>
                         <div class="col-sm-3">
                             <mat-label>DO</mat-label>
-                            <input type="text" name="Do" id="Do" 
-                             class="form-control" disabled>
+                            <input type="text" name="Do" id="Do" class="form-control" disabled>
                         </div>
                     </div>
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Invoice No</mat-label>
-                            <input type="text" name="SINVNO" id="SINVNO" class="form-control"
-                            #SINVNO [(ngModel)]="this.enquiryservice.objEnquiry.SINVNO" placeholder="ex. 1003">
+                            <input type="text" name="SINVNO" id="SINVNO" class="form-control" #SINVNO
+                                [(ngModel)]="this.enquiryservice.objEnquiry.SINVNO" placeholder="ex. 1003">
                         </div>
                         <div class="col-sm-4">
                             <mat-label>AC No</mat-label>
-                            <input type="text" name="ACNO" id="ACNO" class="form-control"
-                            #ACNO [(ngModel)]="this.enquiryservice.objEnquiry.ACNO" placeholder="ex. 054">
+                            <input type="text" name="ACNO" id="ACNO" class="form-control" #ACNO
+                                [(ngModel)]="this.enquiryservice.objEnquiry.ACNO" placeholder="ex. 054">
                         </div>
                         <!-- <div class="col-sm-4">
                             <mat-label>Date</mat-label>
@@ -261,37 +264,39 @@
                     <div class="row cardrow">
                         <div class="col-sm-10">
                             <mat-label>Institutional Sale</mat-label>
-                            <input type="text" name="InstiSale" id="InstiSale" class="form-control"
-                             #INSTITUTECODE [(ngModel)]="this.enquiryservice.objEnquiry.INSTITUTECODE"   placeholder="ex. Institutional Sale">
+                            <input type="text" name="InstiSale" id="InstiSale" class="form-control" #INSTITUTECODE
+                                [(ngModel)]="this.enquiryservice.objEnquiry.INSTITUTECODE"
+                                placeholder="ex. Institutional Sale">
                         </div>
                     </div>
                     <div class="row cardrow">
                         <div class="col-sm-4">
                             <mat-label>Vehicle Code</mat-label>
-                            <input type="text" name="VehCode" id="VehCode" class="form-control"
-                            #ItemCode [(ngModel)]="this.enquiryservice.objEnquiry.ItemCode" placeholder="ex. AFFT">
+                            <input type="text" name="VehCode" id="VehCode" class="form-control" #ItemCode
+                                [(ngModel)]="this.enquiryservice.objEnquiry.ItemCode" placeholder="ex. AFFT">
                         </div>
                         <div class="col-sm-8">
                             <mat-label>Vehicle Name</mat-label>
                             <!-- <input type="text" name="VehName" id="VehName" class="form-control"
                             #ItemName [(ngModel)]="this.enquiryservice.objEnquiry.ItemName" placeholder="ex. Bajaj VEHICLE"> -->
-                            <mat-select name="VehName" id="VehName" class="form-control" 
-                            [(ngModel)]="this.enquiryservice.objEnquiry.ItemName" 
-                            (change)="this.getItemDetails($event);" placeholder="Select">
+                            <mat-select name="VehName" id="VehName" class="form-control"
+                                [(ngModel)]="this.enquiryservice.objEnquiry.ItemName"
+                                (change)="this.getItemDetails($event);" placeholder="Select">
                                 <mat-option *ngFor='let Item of this.lstItem'
-                                 value="Item.ItemName">{{Item.ItemName}}</mat-option>
+                                    value="Item.ItemName">{{Item.ItemName}}</mat-option>
                             </mat-select>
                         </div>
                     </div>
-        
+
                 </mat-card>
             </div>
             <div class="row cardrow">
-                <mat-card class="card1" >
+                <mat-card class="card1">
                     <div class="row cardrow">
                         <div class="col-sm-6">
                             <mat-radio-button value="PassangerCarrier">Passanger Carrier</mat-radio-button>
-                            <mat-select name="PassangerCarrier" id="PassangerCarrier"  class="form-control" placeholder="Select">
+                            <mat-select name="PassangerCarrier" id="PassangerCarrier" class="form-control"
+                                placeholder="Select">
                                 <mat-option value="one">Both</mat-option>
                                 <mat-option value="two">Contract</mat-option>
                                 <mat-option value="three">Ticketing</mat-option>
@@ -299,7 +304,7 @@
                         </div>
                         <div class="col-sm-6">
                             <mat-radio-button value="GoodCarrier">Goods Carrier</mat-radio-button>
-                            <mat-select name="GoodCarrier" id="GoodCarrier"  class="form-control" placeholder="Select">
+                            <mat-select name="GoodCarrier" id="GoodCarrier" class="form-control" placeholder="Select">
                                 <mat-option value="one">Captive</mat-option>
                                 <mat-option value="two">Institutional</mat-option>
                                 <mat-option value="three">Owned</mat-option>
@@ -311,37 +316,38 @@
                         <mat-checkbox>Finance Applied For</mat-checkbox>
                     </div>
                     <div class="row cardrow">
-                        
+
                     </div>
 
                 </mat-card>
             </div>
-           
+
         </div>
-        
+
         <mat-card class="card1 col-md-5">
             <div class="row cardrow">
                 <div class="col-sm-4">
                     <mat-label>First Name</mat-label>
-                    <input type="text" name="FirstName" id="FirstName" class="form-control"
-                    #FirstName [(ngModel)]="this.enquiryservice.objEnquiry.FirstName" placeholder="ex. Divy">
+                    <input type="text" name="FirstName" id="FirstName" class="form-control" #FirstName
+                        [(ngModel)]="this.enquiryservice.objEnquiry.FirstName" placeholder="ex. Divy">
                 </div>
                 <div class="col-sm-4">
                     <mat-label>Middle Name</mat-label>
-                    <input type="text" name="MiddleName" id="MiddleName" class="form-control"
-                    #MiddleName [(ngModel)]="this.enquiryservice.objEnquiry.MiddleName"    placeholder="ex. Nareshbhai">
+                    <input type="text" name="MiddleName" id="MiddleName" class="form-control" #MiddleName
+                        [(ngModel)]="this.enquiryservice.objEnquiry.MiddleName" placeholder="ex. Nareshbhai">
                 </div>
                 <div class="col-sm-4">
                     <mat-label>Last Name</mat-label>
-                    <input type="text" name="LastName" id="LastName" class="form-control"
-                    #LastName [(ngModel)]="this.enquiryservice.objEnquiry.LastName" placeholder="ex. Bavishi">
+                    <input type="text" name="LastName" id="LastName" class="form-control" #LastName
+                        [(ngModel)]="this.enquiryservice.objEnquiry.LastName" placeholder="ex. Bavishi">
                 </div>
             </div>
             <div class="row cardrow">
                 <div class="col-sm-11">
                     <mat-label>Visitor Name</mat-label>
-                    <input type="text" name="VisitorName" id="VisitorName" class="form-control"
-                    #VisitorName [(ngModel)]="this.enquiryservice.objEnquiry.VisitorName"    placeholder="ex. DivyNareshbhaiBavishi">
+                    <input type="text" name="VisitorName" id="VisitorName" class="form-control" #VisitorName
+                        [(ngModel)]="this.enquiryservice.objEnquiry.VisitorName"
+                        placeholder="ex. DivyNareshbhaiBavishi">
                 </div>
             </div>
             <div class="row cardrow">
@@ -364,40 +370,40 @@
             <div class="row cardrow">
                 <div class="col-sm-5">
                     <mat-label>Mobile</mat-label>
-                    <input type="text" name="Mobile" id="Mobile" class="form-control"
-                    #Mobile [(ngModel)]="this.enquiryservice.objEnquiry.Mobile" placeholder="ex. 840xxxxxxx54">
+                    <input type="text" name="Mobile" id="Mobile" class="form-control" #Mobile
+                        [(ngModel)]="this.enquiryservice.objEnquiry.Mobile" placeholder="ex. 840xxxxxxx54">
                 </div>
                 <div class="col-sm-7">
                     <mat-label>Email</mat-label>
-                    <input type="email" name="Email" id="Email" class="form-control"
-                    #Email [(ngModel)]="this.enquiryservice.objEnquiry.Email" placeholder="ex. admin@gmail.com">
+                    <input type="email" name="Email" id="Email" class="form-control" #Email
+                        [(ngModel)]="this.enquiryservice.objEnquiry.Email" placeholder="ex. admin@gmail.com">
                 </div>
             </div>
             <div class="row cardrow">
                 <mat-label>Address 1</mat-label>
-                <textarea name="Add1" id="Add1" cols="30" rows="2" placeholder="enter Address 1"
-                #Add1 [(ngModel)]="this.enquiryservice.objEnquiry.Add1" class="form-control"></textarea>
+                <textarea name="Add1" id="Add1" cols="30" rows="2" placeholder="enter Address 1" #Add1
+                    [(ngModel)]="this.enquiryservice.objEnquiry.Add1" class="form-control"></textarea>
             </div>
             <div class="row cardrow">
                 <mat-label>Address 2</mat-label>
-                <textarea name="Add2" id="Add2" cols="30" rows="2" placeholder="enter Address 2"
-                #Add2 [(ngModel)]="this.enquiryservice.objEnquiry.Add2" class="form-control"></textarea>
+                <textarea name="Add2" id="Add2" cols="30" rows="2" placeholder="enter Address 2" #Add2
+                    [(ngModel)]="this.enquiryservice.objEnquiry.Add2" class="form-control"></textarea>
             </div>
             <div class="row cardrow">
                 <mat-label>Address 3</mat-label>
-                <textarea name="Add3" id="Add3" cols="30" rows="2" placeholder="enter Address 3"
-                #Add3 [(ngModel)]="this.enquiryservice.objEnquiry.Add3" class="form-control"></textarea>
+                <textarea name="Add3" id="Add3" cols="30" rows="2" placeholder="enter Address 3" #Add3
+                    [(ngModel)]="this.enquiryservice.objEnquiry.Add3" class="form-control"></textarea>
             </div>
             <div class="row cardrow">
                 <div class="col-sm-3">
                     <mat-label>Area Code</mat-label>
-                    <input type="text" name="AreaCd" id="AreaCd" placeholder="ex. 01"
-                    #AREACD [(ngModel)]="this.enquiryservice.objEnquiry.AREACD" class="form-control">
+                    <input type="text" name="AreaCd" id="AreaCd" placeholder="ex. 01" #AREACD
+                        [(ngModel)]="this.enquiryservice.objEnquiry.AREACD" class="form-control">
                 </div>
                 <div class="col-sm-4">
                     <mat-label>Area Name</mat-label>
-                    <input type="text" name="AreaName" id="AreaName" placeholder="ex. Income Tax"
-                    #AREA [(ngModel)]="this.enquiryservice.objEnquiry.AREA" class="form-control">
+                    <input type="text" name="AreaName" id="AreaName" placeholder="ex. Income Tax" #AREA
+                        [(ngModel)]="this.enquiryservice.objEnquiry.AREA" class="form-control">
                 </div>
                 <div class="col-sm-5">
                     <mat-label>City</mat-label>
@@ -411,62 +417,62 @@
             <div class="row cardrow">
                 <div class="col-sm-3">
                     <mat-label>PinCode</mat-label>
-                    <input type="text" name="PinCode" id="PinCode" placeholder="ex. 382350" 
-                    #Pin [(ngModel)]="this.enquiryservice.objEnquiry.Pin"  class="form-control">
+                    <input type="text" name="PinCode" id="PinCode" placeholder="ex. 382350" #Pin
+                        [(ngModel)]="this.enquiryservice.objEnquiry.Pin" class="form-control">
                 </div>
                 <div class="col-sm-3">
                     <mat-label>State Cd</mat-label>
-                    <input type="text" name="StateCd" id="StateCd" placeholder="ex. 25"
-                    #statecd [(ngModel)]="this.enquiryservice.objEnquiry.statecd" class="form-control">
+                    <input type="text" name="StateCd" id="StateCd" placeholder="ex. 25" #statecd
+                        [(ngModel)]="this.enquiryservice.objEnquiry.statecd" class="form-control">
                 </div>
                 <div class="col-sm-3">
                     <mat-label>State Name</mat-label>
-                    <input type="text" name="StateName" id="StateName" placeholder="ex. Gujarat"
-                    #state [(ngModel)]="this.enquiryservice.objEnquiry.state" class="form-control">
+                    <input type="text" name="StateName" id="StateName" placeholder="ex. Gujarat" #state
+                        [(ngModel)]="this.enquiryservice.objEnquiry.state" class="form-control">
                 </div>
             </div>
             <div class="row cardrow">
                 <div class="col-sm-6">
                     <mat-label>Adhar No.</mat-label>
-                    <input type="text" name="PinCode" id="PinCode" placeholder="ex. 1234********5476"
-                    #ADHARNO [(ngModel)]="this.enquiryservice.objEnquiry.ADHARNO" class="form-control">
+                    <input type="text" name="PinCode" id="PinCode" placeholder="ex. 1234********5476" #ADHARNO
+                        [(ngModel)]="this.enquiryservice.objEnquiry.ADHARNO" class="form-control">
                 </div>
                 <div class="col-sm-6">
                     <mat-label>Pan No.</mat-label>
-                    <input type="text" name="StateCd" id="StateCd" placeholder="ex. PAN****454"
-                    #PANNO [(ngModel)]="this.enquiryservice.objEnquiry.PANNO" class="form-control">
+                    <input type="text" name="StateCd" id="StateCd" placeholder="ex. PAN****454" #PANNO
+                        [(ngModel)]="this.enquiryservice.objEnquiry.PANNO" class="form-control">
                 </div>
             </div>
             <div class="row cardrow">
                 <div class="col-sm-6">
                     <mat-label>Licence No.</mat-label>
-                    <input type="text" name="LicenceNo" id="LicenceNo" placeholder="ex. GJ******30"
-                    #LICENCENO [(ngModel)]="this.enquiryservice.objEnquiry.LICENCENO" class="form-control">
+                    <input type="text" name="LicenceNo" id="LicenceNo" placeholder="ex. GJ******30" #LICENCENO
+                        [(ngModel)]="this.enquiryservice.objEnquiry.LICENCENO" class="form-control">
                 </div>
                 <div class="col-sm-6">
                     <mat-label>Election Card No.</mat-label>
-                    <input type="text" name="ElectionCard" id="ElectionCard" placeholder="ex. AB******30"
-                    #ElectionCard [(ngModel)]="this.enquiryservice.objEnquiry.ElectionCard" class="form-control">
+                    <input type="text" name="ElectionCard" id="ElectionCard" placeholder="ex. AB******30" #ElectionCard
+                        [(ngModel)]="this.enquiryservice.objEnquiry.ElectionCard" class="form-control">
                 </div>
             </div>
             <div class="row cardrow">
                 <div class="col-sm-4">
                     <mat-label>Mobile No2</mat-label>
-                    <input type="text" name="Mobile2" id="Mobile2" placeholder="Ex. 840*****76"
-                    #Mobile2 [(ngModel)]="this.enquiryservice.objEnquiry.Mobile2" class="form-control">
+                    <input type="text" name="Mobile2" id="Mobile2" placeholder="Ex. 840*****76" #Mobile2
+                        [(ngModel)]="this.enquiryservice.objEnquiry.Mobile2" class="form-control">
                 </div>
                 <div class="col-sm-3">
                     <mat-label>OTP Mobile</mat-label>
-                    <input type="text" name="OtpM" id="OtpM" placeholder="ex. 112345"
-                    #Mobile3 [(ngModel)]="this.enquiryservice.objEnquiry.Mobile3" class="form-control">
+                    <input type="text" name="OtpM" id="OtpM" placeholder="ex. 112345" #Mobile3
+                        [(ngModel)]="this.enquiryservice.objEnquiry.Mobile3" class="form-control">
                 </div>
                 <div class="col-sm-5">
                     <mat-label>Booking Amount</mat-label>
                     <input type="text" name="BookingAmount" id="BookingAmount" placeholder="Enter Boonkig Amount"
-                    #bookingamt [(ngModel)]="this.enquiryservice.objEnquiry.bookingamt" class="form-control">
+                        #bookingamt [(ngModel)]="this.enquiryservice.objEnquiry.bookingamt" class="form-control">
                 </div>
             </div>
-       
+
         </mat-card>
     </div>
 </div>

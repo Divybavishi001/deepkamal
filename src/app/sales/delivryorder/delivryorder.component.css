@@ -1,0 +1,42 @@
+.headbtn{
+    display: flex;
+    justify-content: center;
+}
+.hbtn{
+    color: var(--fourth-color);
+    background-color: transparent;
+    border: var(--fourth-color) 2px solid;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px 18px ;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+.hbtn:hover{
+    background-color: var(--fourth-color);
+    color: #eee;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(120, 121, 206, 0.2), 0 6px 20px 0 rgba(120, 121, 206, 0.2);
+}
+.card1{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+}
+.cardrow{
+    margin-top: 10px;
+}
+.maincard1{
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+}
+input::placeholder{
+    color: rgba(0, 0, 0, 0.322);
+}
+textarea::placeholder{
+    color: rgba(0, 0, 0, 0.322);
+}
+select::placeholder{
+    color: rgba(0, 0, 0, 0.322);
+}

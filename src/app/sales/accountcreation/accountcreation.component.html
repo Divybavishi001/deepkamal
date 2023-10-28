@@ -1,22 +1,25 @@
+<div class="container">
+    <span style="font-size: 20px;font-weight: 500;">Account Creation</span>
+</div>
 <mat-card *ngIf="isVisibleParent">
     <div class="container">
-        <table class="tb" matSort >
+        <table class="tb" matSort>
             <thead>
                 <tr id="tr" id="tr">
                     <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="EnquiryNo"><button mat-button>
-                           AC No<mat-icon>sort</mat-icon></button></th>
+                            AC No<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             AC Name<mat-icon>sort</mat-icon></button></th>
-                    
+
                     <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                             Mobile<mat-icon>sort</mat-icon></button></th>
-                    
+
                     <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
-                        Address<mat-icon>sort</mat-icon></button></th>
+                            Address<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="Area"><button mat-button>
                             Area<mat-icon>sort</mat-icon></button></th>
-                    
+
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
                             City<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
@@ -24,12 +27,13 @@
                 </tr>
                 <tr id="tr" id="tr">
                     <td id="td" class="col-sm-2">
-                        <button mat-raised-button  style="background-color: #1773ea;color: #eee;" (click)="this.newItem()">Add New</button>
+                        <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+                            (click)="this.newItem()">Add New</button>
                     </td>
-                    
+
                     <td id="td" colspan="6">
-                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
-                           (input)="search()" placeholder="Search">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText"
+                            name="searchText" (input)="search()" placeholder="Search">
                     </td>
                     <!-- <td id="td">
                         <input type="text" class="form-control">
@@ -65,11 +69,11 @@
 
                         {{obj.ACNAME}}
                     </td>
-                    
+
                     <td id="td">
-                        {{obj.Mobile}}
+                        {{obj.mobile}}
                     </td>
-                    
+
                     <td id="td">
                         {{obj.add1}}
                     </td>
@@ -96,108 +100,241 @@
         </table>
     </div>
 </mat-card>
-        <div class="example-container" *ngIf="isVisibleChild">
-            <div class="row headbtn">
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.saveledgeraccount()">Save</button>
-                </div>
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
-                </div>
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Cancle</button>
-                </div>
-            </div>
-            <div class="row maincard1 ">
-                <mat-card class="col-sm-5 card1">
-                    <div class="row cardrow">
-                        <div class="col-sm-3">
-                            <mat-label>AC NO</mat-label>
-                            <input type="text" name="AcNo" id="AcNo" #ACNO 
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNO" class="form-control">
-                        </div>
-                        <div class="col-sm-3">
-                            <mat-label>Enquiry No</mat-label>
-                            <input type="text" name="EnquiryNo" id="EnquiryNo" class="form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-label>Agent Enquiry No</mat-label>
-                            <input type="text" name="AgentEnqNo" id="AgentEnqNo" #AgentEnqNo
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.AgentEnqNo" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row cardrow">
-                        <div class="col-sm-4">
-                            <mat-label>First Name</mat-label>
-                            <input type="text" name="FirstName" id="FirstName" #FirstName
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.FirstName" class="form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-label>Middle Name</mat-label>
-                            <input type="text" name="MiddleName" id="MiddleName" #MiddleName
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.MiddleName" class="form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-label>Last Name</mat-label>
-                            <input type="text" name="LastName" id="LastName" #LastName
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.LastName" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row cardrow">
-                        <div class="col-sm-10">
-                            <!-- <mat-label>Visitor Name</mat-label> -->
-                            <input type="text" name="VisitorName" id="VisitorName" #ACNAME [disabled]="true"
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNAME" class="form-control">
-                        </div>
-                    </div>
-                    
-                    <div class="row cardrow">
-                        
-                        <div class="col-sm-3">
-                            <mat-label>Op. Bal</mat-label>
-                            <input type="text" name="OPBAL" id="OPBAL" #OPBAL 
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.OPBAL" class="form-control">
-                        </div>
-                        <div class="col-sm-3">
-                            <mat-label>Cr. Days</mat-label>
-                            <input type="text" name="CrDays" id="CrDays" #crdays
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.crdays"  class="form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <mat-checkbox>Close A/C</mat-checkbox>
-                         </div>
-                    </div>
-                    <div class="row cardrow">
-                        <div class="col-sm-5">
-                            <mat-label>GSTIN</mat-label>
-                            <input type="text" name="GSTIN" id="GSTIN" #GSTTIN
-                            [(ngModel)]="this.accountcreationservice.objledgeraccount.GSTTIN" class="form-control">
-                        </div>
-                        <div class="col-sm-3">
-                            <mat-label>Merge With</mat-label>
-                            <input type="text" name="MergeWith" id="MergeWith" class="form-control">
-                        </div>
-                    </div>
-
-                </mat-card>
-
-            </div>
-
-                <!-- <div class="col-sm-2">
-                    <mat-form-field hintLabel="Max 10 characters">
-                        <mat-label>Enter some input</mat-label>
-                        <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                        <mat-hint align="end">{{input.value.length}}/10</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="col-sm-2">
-                    <mat-form-field>
-                        <mat-label>Select me</mat-label>
-                        <mat-select>
-                            <mat-option value="option">Option</mat-option>
-                        </mat-select>
-                        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-                    </mat-form-field>
-                </div> -->
-            
+<div class="example-container" *ngIf="isVisibleChild">
+    <div class="row headbtn">
+        <div class="col-sm-2">
+            <button class="hbtn"
+                (click)="this.saveledgeraccount()">Save</button>
         </div>
+        <div class="col-sm-2">
+            <button class="hbtn" (click)="this.back()">Back</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="hbtn"
+                (click)="this.back()">Cancle</button>
+        </div>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-sm-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>AC NO</mat-label>
+                    <input type="text" name="AcNo" id="AcNo" #ACNO placeholder="ex. 554"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNO" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Enquiry No</mat-label>
+                    <input type="text" name="EnquiryNo" id="EnquiryNo" placeholder="ex. 1200"
+                    class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Agent Enquiry No</mat-label>
+                    <input type="text" name="AgentEnqNo" id="AgentEnqNo" #AgentEnqNo placeholder="ex. 685"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.AgentEnqNo" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" name="FirstName" id="FirstName" #FirstName placeholder="ex. Divy"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.FirstName" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Middle Name</mat-label>
+                    <input type="text" name="MiddleName" id="MiddleName" #MiddleName placeholder="ex. Nareshbhai"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.MiddleName" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" name="LastName" id="LastName" #LastName placeholder="ex. Bavishi"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.LastName" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-10">
+                    <!-- <mat-label>Visitor Name</mat-label> -->
+                    <input type="text" name="VisitorName" id="VisitorName" #ACNAME [disabled]="true"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.ACNAME" class="form-control">
+                </div>
+            </div>
+
+            <div class="row cardrow">
+
+                <div class="col-sm-3">
+                    <mat-label>Op. Bal</mat-label>
+                    <input type="text" name="OPBAL" id="OPBAL" #OPBAL placeholder="ex. 19500.00"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.OPBAL" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Cr. Days</mat-label>
+                    <input type="text" name="CrDays" id="CrDays" #crdays placeholder="ex. cr"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.crdays" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Close A/C</mat-label>
+                    <mat-select name="CloseAccountYN" id="CloseAccountYN" #CloseAccountYN class="form-control"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.CloseAccountYN" placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-5">
+                    <mat-label>GSTIN</mat-label>
+                    <input type="text" name="GSTIN" id="GSTIN" #GSTTIN placeholder="ex. GST*******54"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.GSTTIN" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Merge With</mat-label>
+                    <input type="text" name="MergeWith" id="MergeWith" placeholder="merge no" class="form-control">
+                </div>
+                <!-- <div class="col-sm-3">
+                            <mat-label>HSN No</mat-label>
+                            <input type="text" name="HSNNO" id="HSNNO" #HSNNO
+                            [(ngModel)]="this.accountcreationservice.objledgeraccount.HSNNO" class="form-control">
+                        </div> -->
+            </div>
+        </mat-card>
+        <mat-card class="col-sm-5 card1">
+            <mat-card-header>Address Details</mat-card-header>    
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <mat-label>Add 1</mat-label>
+                    <input type="text" name="GSTCODE" id="GSTCODE" #add1 placeholder="ex. address 1"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.add1" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Add 2</mat-label>
+                    <input type="text" name="GSTCODE" id="GSTCODE" #add2 placeholder="ex. address 2"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.add2" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <mat-label>Add 3</mat-label>
+                    <input type="text" name="Add3" id="Add3" #add3 placeholder="ex. address 3"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.add3" class="form-control">
+                </div>
+                
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Pincode</mat-label>
+                    <input type="text" name="pin" id="pin" #pin placeholder="ex. 382350"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.pin" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>City</mat-label>
+                    <mat-select class="form-control" name="City" id="City"  #city placeholder="select"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.city">
+                        <mat-option value="Ahmedabad">Ahmedabad</mat-option>
+                        <mat-option value="Surendranagar">Surendranagar</mat-option>
+                        <mat-option value="Vadodara">Vadodara</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Area Code</mat-label>
+                    <input type="text" name="AREACD" id="AREACD" #AREACD placeholder="ex. 24"
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.AREACD" class="form-control"
+                        class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Area Name</mat-label>
+                    <mat-select name="StateName" id="StateName" class="form-control" #areaname
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.areaname" (change)="this.getareadetails($event);"
+                        placeholder="Select">
+                        <mat-option *ngFor='let areacd of this.lstArea'
+                            value="{{areacd.areaname}}">{{areacd.areaname}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>State Code</mat-label>
+                    <input type="text" name="STATECD" id="STATECD" #STATECD placeholder="ex. 14"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.STATECD" class="form-control"
+                    class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>State Name</mat-label>
+                    <mat-select name="StateName" id="StateName" class="form-control" #STATENAME
+                        [(ngModel)]="this.accountcreationservice.objledgeraccount.STATENAME" (change)="this.getstatedetails($event);"
+                        placeholder="Select">
+                        <mat-option *ngFor='let state of this.lstState'
+                            value="state.STATENAME">{{state.STATENAME}}</mat-option>
+                    </mat-select>
+
+                </div>
+            </div>
+
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-sm-10 card1">
+            <mat-card-header>Personal Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Phone(O)</mat-label>
+                    <input type="text" name="Phoneo" id="Phoneo" #phr1 placeholder="ex. 840*****76"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.phr1" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Phone(R)</mat-label>
+                    <input type="text" name="PhoneR" id="PhoneR" #phr2 placeholder="ex. (123-***-789)"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.phr2" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Mobile</mat-label>
+                    <input type="text" name="Mobile" id="Mobile" #mobile placeholder="ex. 840*****76"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.mobile" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>FAX</mat-label>
+                    <input type="text" name="fax" id="fax" #fax placeholder="ex. fax number"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.fax" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Email</mat-label>
+                    <input type="text" name="email" id="email" #email placeholder="ex. abc123@gmail.com"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.email" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Adhar No</mat-label>
+                    <input type="text" name="adHarno" id="adHarno" #adHarno placeholder="ex. 1234 **** **** 5476"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.adHarno" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>PAN No</mat-label>
+                    <input type="text" name="PANCARD" id="PANCARD" #PANCARD placeholder="ex. PANFT****54"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.PANCARD" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Active</mat-label>
+                    <mat-select name="active" id="active" #active placeholder="Select"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.active" class="formcontrol">
+                        <mat-option value="1">Y</mat-option>
+                        <mat-option value="0">N</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>FORM-60/61</mat-label>
+                    <input type="text" name="F6061" id="F6061" #F6061 placeholder="ex. 60 OR 61"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.F6061" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Acknowledge</mat-label>
+                    <input type="text" name="Acknoledgeno" id="Acknoledgeno" #Acknoledgeno placeholder="ex. Enter Acknoledgement"
+                    [(ngModel)]="this.accountcreationservice.objledgeraccount.Acknoledgeno" class="form-control">
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

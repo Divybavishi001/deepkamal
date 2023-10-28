@@ -1,39 +1,40 @@
 <mat-card *ngIf="isVisibleParent">
     <div class="container">
-        <table class="tb" matSort >
+        <table class="tb" matSort>
             <thead>
                 <tr id="tr">
                     <th id="th"><button mat-button>Action<mat-icon></mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header=""><button mat-button>
-                        DO No<mat-icon>sort</mat-icon></button></th>
+                            DO No<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
-                        Do Date<mat-icon>sort</mat-icon></button></th>
-                    
+                            Do Date<mat-icon>sort</mat-icon></button></th>
+
                     <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
-                        VehicleCode<mat-icon>sort</mat-icon></button></th>
+                            VehicleCode<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
-                        Item Name<mat-icon>sort</mat-icon></button></th>
+                            Item Name<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
-                        ACNO<mat-icon>sort</mat-icon></button></th>
+                            ACNO<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
-                        Name<mat-icon>sort</mat-icon></button></th>
+                            Name<mat-icon>sort</mat-icon></button></th>
 
                     <th id="th" class="col" mat-sort-header="Area"><button mat-button>
-                        ChasisNo<mat-icon>sort</mat-icon></button></th>
-                    
+                            ChasisNo<mat-icon>sort</mat-icon></button></th>
+
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                        EngineNo<mat-icon>sort</mat-icon></button></th>
+                            EngineNo<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                        WITHMETER   <mat-icon>sort</mat-icon></button></th>
+                            WITHMETER <mat-icon>sort</mat-icon></button></th>
                 </tr>
                 <tr id="tr">
                     <td id="td" class="col-sm-2">
-                        <button mat-raised-button  style="background-color: #1773ea;color: #eee;" (click)="this.newItem()">Add New</button>
+                        <button mat-raised-button style="background-color: #1773ea;color: #eee;"
+                            (click)="this.newItem()">Add New</button>
                     </td>
-                    
+
                     <td id="td" colspan="6">
-                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
-                           (input)="search()" placeholder="Search">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText"
+                            name="searchText" (input)="search()" placeholder="Search">
                     </td>
                     <!-- <td id="td">
                         <input type="text" class="form-control">
@@ -75,7 +76,7 @@
 
                         {{obj.DoDate}}
                     </td>
-                    
+
                     <td id="td">
                         {{obj.VehicleCode}}
                     </td>
@@ -111,34 +112,632 @@
         </table>
     </div>
 </mat-card>
-        <div class="example-container" *ngIf="isVisibleChild">
-            <div class="row">
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.saveledgeraccount()">Save</button>
-                </div>
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
-                </div>
-                <div class="col-sm-2">
-                    <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Cancle</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <mat-form-field hintLabel="Max 10 characters">
-                        <mat-label>Enter some input</mat-label>
-                        <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                        <mat-hint align="end">{{input.value.length}}/10</mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="col-sm-2">
-                    <mat-form-field>
-                        <mat-label>Select me</mat-label>
-                        <mat-select>
-                            <mat-option value="option">Option</mat-option>
-                        </mat-select>
-                        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-                    </mat-form-field>
-                </div>
-            </div>
+<div class="example-container" *ngIf="isVisibleChild">
+    <div class="row headbtn">
+        <div class="col-sm-2">
+            <button class="hbtn" (click)="this.saveledgeraccount()">Save</button>
         </div>
+        <div class="col-sm-2">
+            <button class="hbtn" (click)="this.back()">Back</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="hbtn" (click)="this.back()">Cancle</button>
+        </div>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-sm-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>DO No.</mat-label>
+                    <input type="text" name="DONo" id="DONo" #DONo
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.DONo" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>Booking Receipt No</mat-label>
+                    <input type="text" name="ReceiptNo" id="ReceiptNo" #ReceiptNo
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ReceiptNo" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Date</mat-label>
+                    <input type="date" name="DoDate" id="DoDate" #DoDate
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.DoDate" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Vehicle Code</mat-label>
+                    <input type="text" name="VehicleCode" id="VehicleCode" #VehicleCode
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.VehicleCode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Vehicle Name</mat-label>
+                    <mat-select name="ItemName" id="ItemName" class="form-control" #ItemName
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ItemName"
+                        (change)="this.getvehicledetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let item of this.lstveh'
+                            value="item.ItemName">{{item.ItemName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Invoice No.</mat-label>
+                    <input type="text" name="Invno" id="Invno" #Invno
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.Invno" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Qauntity</mat-label>
+                    <input type="text" name="qty" id="qty" #qty
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.qty" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Allotment Date</mat-label>
+                    <input type="date" name="AllotDt" id="AllotDt" #AllotDt
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.AllotDt" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <mat-label>Chasis No.</mat-label>
+                    <input type="text" name="ChasisNo" id="ChasisNo" #ChasisNo
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ChasisNo" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>Engine No.</mat-label>
+                    <input type="text" name="EngineNo" id="EngineNo" #EngineNo
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.EngineNo" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Body Type</mat-label>
+                    <mat-select name="BODYTYPE" id="BODYTYPE" #BODYTYPE
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.BODYTYPE" class="form-control">
+                        <mat-option value="BOLTED TO FRAME">BOLTED TO FRAME</mat-option>
+                        <mat-option value="OPEN BODY">OPEN BODY</mat-option>
+                        <mat-option value="OPEN BODY (TRAY)">OPEN BODY (TRAY)</mat-option>
+                        <mat-option value="CLOSE BODY">CLOSE BODY</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Color Code</mat-label>
+                    <input type="text" name="ColorCode" id="ColorCode" #ColorCode
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ColorCode" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Color Name</mat-label>
+                    <mat-select name="COLORNAME" id="COLORNAME" class="form-control" #COLORNAME
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.COLORNAME"
+                        (change)="this.getcolordetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let color of this.lstcolor'
+                            value="color.COLORNAME">{{color.COLORNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Meter Code</mat-label>
+                    <input type="text" name="METERCD" id="METERCD" #METERCD
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERCD" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Meter Product</mat-label>
+                    <mat-select name="Product" id="Product" class="form-control" #Product
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.Product"
+                        (change)="this.getmeterdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let m of this.lstmeter' value="m.Product">{{m.Product}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Meter Sr. No.</mat-label>
+                    <input type="text" name="MeterSrno" id="MeterSrno" #MeterSrno placeholder="Enter Meter Sr No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.MeterSrno" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-5">
+                    <mat-label>Tank-Cylender/Kit No.</mat-label>
+                    <input type="text" name="gaskitno" id="gaskitno" #gaskitno placeholder="Enter Meter Sr No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.gaskitno" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Kit No.</mat-label>
+                    <input type="text" name="TANKNO" id="TANKNO" #TANKNO placeholder="Enter Meter Sr No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.TANKNO" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Inst. Date</mat-label>
+                    <input type="date" name="CYLINSTALDT" id="CYLINSTALDT" #CYLINSTALDT placeholder="Enter Meter Sr No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.CYLINSTALDT" class="form-control">
+
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Battery No</mat-label>
+                    <input type="text" name="BatteryNo" id="BatteryNo" #BatteryNo placeholder="Enter Battery No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.BatteryNo" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Key No</mat-label>
+                    <input type="text" name="KEYNO" id="KEYNO" #KEYNO placeholder="Enter Key No"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.KEYNO" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>With Meter?</mat-label>
+                    <mat-select #WITHMETER
+                    [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.WITHMETER" placeholder="Select" class="form-control">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                   
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>With Access.?</mat-label>
+                    <mat-select #WITHACCES
+                    [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.WITHACCES" placeholder="Select" class="form-control">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="col-sm-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Payer Code</mat-label>
+                    <input type="text" name="ACNO" id="ACNO" #ACNO placeholder="Enter Payer AcNo"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACNO" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Payer Name</mat-label>
+                    <mat-select name="ACNAME" id="ACNAME" class="form-control" #ACNAME
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACNAME"
+                        (change)="this.getpayerdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let payer of this.lstpayer'
+                            value="payer.ACNAME">{{payer.ACNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Agent Code</mat-label>
+                    <input type="text" name="AgentCode" id="AgentCode" #AgentCode placeholder="Enter  AgentCode"
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.AgentCode" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Agent Name</mat-label>
+                    <mat-select name="AgentNAme" id="AgentNAme" class="form-control" #AgentNAme
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.AgentNAme"
+                        (change)="this.getagentdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let agent of this.lstagent'
+                            value="agent.AgentNAme">{{agent.AgentNAme}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-4">
+                        <mat-label>BookTime Location</mat-label>
+                        <input type="text" name="LocationCode" id="LocationCode" #LocationCode
+                            placeholder="Enter Booking Location"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.LocationCode" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-label>Physical Location</mat-label>
+                        <input type="text" name="LocationCode" id="LocationCode" #LocationCode
+                            placeholder="Enter Booking Location"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.LocationCode" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Agent Stock?</mat-label>
+                        <mat-select class="form-control" #stockyn
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.stockyn" placeholder="select">
+                            <mat-option value="y">Y</mat-option>
+                            <mat-option value="n">N</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-4">
+                        <mat-label>HPA BookCode</mat-label>
+                        <input type="text" name="HpaCode" id="HpaCode" #HpaCode placeholder="Enter Booking Location"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HpaCode" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-label>HPA Code</mat-label>
+                        <input type="text" name="HpaCode" id="HpaCode" #HpaCode placeholder="Enter Booking Location"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HpaCode" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Finance DO?</mat-label>
+                        <mat-select class="form-control" #HPAYN
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HPAYN" placeholder="select">
+                            <mat-option value="y">Y</mat-option>
+                            <mat-option value="n">N</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-3">
+                        <mat-label>Profile Code</mat-label>
+                        <input type="text" name="PROFILECODE" id="PROFILECODE" #PROFILECODE
+                            placeholder="Enter Booking Location"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.PROFILECODE" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>Profile Name</mat-label>
+                        <mat-select name="profilename" id="profilename" class="form-control" #profilename
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.profilename"
+                            (change)="this.getprofiledetails($event);" placeholder="Select">
+                            <mat-option *ngFor='let profile of this.lstprofile'
+                                value="profile.profilename">{{profile.profilename}}</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-3">
+                        <mat-label>Account Balance</mat-label>
+                        <input type="text" name="ACBAL" id="ACBAL" #ACBAL placeholder="Enter Account balance"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACBAL" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Closing Balance</mat-label>
+                        <input type="text" name="CLBAL" id="CLBAL" #CLBAL placeholder="Enter Account balance"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.CLBAL" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Sale Price</mat-label>
+                        <input type="text" name="SALEPRICE" id="SALEPRICE" #SALEPRICE
+                            placeholder="Enter Account balance"
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SALEPRICE" class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-5">
+                        <mat-label>A/C Balance Of this Agent</mat-label>
+                        <input type="text" name="SALEPRICE" id="SALEPRICE" placeholder="Enter Amount"
+                            class="form-control">
+                    </div>
+                    <div class="col-sm-5">
+                        <mat-label>Total Receivable Of this Agent</mat-label>
+                        <input type="text" name="SALEPRICE" id="SALEPRICE" placeholder="Enter Amount"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-5">
+                        <mat-label>Net Balance Of this Agent</mat-label>
+                        <input type="text" name="" id="" placeholder="Enter Amount" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Basic Price</mat-label>
+                        <input type="text" name="sBasicValue" id="sBasicValue" #sBasicValue
+                            [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sBasicValue"
+                            placeholder="Enter Amount" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <mat-label>Remark</mat-label>
+                        <textarea name="Remark" id="Remark" #REMARK cols="4" rows="2" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-sm-10 card1">
+            <mat-card-header>Total Price</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Basic Value(1)</mat-label>
+                    <input type="text" name="sBasicValue" id="sBasicValue" #sBasicValue
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sBasicValue" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Body /Kit(2)</mat-label>
+                    <input type="text" name="sBodyKit" id="sBodyKit" #sBodyKit
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sBodyKit" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Taxable Amount</mat-label>
+                    <input type="text" name="sTaxableAmt" id="sTaxableAmt" #sTaxableAmt
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sTaxableAmt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Credit Note</mat-label>
+                    <input type="text" name="sTaxableAmt" id="sTaxableAmt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Gst Code</mat-label>
+                    <input type="text" name="GSTCD" id="GSTCD" #GSTCD
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.GSTCD" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>HSN Code</mat-label>
+                    <input type="text" name="HSNCODE" id="HSNCODE" #HSNCODE
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HSNCODE" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Proposal Discount</mat-label>
+                    <input type="text" name="sProposalDiscount" id="sProposalDiscount" #sProposalDiscount
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sProposalDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>CGST[14%]</mat-label>
+                    <input type="text" name="CGST" id="CGST" #CGST
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.CGST" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>SGST[14%]</mat-label>
+                    <input type="text" name="SGST" id="SGST" #SGST
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SGST" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>GST CESS</mat-label>
+                    <input type="text" name="GSTCESS" id="GSTCESS" #GSTCESS
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.GSTCESS" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>CGSTR</mat-label>
+                    <input type="text" name="CGSTR" id="CGSTR" #CGSTR
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.CGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>SGSTR</mat-label>
+                    <input type="text" name="SGSTR" id="SGSTR" #SGSTR
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SGSTR" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>GSTCESSR</mat-label>
+                    <input type="text" name="GSTCESSR" id="GSTCESSR" #GSTCESSR
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.GSTCESSR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>IGSTR</mat-label>
+                    <input type="text" name="IGSTR" id="IGSTR" #IGSTR
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.IGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Invoice Total</mat-label>
+                    <input type="text" name="sTotinvamt" id="sTotinvamt" #sTotinvamt
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sTotinvamt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Cash Discount</mat-label>
+                    <input type="text" name="CashDiscount" id="CashDiscount" #CashDiscount
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.CashDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Insurance</mat-label>
+                    <input type="text" name="sinsurance" id="sinsurance" #sinsurance
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sinsurance" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>HPA Charges</mat-label>
+                    <input type="text" name="sHPACharge" id="sHPACharge" #sHPACharge
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sHPACharge" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>M. TOKEN Charge</mat-label>
+                    <input type="text" name="MTOKENCHG" id="MTOKENCHG" #MTOKENCHG
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.MTOKENCHG" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Life Time M. Tax</mat-label>
+                    <input type="text" name="SLIFETIMETAX" id="SLIFETIMETAX" #SLIFETIMETAX
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SLIFETIMETAX" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>No.Plate Charge</mat-label>
+                    <input type="text" name="SNOPLATECHG" id="SNOPLATECHG" #SNOPLATECHG
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SNOPLATECHG" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>C.R.TEMP</mat-label>
+                    <input type="text" name="sCrTemp" id="sCrTemp" #sCrTemp
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sCrTemp" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>RTO R</mat-label>
+                    <input type="text" name="RTOR" id="RTOR" #RTOR
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.RTOR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>RTO AMOUNT</mat-label>
+                    <input type="text" name="srto" id="srto" #srto
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.srto" class="form-control">
+                </div>
+            </div>
+            <div class="row cradrow">
+                <div class="col-sm-2">
+                    <mat-label>Handling Charge</mat-label>
+                    <input type="text" name="sHandlingCharge" id="sHandlingCharge" #sHandlingCharge
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sHandlingCharge" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Handling CGST Amt</mat-label>
+                    <input type="text" name="HCGSTA" id="HCGSTA" #HCGSTA
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HCGSTA" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Handling SGST Amt</mat-label>
+                    <input type="text" name="HSGSTA" id="HSGSTA" #HSGSTA
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HSGSTA" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Handling GST NET</mat-label>
+                    <input type="text" name="HANDLINGGSTNET" id="HANDLINGGSTNET" #HANDLINGGSTNET
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.HANDLINGGSTNET" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Extra Warrenty</mat-label>
+                    <input type="text" name="SEXTWARANTY" id="SEXTWARANTY" #SEXTWARANTY
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.SEXTWARANTY" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Total Amount</mat-label>
+                    <input type="text" name="sInvAmt" id="sInvAmt" #sInvAmt
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sInvAmt" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Basic Discount</mat-label>
+                    <input type="text" name="sBasicDiscount" id="sBasicDiscount" #sBasicDiscount
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sBasicDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Other Charges</mat-label>
+                    <input type="text" name="sOtherCharge1" id="sOtherCharge1" #sOtherCharge1
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sOtherCharge1" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Total Vehicle</mat-label>
+                    <input type="text" name="sGRANDTOTAL" id="sGRANDTOTAL" #sGRANDTOTAL
+                        [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sGRANDTOTAL" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Accessories</mat-label>
+                            <input type="text" name="saccessories" id="saccessories" #saccessories
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.saccessories"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Accessories DB</mat-label>
+                            <input type="text" name="ACCESDB" id="ACCESDB" #ACCESDB
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESDB"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Accessories CD</mat-label>
+                            <input type="text" name="ACEESCD" id="ACEESCD" #ACEESCD
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACEESCD"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Accessories Inv.</mat-label>
+                            <input type="text" name="ACCESSINV" id="ACCESSINV" #ACCESSINV
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESSINV"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. GSTCD</mat-label>
+                            <input type="text" name="ACCESGSTCD" id="ACCESGSTCD" #ACCESGSTCD
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESGSTCD"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. CGSTR</mat-label>
+                            <input type="text" name="ACCESCGSTR" id="ACCESCGSTR" #ACCESCGSTR
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESCGSTR"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Access. SGSTR</mat-label>
+                            <input type="text" name="ACCESSGSTR" id="ACCESSGSTR" #ACCESSGSTR
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESSGSTR"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. HSNNO</mat-label>
+                            <input type="text" name="ACCESHSNNO" id="ACCESHSNNO" #ACCESHSNNO
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESHSNNO"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter</mat-label>
+                            <input type="text" name="sMeterFlag" id="sMeterFlag" #sMeterFlag
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.sMeterFlag"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter DB</mat-label>
+                            <input type="text" name="METERDB" id="METERDB" #METERDB
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERDB"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter CD</mat-label>
+                            <input type="text" name="METERCD" id="METERCD" #METERCD
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERCD"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter Inv.</mat-label>
+                            <input type="text" name="METERINV" id="METERINV" #METERINV
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERINV"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter GSTCD</mat-label>
+                            <input type="text" name="METERGSTCD" id="METERGSTCD" #METERGSTCD
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERGSTCD"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter CGSTR</mat-label>
+                            <input type="text" name="METERCGSTR" id="METERCGSTR" #METERCGSTR
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERCGSTR"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter SGSTR</mat-label>
+                            <input type="text" name="METERSGSTR" id="METERSGSTR" #METERSGSTR
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERSGSTR"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter HSNNO</mat-label>
+                            <input type="text" name="METERHSNNO" id="METERHSNNO" #METERHSNNO
+                                [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.METERHSNNO"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Access. + Meter</mat-label>
+                    <input type="text" name="ACCESMETER" id="ACCESMETER" #ACCESMETER
+                    [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.ACCESMETER"
+                    class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Basic Disc. No</mat-label>
+                    <input type="text" name="bookingdiscno" id="bookingdiscno" #bookingdiscno
+                    [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.bookingdiscno"
+                    class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Grand Total</mat-label>
+                    <input type="text" name="NGRANDTOTAL" id="NGRANDTOTAL" #NGRANDTOTAL
+                    [(ngModel)]="this.Deliveryorderservice.objDeliveryOrder.NGRANDTOTAL"
+                    class="form-control">
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+</div>

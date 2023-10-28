@@ -1,0 +1,35 @@
+.toolbar-item-spacer {
+    flex:  auto;
+}
+
+.sidebar {
+    height: 100%;
+    width: auto;
+    margin: 0;
+}  
+.toolbar {
+    height: auto;
+    background-color: var(--primary-color);
+    color: #eee;
+    width: 100%;
+    margin: 0%;
+} 
+.app-sidenav {
+    width: 280px;
+    background-color: var(--primary-color);
+    color: #eee;
+    margin: 0%;
+}
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+} 
+.app-list-item{
+    color: #eee;
+    margin-left: 10px;
+}
+.icons {
+    color: #eee; 
+}

@@ -25,6 +25,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTreeModule } from '@angular/material/tree';
+import {LayoutModule} from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 // Material Buttons & Indicators
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -69,9 +71,11 @@ const MaterialComponents = [
   MatExpansionModule,
   MatGridListModule,
   MatListModule,
+  FlexLayoutModule,
   MatStepperModule,
   MatTabsModule,
   MatTreeModule,
+  LayoutModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatBadgeModule,

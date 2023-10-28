@@ -8,6 +8,10 @@
                             Doc No <mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
                             Doc Date<mat-icon>sort</mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                            Inv No <mat-icon>sort</mat-icon></button></th>
+                    <th id="th" class="col" mat-sort-header="ENQUIRYDT"><button mat-button>
+                            Inv Date<mat-icon>sort</mat-icon></button></th>
 
                     <th id="th" class="col" mat-sort-header="Mobile"><button mat-button>
                             Ac No<mat-icon>sort</mat-icon></button></th>
@@ -15,18 +19,15 @@
                     <th id="th" class="col" mat-sort-header="Vehicle Name"><button mat-button>
                             Ac Name<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="Area"><button mat-button>
-                            SalesMan Name<mat-icon>sort</mat-icon></button></th>
+                        Location<mat-icon>sort</mat-icon></button></th>
 
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                            Agent Name<mat-icon>sort</mat-icon></button></th>
+                        Vehicle Code<mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                            Vehicle Code<mat-icon>sort</mat-icon></button></th>
+                        Vehicle Name  <mat-icon>sort</mat-icon></button></th>
                     <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                            Vehicle Name<mat-icon>sort</mat-icon></button></th>
-                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                            Location<mat-icon>sort</mat-icon></button></th>
-                    <th id="th" class="col" mat-sort-header="City"><button mat-button>
-                            Branch<mat-icon>sort</mat-icon></button></th>
+                        AMOUNT   <mat-icon>sort</mat-icon></button></th>
+                    
 
                 </tr>
                 <tr id="tr">
@@ -36,8 +37,8 @@
                     </td>
 
                     <td id="td" colspan="6">
-                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
-                           (input)="search()" placeholder="Search">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText"
+                            name="searchText" (input)="search()" placeholder="Search">
                     </td>
                     <!-- <td id="td">
                         <input type="text" class="form-control">
@@ -76,7 +77,7 @@
                         <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                     </td>
                     <td id="td">
-                        {{obj.DocNo}}
+                        {{obj.DOCNO}}
                     </td>
                     <td id="td">
 
@@ -88,10 +89,10 @@
                     </td>
 
                     <td id="td">
-                        {{obj.invdate}}
+                        {{obj.INVDATE}}
                     </td>
                     <td id="td">
-                        {{obj.Acno}}
+                        {{obj.ACNO}}
                     </td>
                     <td id="td">
                         {{obj.ACNAME}}
@@ -99,7 +100,7 @@
                     <td id="td">
                         {{obj.LocName}}
                     </td>
-                    
+
                     <td id="td">
                         {{obj.ItemMCode}}
                     </td>
@@ -109,7 +110,7 @@
                     <td id="td">
                         {{obj.AMOUNT}}
                     </td>
-                    
+
                 </tr>
 
             </tbody>
@@ -125,35 +126,462 @@
     </div>
 </mat-card>
 <div class="example-container" *ngIf="isVisibleChild">
-    <div class="row">
+    <div>
+        <h3>Miscellaneous Sales</h3>
+    </div>
+    <div class="row headbtn">
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.saveledgeraccount()">Save</button>
+            <button class="hbtn" (click)="this.saveledgeraccount()">Save</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
+            <button class="hbtn" (click)="this.back()">Back</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.back()">Cancle</button>
+            <button class="hbtn" (click)="this.back()">Cancle</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <mat-form-field hintLabel="Max 10 characters">
-                <mat-label>Enter some input</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col-sm-2">
-            <mat-form-field>
-                <mat-label>Select me</mat-label>
-                <mat-select>
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-                <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-            </mat-form-field>
-        </div>
+    <div class="row maincard1">
+        <mat-card class="col-md-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>DB Code</mat-label>
+                    <input type="text" name="dbcode" id="dbcode" #dbcode
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.dbcode" class="form-control">
+                </div>
+                <div class="col-sm-7">
+                    <mat-label>DB Name</mat-label>
+                    <mat-select name="DBNAME" id="DBNAME" #DBNAME
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.DBNAME" class="form-control"
+                        (change)="this.getdbdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let db of this.lstdb' value="{{db.DBNAME}}">{{db.DBNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Document No</mat-label>
+                    <input type="text" name="DOCNO" id="DOCNO" #DOCNO
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.DOCNO" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Document Date</mat-label>
+                    <input type="date" name="docdt" id="docdt" #docdt
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.docdt" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Invoice No.</mat-label>
+                    <input type="text" name="InvNo" id="InvNo" #InvNo
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.InvNo" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Invoice Date</mat-label>
+                    <input type="date" name="INVDATE" id="INVDATE" #INVDATE
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.INVDATE" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Ac Code</mat-label>
+                    <input type="text" name="ACNO" id="ACNO" #ACNO
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.ACNO" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Ac Name</mat-label>
+                    <mat-select name="ACNAME" id="ACNAME" #ACNAME
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.ACNAME" class="form-control"
+                        (change)="this.getacdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let ac of this.lstac' value="{{ac.ACNAME}}">{{ac.ACNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Address Type</mat-label>
+                    <mat-select id="AddCode" name="AddCode" #AddCode placeholder="Select"
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.AddCode" class="form-control">
+                        <mat-option value="1">Business</mat-option>
+                        <mat-option value="2">Work</mat-option>
+                        <mat-option value="3">Other</mat-option>
+                        <mat-option value="4">Home</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Address</mat-label>
+                    <textarea name="" id="" cols="" rows="2" class="form-control" placeholder="Enter Address"></textarea>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="col-md-5 card1">
+            <mat-card-header>Branch Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Branch Code</mat-label>
+                    <input type="text" name="BRANCHCD" id="BRANCHCD" #BRANCHCD
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.BRANCHCD" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Ver Branch code</mat-label>
+                    <input type="text" name="vertualBranch" id="vertualBranch" #vertualBranch
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.vertualBranch" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-7">
+                    <mat-label>Cash Party Time</mat-label>
+                    <input type="text" name="CASHPARTY" id="CASHPARTY" #vertualBranch
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.CASHPARTY" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Location Code</mat-label>
+                    <input type="text" name="LocCode" id="LocCode" #LocCode
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.LocCode" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Location Name</mat-label>
+                    <mat-select name="LocName" id="LocName" #LocName
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.LocName" class="form-control"
+                        (change)="this.getlocdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let loc of this.lstloc'
+                            value="{{loc.LocationName}}">{{loc.LocationName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Sales A/C</mat-label>
+                    <input type="text" name="dbcode" id="dbcode" #dbcode
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.dbcode" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Sales A/C Name</mat-label>
+                    <mat-select name="DBNAME" id="DBNAME" #DBNAME
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.DBNAME" class="form-control"
+                        (change)="this.getdbdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let db of this.lstdb' value="{{db.DBNAME}}">{{db.DBNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-5">
+                    <mat-label>Reverse Chg. Claim</mat-label>
+                    <mat-select name="RCHGYN" id="RCHGYN" #RCHGYN placeholder="Select"
+                    [(ngModel)]="this.miscellaneousservice.objMisSales.RCHGYN" class="form-control">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Meter No. Sales With Veh.Inv.</mat-label>
+                    <input type="text" name="VEHSALITEMNo" id="VEHSALITEMNo" #VEHSALITEMNo placeholder="Enter Meter No & Sales withVeh Invoice"
+                        [(ngModel)]="this.miscellaneousservice.objMisSales.VEHSALITEMNo" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <mat-label>Vehicle Sales Invoice</mat-label>
+                <input type="text" name="vehinv" id="vehinv" #vehinv placeholder="Enter Vehicle Sales Invoice"
+                [(ngModel)]="this.miscellaneousservice.objMisSales.vehinv" class="form-control">
+            </div>
+
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-md-10">
+            <table class="tb">
+                <thead>
+                    <tr id="tr" class="tr">
+                    <th id="th" class="col">Action</th>
+                    <th id="th" class="col ">Code</th>
+                    <th id="th" class="col ">Name</th>
+                    <th id="th" class="col ">HSN No</th>
+                    <th id="th" class="col ">GSTCD</th>
+                    <th id="th" class="col ">CGSTR</th>
+                    <th id="th" class="col ">SGSTR</th>
+                    <th id="th" class="col ">IGSTR</th>
+                    <th id="th" class="col ">GSTCESSR</th>
+                    <th id="th" class="col ">Qty</th>
+                    <th id="th" class="col ">Rate</th>
+                    <th id="th" class="col ">Disc.</th>
+                    <th id="th" class="col ">F. Rate</th>
+                    <th id="th" class="col ">Tot. Amt.</th>
+                    <th id="th" class="col ">CGST Amt.</th>
+                    <th id="th" class="col ">SGST Amt.</th>
+                    <th id="th" class="col ">IGST Amt.</th>
+                    <th id="th" class="col ">GSTCESS Amt.</th>
+                    <th id="th" class="col ">TOT Amt.</th>
+                    <th id="th" class="col ">Round</th>
+                    <th id="th" class="col ">Amount</th>
+                    <th id="th" class="col ">Remarks</th>
+                    <th id="th" class="col ">Misc. A/C</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr id="tr">
+                        <td id="td" class="col ">
+                            <button mat-icon-button><mat-icon>add</mat-icon></button>
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="ItemMCode" id="ItemMCode" #ItemMCode
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="Product" id="Product" #Product
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="HSNNO" id="HSNNO" #Product
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="GSTCD" id="GSTCD" #GSTCD
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="CGSTR" id="CGSTR" #CGSTR
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="SGSTR" id="SGSTR" #SGSTR 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="IGSTR" id="IGSTR" #IGSTR 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="GSTCESSR" id="GSTCESSR" #GSTCESSR 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="QTY" id="QTY" #QTY 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="RATE" id="RATE" #RATE 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="DISCOUNT" id="DISCOUNT" #DISCOUNT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="FRATE" id="FRATE" #FRATE 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="total1" id="total1" #total1 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="CGSTAMT" id="CGSTAMT" #CGSTAMT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="SGSTAMT" id="SGSTAMT" #SGSTAMT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="IGSTAMT" id="IGSTAMT" #IGSTAMT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="GSTCESSAMT" id="GSTCESSAMT" #GSTCESSAMT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="GSTTOT" id="GSTTOT" #GSTTOT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="roundoff" id="roundoff" #roundoff 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="AMOUNT" id="AMOUNT" #AMOUNT 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="REMARKS" id="REMARKS" #REMARKS 
+                             class="input">
+                        </td>
+                        <td class="col" id="td">
+                            <input type="text" name="MiscAcNo" id="MiscAcNo"  
+                             class="input">
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr id="tr">
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th"></th>
+                        <th id="th">Total</th>
+                        <th id="th">CGST</th>
+                        <th id="th">SGST</th>
+                        <th id="th">IGST</th>
+                        <th id="th">GSTCESS</th>
+                        <th id="th">Tot.GST</th>
+                        <th id="th">Round Of</th>
+                        <th id="th">Other Charges Text</th>
+                        <th id="th">Other Charges</th>
+                        <th id="th">Gross Amt.</th>
+                        
+                    </tr>
+                    <tr id="tr">
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td"></td>
+                        <td id="td">
+                            <input type="text" name="total1" id="total1" #total1
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="CGSTTOT" id="CGSTTOT" #CGSTTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="SGSTTOT" id="SGSTTOT" #SGSTTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="IGSTTOT" id="IGSTTOT" #IGSTTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="GSTCESSTOT" id="GSTCESSTOT" #GSTCESSTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="GSTTOT" id="GSTTOT" #GSTTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="TOTROUNDOFF" id="TOTROUNDOFF" #GSTTOT
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="OtherChargeText" id="OtherChargeText" #OtherChargeText
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="OTHERCHARGE" id="OTHERCHARGE" #OTHERCHARGE
+                             class="input">
+                        </td>
+                        <td id="td">
+                            <input type="text" name="" id="" 
+                             class="input">
+                        </td>
+                    </tr>
+                    <tr id="tr">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="th">Discount</td>
+                        <td id="td">
+                            <input type="text" name="DISCOUNT" id="DISCOUNT" #DISCOUNT
+                             class="input">
+                        </td>
+                    </tr>
+                    <tr id="tr">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="th">Grand Total</td>
+                        <td id="td">
+                            <input type="text" name="GRANDTOTAL" id="GRANDTOTAL" #GRANDTOTAL
+                             class="input">
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-md-10 card1">
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Tax Name</mat-label>
+                    <input type="text" name="TAXNAME" id="TAXNAME" #TAXNAME placeholder="Enter Tax Name"
+                    [(ngModel)]="this.miscellaneousservice.objMisSales.TAXNAME" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Remarks</mat-label>
+                    <input type="text" name="" id=""  placeholder="Enter Remark"
+                     class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Misc. Sales A/C No. </mat-label>
+                    <input type="text" name="MiscSalesAc" id="MiscSalesAc" #MiscSalesAc
+                    [(ngModel)]="this.miscellaneousservice.objMisSales.MiscSalesAc"  placeholder="Enter Remark"
+                     class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>J.V. Doc. No. </mat-label>
+                    <input type="text" name="JVDocNo" id="JVDocNo" #JVDocNo
+                    [(ngModel)]="this.miscellaneousservice.objMisSales.JVDocNo"  placeholder="Enter JV Doc No"
+                     class="form-control">
+                </div>
+            </div>
+        </mat-card>
     </div>
 </div>

@@ -38,7 +38,7 @@
           <tbody>
               <tr id="tr" *ngFor="let obj of itemsToDisplay; let i = index">
                    <td id="td" class="col-sm-1">
-                      <button mat-mini-fab  color="primary" (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
+                      <button mat-icon-button  color="primary" (click)="this.editItem(obj);"><mat-icon>edit</mat-icon></button>&nbsp;
                       <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
                   </td> 
                   <td id="td">

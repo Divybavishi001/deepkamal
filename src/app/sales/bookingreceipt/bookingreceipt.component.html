@@ -1,3 +1,6 @@
+<div class="container">
+    <span style="font-size: 20px;font-weight: 500;">Booking Receipt</span>
+</div>
 <mat-card *ngIf="isVisibleParent">
     <div class="container">
         <table class="tb" matSort>
@@ -36,8 +39,8 @@
                     </td>
 
                     <td id="td" colspan="6">
-                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
-                           (input)="search()" placeholder="Search">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText"
+                            name="searchText" (input)="search()" placeholder="Search">
                     </td>
                     <!-- <td id="td">
                         <input type="text" class="form-control">
@@ -108,7 +111,7 @@
                     <td id="td">
                         {{obj.Branchname}}
                     </td>
-                    
+
                 </tr>
 
             </tbody>
@@ -124,20 +127,274 @@
     </div>
 </mat-card>
 <div class="example-container" *ngIf="isVisibleChild">
-    <div class="row">
+
+    <div class="row headbtn">
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.saveledgeraccount()">Save</button>
+            <button class="hbtn" (click)="this.saveledgeraccount()">Save</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
+            <button class="hbtn" (click)="this.back()">Back</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.back()">Cancle</button>
+            <button class="hbtn" (click)="this.back()">Cancle</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row maincard1">
+        <mat-card class="col-sm-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Book Code</mat-label>
+                    <input type="text" name="DBCODE" id="DBCODE" #DBCODE placeholder="ex. 554"
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.DBCODE" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Book Name</mat-label>
+                    <mat-select name="DBNAME" id="DBNAME" class="form-control" #DBNAME
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.DBNAME"
+                        (change)="this.getbookdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let book of this.lstbook' value="book.DBNAME">{{book.DBNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cradrow">
+                <div class="col-sm-3">
+                    <mat-label>Ac Code</mat-label>
+                    <input type="text" name="AcNo" id="AcNo" placeholder="ex. 1150" #AcNo
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.AcNo" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Ac Name</mat-label>
+                    <input type="text" name="ACNAME" id="ACNAME" placeholder="ex. Show Room" #ACNAME
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.ACNAME" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Document No</mat-label>
+                    <input type="text" name="DOCNO" id="DOCNO" #DOCNO
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.DOCNO" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Document Date</mat-label>
+                    <input type="date" name="DOCDT" id="DOCDT" #DOCDT
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.DOCDT" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>GSTIN</mat-label>
+                    <input type="text" name="GSTTIN" id="GSTTIN" #GSTTIN
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.GSTTIN" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="row cardrow">
+                    <div class="col-sm-3">
+                        <mat-label>Amount</mat-label>
+                        <input type="text" name="Amount" id="Amount" #Amount
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.Amount" class="form-control">
+                    </div>
+                    <!-- <div class="col-sm-3">
+                        <mat-label>Dr./Cr.</mat-label>
+                        <input type="text" name="Amount" id="Amount" #Amount
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.Amount" class="form-control">
+                    </div> -->
+                    <div class="col-sm-3">
+                        <mat-label>DO</mat-label>
+                        <input type="text" name="DONO" id="DONO" #DONO
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.DONO" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>GSTCD</mat-label>
+                        <input type="text" name="GSTCD" id="GSTCD" #GSTCD
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.GSTCD" class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-12">
+                        <mat-label>Supp. Doc. No.</mat-label>
+                        <input type="text" name="NAR1" id="NAR1" #NAR1
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.NAR1" class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-5">
+                        <mat-label>Date</mat-label>
+                        <input type="date" name="Nar2" id="Nar2" #Nar2
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.Nar2" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Branch</mat-label>
+                        <input type="text" name="BranchCD" id="BranchCD" #BranchCD
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.BranchCD" class="form-control">
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-label>Ver Branch</mat-label>
+                        <input type="text" name="vertualBranch" id="vertualBranch" #vertualBranch
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.vertualBranch"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-10">
+                        <mat-label>Narration1</mat-label>
+                        <input type="text" name="NAR3" id="NAR3" #NAR3
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.NAR3" class="form-control">
+
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-10">
+                        <mat-label>Narration 2</mat-label>
+                        <input type="text" name="NAR4" id="NAR4" #NAR4
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.NAR4" class="form-control">
+                    </div>
+                </div>
+                <div class="row cardrow">
+                    <div class="col-sm-10">
+                        <mat-label>Narration 3</mat-label>
+                        <input type="text" name="NAR5" id="NAR5" #NAR5
+                            [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.NAR5" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="col-sm-5 card1">
+            <mat-card-header>Other Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Sales Man Code</mat-label>
+                    <input type="text" name="smcode" id="smcode" #smcode
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.smcode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Sales Man Name</mat-label>
+                    <mat-select name="SMname" id="SMname" class="form-control" #SMname
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.SMname"
+                        (change)="this.getsalesmandetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let salesman of this.lstsalesman'
+                            value="salesman.DBNAME">{{salesman.SMname}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Agent Code</mat-label>
+                    <input type="text" name="AgentCode" id="AgentCode" #AgentCode
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.AgentCode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Agent Name</mat-label>
+                    <mat-select name="AgentNAme" id="AgentNAme" class="form-control" #AgentNAme
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.AgentNAme"
+                        (change)="this.getagentdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let agent of this.lstAGENT'
+                            value="agent.AgentNAme">{{agent.AgentNAme}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Vehicle Code</mat-label>
+                    <input type="text" name="VehicleCode" id="VehicleCode" #VehicleCode
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.VehicleCode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Vehicle Name</mat-label>
+                    <mat-select name="ItemName" id="ItemName" class="form-control" #ItemName
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.ItemName"
+                        (change)="this.getvehicledetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let item of this.lstveh'
+                         value="item.ItemName">{{item.ItemName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Delivery Location</mat-label>
+                    <input type="text" name="LocationCode" id="LocationCode" #LocationCode
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.LocationCode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Locaion Name</mat-label>
+                    <mat-select name="LocationName" id="LocationName" class="form-control" #LocationName
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.LocationName"
+                        (change)="this.getlocationdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let location of this.lstlocation'
+                         value="location.LocationName">{{location.LocationName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Selling Branch</mat-label>
+                    <input type="text" name="BranchCode" id="BranchCode" #BranchCode
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.BranchCode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Branch Name</mat-label>
+                    <mat-select name="Branchname" id="Branchname" class="form-control" #Branchname
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.Branchname"
+                        (change)="this.getbranch($event);" placeholder="Select">
+                        <mat-option *ngFor='let branch of this.lstbranch'
+                         value="branch.Branchname">{{branch.Branchname}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>H.P.A. Co. Code.</mat-label>
+                    <input type="text" name="hpacode" id="hpacode" #hpacode
+                    [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.hpacode" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>H.P.A. Fin. Co. Name</mat-label>
+                    <mat-select name="HPAName" id="HPAName" class="form-control" #HPAName
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.HPAName"
+                        (change)="this.gethpadetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let hpa of this.lsthpa'
+                         value="hpa.HPAName">{{hpa.HPAName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Customer Profile</mat-label>
+                    <input type="text" name="PROFILECODE" id="PROFILECODE" #PROFILECODE
+                    [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.PROFILECODE" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>Customer Name</mat-label>
+                    <mat-select name="profilename" id="profilename" class="form-control" #profilename
+                        [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.profilename"
+                        (change)="this.getprofile($event);" placeholder="Select">
+                        <mat-option *ngFor='let profile of this.lstprofile'
+                         value="profile.profilename">{{profile.profilename}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>with Accesiory</mat-label>
+                    <mat-select name="WITHACCES" id="WITHACCES" #WITHACCES placeholder="select"
+                    [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.WITHACCES" class="form-control">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>with Meter</mat-label>
+                    <mat-select name="WITHMETER" id="WITHMETER" #WITHMETER placeholder="select"
+                    [(ngModel)]="this.bookingreceiptservice.Objbookingreceipt.WITHMETER" class="form-control">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </mat-card>
+
+    </div>
+
+    <!-- <div class="row">
         <div class="col-sm-2">
             <mat-form-field hintLabel="Max 10 characters">
                 <mat-label>Enter some input</mat-label>
@@ -154,5 +411,5 @@
                 <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
             </mat-form-field>
         </div>
-    </div>
+    </div> -->
 </div>

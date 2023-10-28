@@ -24,6 +24,9 @@ export class JournalComponent implements OnInit {
   public total: number = 1;
   public perPage = 10;
 
+  // rows = [{}]; // start with one row
+  
+
   public isVisibleParent: boolean = true;
   public isVisibleChild: boolean = false;
 
@@ -122,21 +125,33 @@ export class JournalComponent implements OnInit {
     this.isVisibleChild = false;
     this.isVisibleParent = true;
   }
+  // public newRecord() {
+  //   debugger;
+  //   this.vehiclePurchaseService.listPurchaseDetails.push({
+  //     vCode: "",
+  //     vehicleName: "",
+  //     qty: 0,
+  //     rate: 0,
+  //     netAmt: 0,
+  //     gstcd: "",
+  //     cgstr: "",
+  //     sgstr: "",
+  //     igstr: "",
+  //     gstcessr: "",
+  //     cgstAmt: "",
+  //     sgstAmt: "",
+  //     igstAmt: "",
+  //     gcessAmt: "",
+  //     totGST: "",
+  //     totAmt: "",
+  //     lotNo: ""
+  //   });
+  //   console.log(this.vehiclePurchaseService.listPurchaseDetails);
+  // }
   public addRow() {
-    debugger
-      // If any of the fields have data, add a new empty row
-      this.journalservice.listRtodetails.push({
-        acno: '',
-        ACNAME: '',
-        amount: '',
-        DocNo: '',
-        DBCODE: '',
-        DBNAME: '',
-        Nar1: '',
-        Nar2: '',
-        Nar3: '',
-      });
-    }
+    var row=document.querySelector(".tr2") as HTMLElement;
+    row.style.visibility= "visible";
+  }
     // public addNewRow(): void {
     //   this.itemsToDisplay.push({
     //     acno: '',

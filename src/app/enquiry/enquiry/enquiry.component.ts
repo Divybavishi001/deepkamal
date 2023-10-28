@@ -170,10 +170,7 @@ export class EnquiryComponent implements OnInit{
       alert('Please enter Enquiry No');
       return;
     }
-    if (this.enquiryservice.objEnquiry.EnquiryNo.trim() == '') {
-      alert('Please enter Enquiry No');
-      return;
-    }
+    
     // this.loaderService.show();
     this.enquiryservice.insertEnquiry(this.enquiryservice.objEnquiry)
       .subscribe((data) => {

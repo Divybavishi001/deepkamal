@@ -36,8 +36,8 @@
                     </td>
 
                     <td id="td" colspan="6">
-                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText" name="searchText"
-                           (input)="search()" placeholder="Search">
+                        <input class="form-control" type="text" [(ngModel)]="searchText" id="searchText"
+                            name="searchText" (input)="search()" placeholder="Search">
                     </td>
                     <!-- <td id="td" id="td">
                         <input type="text" class="form-control">
@@ -108,7 +108,7 @@
                     <td id="td" id="td">
                         {{obj.ENGINENO}}
                     </td>
-                    
+
                 </tr>
 
             </tbody>
@@ -124,20 +124,794 @@
     </div>
 </mat-card>
 <div class="example-container" *ngIf="isVisibleChild">
-    <div class="row">
+    <div class="row headbtn">
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.saveledgeraccount()">Save</button>
+            <button class="hbtn" (click)="this.saveledgeraccount()">Save</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;" (click)="this.back()">Back</button>
+            <button class="hbtn" (click)="this.back()">Back</button>
         </div>
         <div class="col-sm-2">
-            <button mat-raised-button style="background-color: #1773ea;color: #eee;"
-                (click)="this.back()">Cancle</button>
+            <button class="hbtn" (click)="this.back()">Close</button>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row maincard1">
+
+        <mat-card class="col-md-5 card1" style="margin-right: 10px;">
+            <mat-card-header>Account Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Invoice No</mat-label>
+                    <input type="text" name="sInvno" id="sInvno" #sInvno placeholder="ex. 1050"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sInvno" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Invoice Date</mat-label>
+                    <input type="date" name="sInvDt" id="sInvDt" #sInvDt
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sInvDt" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>F-21 Date</mat-label>
+                    <input type="date" name="sSaleDt" id="sSaleDt" #sSaleDt
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sSaleDt" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Book Code</mat-label>
+                    <input type="text" name="sDBCODE" id="sDBCODE" #sDBCODE
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sDBCODE" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>Book Name</mat-label>
+                    <mat-select name="DBNAME" id="DBNAME" #DBNAME
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.DBNAME" class="form-control"
+                        (change)="this.getbookdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let book of this.lstbook'
+                            value="{{book.DBNAME}}">{{book.DBNAME}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Book No</mat-label><mat-select name="sReceiptNo" id="sReceiptNo" #sReceiptNo  [disabled]="isInputDisabled"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sReceiptNo" class="form-control"
+                        (change)="this.getReceiptInInvoice($event);" placeholder="Select">
+                        <mat-option *ngFor='let rec of this.LstReceiptInInvoice'
+                            value="{{rec.ReceiptNo}}">{{rec.ReceiptNo}}</mat-option>
+                    </mat-select>
+                    
+                    <!-- <input type="text" name="LstReceiptInInvoice" id="LstReceiptInInvoice" #LstReceiptInInvoice
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.LstReceiptInInvoice"
+                        class="form-control"> -->
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>D.O.</mat-label>
+                    <input type="text" name="DONO" id="DONO" #DONO
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.DONO" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>DO Allot Date</mat-label>
+                    <input type="date" name="AllotDt" id="AllotDt" #AllotDt
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.AllotDt" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>DO Date</mat-label>
+                    <input type="date" name="DODT" id="DODT" #DODT
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.DODT" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-4">
+                    <mat-label>Prod Sale QTY.</mat-label>
+                    <input type="text" name="SItemInv" id="SItemInv" #SItemInv placeholder="Enter Quantity"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SItemInv" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Tax Code</mat-label>
+                    <input type="text" name="TAXCODE" id="TAXCODE" #TAXCODE
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.TAXCODE" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Proposal SrNo</mat-label>
+                    <input type="text" name="ProposalSrno" id="ProposalSrno" #ProposalSrno
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ProposalSrno" class="form-control">
+                </div>
+            </div>
+            <div class="row cradrow">
+                <div class="col-sm-3">
+                    <mat-label>AC Code</mat-label>
+                    <input type="text" name="ACNO" id="ACNO" #ACNO
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACNO" class="form-control">
+                </div>
+                <div class="col-sm-8">
+                    <mat-label>AC Name</mat-label>
+                    <mat-select name="ACNAME" id="ACNAME" #ACNAME
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACNAME" class="form-control"
+                        (change)="this.getACdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let ac of this.lstac' value="ac.ACNAME">{{ac.ACNAME}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </mat-card>
+
+        <mat-card class="col-md-5 card1">
+
+            <mat-card-header>Address Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <mat-label>Address-L1</mat-label>
+                    <textarea name="add1" id="add1" cols="30" rows="2" #add1 placeholder="ex. flat No/Society"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.add1" class="form-control"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>Address-L2</mat-label>
+                    <textarea name="add2" id="add2" cols="30" rows="2" #add2 placeholder="ex. Nr./opp. Place"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.add2" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <mat-label>Address-L3</mat-label>
+                    <textarea name="add3" id="add3" cols="30" rows="2" #add3 placeholder="ex. area / nr. location"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.add3" class="form-control"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <mat-label>IRN No</mat-label>
+                    <textarea name="IRNno" id="IRNno" #IRNno placeholder="Enter IrnNo."
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.IRNno" cols="30" rows="2"
+                        class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Area Code</mat-label>
+                    <input type="text" name="AREACD" id="AREACD" #AREACD
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.AREACD" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>Area Name</mat-label>
+                    <mat-select name="areaname" id="areaname" #areaname
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.areaname" class="form-control"
+                        (change)="this.getAreadetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let area of this.lstarea'
+                            value="area.areaname">{{area.areaname}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>City</mat-label>
+                    <input type="text" name="city" id="city" #city
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.city" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Pincode</mat-label>
+                    <input type="text" name="pin" id="pin" #pin placeholder="ex. 382350"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.pin" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>RTO</mat-label>
+                    <mat-select name="RTO" id="RTO" #RTO [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.RTO"
+                        class="form-control" (change)="this.getrtodetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let rto of this.lstrto' value="rto.RTO">{{rto.RTO}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>State RtoCD</mat-label>
+                    <input type="text" name="GJNO" id="GJNO" #GJNO placeholder="ex. GJ"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.GJNO" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-5">
+                    <mat-label>Mobile No.</mat-label>
+                    <input type="text" name="mobile" id="mobile" #mobile placeholder="ex. 84******76"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.mobile" class="form-control">
+                </div>
+                <div class="col-sm-5">
+                    <mat-label>Phone(0)</mat-label>
+                    <input type="text" name="Pho1" id="Pho1" #Pho1 placeholder="ex. 123- ***-789"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.Pho1" class="form-control">
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-md-10 card1">
+            <mat-card-header>Vehicle Details</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Vehicle Code</mat-label>
+                    <input type="text" name="VEHICLECODE" id="VEHICLECODE" #VEHICLECODE placeholder="ex. 1050"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.VEHICLECODE" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Vehicle Name</mat-label>
+                    <mat-select name="ItemName" id="ItemName" #ItemName
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ItemName" class="form-control"
+                        (change)="this.getitemdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let item of this.lstitem'
+                            value="{{item.ItemName}}">{{item.ItemName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>Chasis No</mat-label>
+                    <input type="text" name="CHASISNO" id="CHASISNO" #CHASISNO placeholder="Enter Chasis No"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.CHASISNO" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Engine No</mat-label>
+                    <input type="text" name="ENGINENO" id="ENGINENO" #ENGINENO placeholder="Enter Engine No"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ENGINENO" class="form-control">
+                </div>
+                <!-- </div>
+            <div class="row cardrow"> -->
+                <div class="col-sm-2">
+                    <mat-label>Short Chasis</mat-label>
+                    <input type="text" name="SHORTCHASIS" id="SHORTCHASIS" #SHORTCHASIS placeholder="Enter Engine No"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SHORTCHASIS" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Agent Enq. No.</mat-label>
+                    <input type="text" name="AgentEnqNo" id="AgentEnqNo" #AgentEnqNo placeholder="Enter Agent Enq. No."
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.AgentEnqNo" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Color Code</mat-label>
+                    <input type="text" name="Color" id="Color" #Color placeholder="Enter Color Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.Color" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Color Name</mat-label>
+                    <mat-select name="COLORNAME" id="COLORNAME" #COLORNAME
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.COLORNAME" class="form-control"
+                        (change)="this.getcolordetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let color of this.lstcolor'
+                            value="{{color.COLORNAME}}">{{color.COLORNAME}}</mat-option>
+                    </mat-select>
+                </div>
+
+                <div class="col-sm-2">
+                    <mat-label>HPA With</mat-label>
+                    <mat-select name="hpayn" id="hpayn" #hpayn
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.hpayn" class="form-control"
+                        placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>HPA Code</mat-label>
+                    <input type="text" name="hpacode" id="hpacode" #hpacode placeholder="Enter HpaCode"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.hpacode" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>HPA Name</mat-label>
+                    <mat-select name="HPAName" id="HPAName" #HPAName
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.HPAName" class="form-control"
+                        (change)="this.gethpadetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let hpa of this.lsthpa' value="{{hpa.HPAName}}">{{hpa.HPAName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrw">
+                <div class="col-sm-2">
+                    <mat-label>Agent code</mat-label>
+                    <input type="text" name="AgentCode" id="AgentCode" #AgentCode placeholder="Enter Agent Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.AgentCode" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Agent Name</mat-label>
+                    <mat-select name="AgentNAme" id="AgentNAme" #AgentNAme
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.AgentNAme" class="form-control"
+                        (change)="this.getagentdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let agent of this.lstagent'
+                            value="{{agent.AgentNAme}}">{{agent.AgentNAme}}</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>HPA Loan Amt.</mat-label>
+                    <input type="text" name="sHPloanamount" id="sHPloanamount" #sHPloanamount
+                        placeholder="Enter Hpa Loan Amt"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sHPloanamount" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Location Code</mat-label>
+                    <input type="text" name="LOCATION" id="LOCATION" #LOCATION placeholder="Enter Location Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.LOCATION" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Location Name</mat-label>
+                    <mat-select name="LocationName" id="LocationName" #LocationName
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.LocationName" class="form-control"
+                        (change)="this.getlocationdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let loc of this.lstlocation'
+                            value="{{loc.LocationName}}">{{loc.LocationName}}</mat-option>
+                    </mat-select>
+                </div>
+                <!-- </div>
+            <div class="row cardrow"> -->
+                <div class="col-sm-2">
+                    <mat-label>Branch Code</mat-label>
+                    <input type="text" name="BranchCode" id="BranchCode" #BranchCode placeholder="Enter BranchCode"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.BranchCode" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Branch Name</mat-label>
+                    <mat-select name="Branchname" id="Branchname" #Branchname
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.Branchname" class="form-control"
+                        (change)="this.getbranchdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let branch of this.lstbranch'
+                            value="{{branch.Branchname}}">{{branch.Branchname}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Cus. Profile</mat-label>
+                    <input type="text" name="PROFILECODE" id="PROFILECODE" #PROFILECODE placeholder="Enter Profile Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.PROFILECODE" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Profile Name</mat-label>
+                    <mat-select name="profilename" id="profilename" #profilename
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.profilename" class="form-control"
+                        (change)="this.getprofiledetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let profile of this.lstprofile'
+                            value="{{profile.profilename}}">{{profile.profilename}}</mat-option>
+                    </mat-select>
+                </div>
+                <!-- </div>
+            <div class="row cardrow"> -->
+                <div class="col-sm-2">
+                    <mat-label>Scheme Code</mat-label>
+                    <input type="text" name="Skimcode" id="Skimcode" #Skimcode placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.Skimcode" class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <mat-label>Scheme Name</mat-label>
+                    <mat-select name="SkimName" id="SkimName" #SkimName
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SkimName" class="form-control"
+                        (change)="this.getSkimdetails($event);" placeholder="Select">
+                        <mat-option *ngFor='let Skim of this.lstSkim'
+                            value="{{Skim.SkimName}}">{{Skim.SkimName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Scheme Amt.</mat-label>
+                    <input type="text" name="Discount" id="Discount" #Discount placeholder="Enter Discount"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.Discount" class="form-control">
+                </div>
+                <!-- </div>
+       
+            <mat-card-header>Other Details</mat-card-header>
+            <div class="row cardrow"> -->
+                <div class="col-sm-2">
+                    <mat-label>RTO Paid Amt.</mat-label>
+                    <input type="text" name="rtopaidamt" id="rtopaidamt" #rtopaidamt placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.rtopaidamt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>To Pay RTO</mat-label>
+                    <input type="text" name="TopayRtO" id="TopayRtO" #TopayRtO placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.TopayRtO" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>RTO Paid No.</mat-label>
+                    <input type="text" name="rtopaidno" id="rtopaidno" #rtopaidno placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.rtopaidno" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>RTO Remarks</mat-label>
+                    <textarea name="rtoremark" id="rtoremark" #rtoremark placeholder="Enter remarks"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.rtoremark" cols="15" rows="2"
+                        class="form-control"></textarea>
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Insurance Paid</mat-label>
+                    <input type="text" name="INSPAID" id="INSPAID" #INSPAID placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.INSPAID" class="form-control">
+                </div>
+                <!-- </div>
+            <div class="row cardrow"> -->
+                <div class="col-sm-2">
+                    <mat-label>Mafg. Date</mat-label>
+                    <input type="date" name="mafgdate" id="mafgdate" #mafgdate placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.mafgdate" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>M. Tax</mat-label>
+                    <input type="text" name="MtaxToPayAmt" id="MtaxToPayAmt" #MtaxToPayAmt
+                        placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.MtaxToPayAmt" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>AC Balance</mat-label>
+                    <input type="text" name="MtaxToPayAmt" id="MtaxToPayAmt" placeholder="Enter Scheme Code"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Rate</mat-label>
+                    <input type="text" name="RATE" id="RATE" #RATE placeholder="Enter Scheme Code"
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.RATE" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Receipt Bank</mat-label>
+                    <input type="text" name="RATE" id="RATE" placeholder="Enter Bank Receipt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Cash</mat-label>
+                    <input type="text" name="RATE" id="RATE" placeholder="Enter Bank Receipt" class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Meter Sr. No.</mat-label>
+                    <input type="text" name="sMeterSrNo" id="sMeterSrNo" #sMeterSrNo
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sMeterSrNo" placeholder="Enter Sr No"
+                        class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Battery Sr No.</mat-label>
+                    <input type="text" name="BatteryNo" id="BatteryNo" #BatteryNo
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.BatteryNo"
+                        placeholder="Enter Battery Sr No" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-3">
+                    <mat-label>With Meter</mat-label>
+                    <mat-select name="Meter" class="form-control" #WITHMETER
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.WITHMETER" placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option value="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>With Access.</mat-label>
+                    <mat-select name="WITHACCES" class="form-control" #WITHACCES
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.WITHACCES" placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option vlaue="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Close A/C</mat-label>
+                    <mat-select name="WITHACCES" class="form-control" placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option vlaue="N">N</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-3">
+                    <mat-label>Free Access.</mat-label>
+                    <mat-select name="WITHACCES" class="form-control" placeholder="Select">
+                        <mat-option value="Y">Y</mat-option>
+                        <mat-option vlaue="N">N</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row cardrow">
+
+            </div>
+
+        </mat-card>
+    </div>
+    <div class="row maincard1">
+        <mat-card class="col-md-10 card1">
+            <mat-card-header>Total Price</mat-card-header>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Basic Value(1)</mat-label>
+                    <input type="text" name="sBasicValue" id="sBasicValue" #sBasicValue
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sBasicValue" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Body /Kit(2)</mat-label>
+                    <input type="text" name="sBodyKit" id="sBodyKit" #sBodyKit
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sBodyKit" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Taxable Amount</mat-label>
+                    <input type="text" name="sTaxableAmt" id="sTaxableAmt" #sTaxableAmt
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sTaxableAmt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Credit Note</mat-label>
+                    <input type="text" name="sTaxableAmt" id="sTaxableAmt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Gst Code</mat-label>
+                    <input type="text" name="GSTCD" id="GSTCD" #GSTCD
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.GSTCD" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>HSN Code</mat-label>
+                    <input type="text" name="HSNCODE" id="HSNCODE" #HSNCODE
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.HSNCODE" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Proposal Discount</mat-label>
+                    <input type="text" name="sProposalDiscount" id="sProposalDiscount" #sProposalDiscount
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sProposalDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>CGST[14%]</mat-label>
+                    <input type="text" name="CGST" id="CGST" #CGST
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.CGST" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>SGST[14%]</mat-label>
+                    <input type="text" name="SGST" id="SGST" #SGST
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SGST" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>GST CESS</mat-label>
+                    <input type="text" name="GSTCESS" id="GSTCESS" #GSTCESS
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.GSTCESS" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>CGSTR</mat-label>
+                    <input type="text" name="CGSTR" id="CGSTR" #CGSTR
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.CGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>SGSTR</mat-label>
+                    <input type="text" name="SGSTR" id="SGSTR" #SGSTR
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SGSTR" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>GSTCESSR</mat-label>
+                    <input type="text" name="GSTCESSR" id="GSTCESSR" #GSTCESSR
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.GSTCESSR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>IGSTR</mat-label>
+                    <input type="text" name="IGSTR" id="IGSTR" #IGSTR
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.IGSTR" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Invoice Total</mat-label>
+                    <input type="text" name="sTotinvamt" id="sTotinvamt" #sTotinvamt
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sTotinvamt" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Cash Discount</mat-label>
+                    <input type="text" name="CashDiscount" id="CashDiscount" #CashDiscount
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.CashDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Insurance</mat-label>
+                    <input type="text" name="sinsurance" id="sinsurance" #sinsurance
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sinsurance" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>HPA Charges</mat-label>
+                    <input type="text" name="sHPACharge" id="sHPACharge" #sHPACharge
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sHPACharge" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>M. TOKEN Charge</mat-label>
+                    <input type="text" name="MTOKENCHG" id="MTOKENCHG" #MTOKENCHG
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.MTOKENCHG" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Life Time M. Tax</mat-label>
+                    <input type="text" name="SLIFETIMETAX" id="SLIFETIMETAX" #SLIFETIMETAX
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SLIFETIMETAX" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>No.Plate Charge</mat-label>
+                    <input type="text" name="SNOPLATECHG" id="SNOPLATECHG" #SNOPLATECHG
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SNOPLATECHG" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>C.R.TEMP</mat-label>
+                    <input type="text" name="sCrTemp" id="sCrTemp" #sCrTemp
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sCrTemp" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>RTO R</mat-label>
+                    <input type="text" name="RTOR" id="RTOR" #RTOR
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.RTOR" class="form-control">
+                </div>
+
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>RTO AMOUNT</mat-label>
+                    <input type="text" name="srto" id="srto" #srto
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.srto" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Handling Charge</mat-label>
+                    <input type="text" name="sHandlingCharge" id="sHandlingCharge" #sHandlingCharge
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sHandlingCharge" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Hand. CGST Amt</mat-label>
+                    <input type="text" name="HCGSTA" id="HCGSTA" #HCGSTA
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.HCGSTA" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Hand. SGST Amt</mat-label>
+                    <input type="text" name="HSGSTA" id="HSGSTA" #HSGSTA
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.HSGSTA" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Hand. GST NET</mat-label>
+                    <input type="text" name="HANDLINGGSTNET" id="HANDLINGGSTNET" #HANDLINGGSTNET
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.HANDLINGGSTNET" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Extra Warrenty</mat-label>
+                    <input type="text" name="SEXTWARANTY" id="SEXTWARANTY" #SEXTWARANTY
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.SEXTWARANTY" class="form-control">
+                </div>
+
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Basic Discount</mat-label>
+                    <input type="text" name="sBasicDiscount" id="sBasicDiscount" #sBasicDiscount
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sBasicDiscount" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Other Charges</mat-label>
+                    <input type="text" name="sOtherCharge1" id="sOtherCharge1" #sOtherCharge1
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sOtherCharge1" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Total Vehicle</mat-label>
+                    <input type="text" name="sGRANDTOTAL" id="sGRANDTOTAL" #sGRANDTOTAL
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sGRANDTOTAL" class="form-control">
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-6">
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Accessories</mat-label>
+                            <input type="text" name="saccessories" id="saccessories" #saccessories
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.saccessories"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Accessories DB</mat-label>
+                            <input type="text" name="ACCESDB" id="ACCESDB" #ACCESDB
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESDB" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Accessories CD</mat-label>
+                            <input type="text" name="ACEESCD" id="ACEESCD" #ACEESCD
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACEESCD" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Accessories Inv.</mat-label>
+                            <input type="text" name="ACCESSINV" id="ACCESSINV" #ACCESSINV
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESSINV" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. GSTCD</mat-label>
+                            <input type="text" name="ACCESGSTCD" id="ACCESGSTCD" #ACCESGSTCD
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESGSTCD"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. CGSTR</mat-label>
+                            <input type="text" name="ACCESCGSTR" id="ACCESCGSTR" #ACCESCGSTR
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESCGSTR"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Access. SGSTR</mat-label>
+                            <input type="text" name="ACCESSGSTR" id="ACCESSGSTR" #ACCESSGSTR
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESSGSTR"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Access. HSNNO</mat-label>
+                            <input type="text" name="ACCESHSNNO" id="ACCESHSNNO" #ACCESHSNNO
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESHSNNO"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter</mat-label>
+                            <input type="text" name="sMeterFlag" id="sMeterFlag" #sMeterFlag
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.sMeterFlag"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter DB</mat-label>
+                            <input type="text" name="METERDB" id="METERDB" #METERDB
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERDB" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter CD</mat-label>
+                            <input type="text" name="METERCD" id="METERCD" #METERCD
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERCD" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter Inv.</mat-label>
+                            <input type="text" name="METERINV" id="METERINV" #METERINV
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERINV" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter GSTCD</mat-label>
+                            <input type="text" name="METERGSTCD" id="METERGSTCD" #METERGSTCD
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERGSTCD"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter CGSTR</mat-label>
+                            <input type="text" name="METERCGSTR" id="METERCGSTR" #METERCGSTR
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERCGSTR"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row cardrow">
+                        <div class="col-sm-4">
+                            <mat-label>Meter SGSTR</mat-label>
+                            <input type="text" name="METERSGSTR" id="METERSGSTR" #METERSGSTR
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERSGSTR"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-label>Meter HSNNO</mat-label>
+                            <input type="text" name="METERHSNNO" id="METERHSNNO" #METERHSNNO
+                                [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.METERHSNNO"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cardrow">
+                <div class="col-sm-2">
+                    <mat-label>Access. + Meter</mat-label>
+                    <input type="text" name="ACCESMETER" id="ACCESMETER" #ACCESMETER
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.ACCESMETER" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Basic Disc. No</mat-label>
+                    <input type="text" name="bookingdiscno" id="bookingdiscno" #bookingdiscno
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.bookingdiscno" class="form-control">
+                </div>
+                <div class="col-sm-2">
+                    <mat-label>Grand Total</mat-label>
+                    <input type="text" name="NGRANDTOTAL" id="NGRANDTOTAL" #NGRANDTOTAL
+                        [(ngModel)]="this.retailinvoiceservice.objRetailInvoice.NGRANDTOTAL" class="form-control">
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <!-- <div class="row">
         <div class="col-sm-2">
             <mat-form-field hintLabel="Max 10 characters">
                 <mat-label>Enter some input</mat-label>
@@ -154,5 +928,5 @@
                 <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
             </mat-form-field>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -13,6 +13,9 @@ export class AccountcreationComponent implements OnInit {
     public accountcreationservice :AccountcreationService,
     public paginationservice: PaginationService){}
     public LstCreateAc : any = [];
+    public lstState : any = [];
+    public lstArea : any = [];
+
     public searchText :any =[];
 
   // FOR PAGINATION
@@ -42,9 +45,30 @@ export class AccountcreationComponent implements OnInit {
           this.LstCreateAc = data["Table"];
           this.updatePaginationData(this.LstCreateAc);
         }
+        if (data != null && data["Table1"].length != 0) {
+          for (let i = 0; i < data["Table1"].length; i++) {
+            this.lstState.push({ "STATECD": data["Table1"][i].STATECD.toString(),
+             "STATENAME": data["Table1"][i].STATENAME.toString() });
+          }
+        }
+        if (data != null && data["Table2"].length != 0) {
+          for (let i = 0; i < data["Table2"].length; i++) {
+            this.lstArea.push({ "areacode": data["Table2"][i].areacode.toString(),
+             "areaname": data["Table2"][i].areaname.toString() });
+          }
+        }
         //this.loaderService.hide();
       });
   }
+  public getstatedetails($event :any) {
+    this.accountcreationservice.objledgeraccount.STATECD = this.lstState[$event.target.selectedIndex].STATECD;
+    this.accountcreationservice.objledgeraccount.STATENAME = this.lstState[$event.target.selectedIndex].STATENAME;
+  }
+  public getareadetails($event :any) {
+    this.accountcreationservice.objledgeraccount.areacode = this.lstArea[$event.target.selectedIndex].areacode;
+    this.accountcreationservice.objledgeraccount.areaname = this.lstArea[$event.target.selectedIndex].areaname;
+  }
+
   private updatePaginationData(records: any[]): void {
     this.paginationservice.setData(records);
     this.paginationservice.goToPage(1);
@@ -75,12 +99,9 @@ export class AccountcreationComponent implements OnInit {
   }
   // save items
   public saveledgeraccount(){
-    
-
-
-
+    console.log('save item master called');
     this.accountcreationservice.insertAccount(this.accountcreationservice.objledgeraccount).subscribe(
-      data => {
+      (data) => {
         if (data != null && data["Table"].length != 0) {
           debugger;
           alert(data["Table"][0].Column1);
@@ -92,7 +113,7 @@ export class AccountcreationComponent implements OnInit {
         this.accountcreationservice.resetService();
       });
   }
-
+  
 
   // Edit Button
   public editItem(obj:any) {
@@ -115,6 +136,29 @@ export class AccountcreationComponent implements OnInit {
     if (obj.SSGRP_FOUR != null){this.accountcreationservice.objledgeraccount.SSGRP_FOUR = obj.SSGRP_FOUR.toString()} ;
     if (obj.SSSGRP_FOUR != null){this.accountcreationservice.objledgeraccount.SSSGRP_FOUR = obj.SSSGRP_FOUR.toString()} ;
     if (obj.OPBAL != null){this.accountcreationservice.objledgeraccount.OPBAL = obj.OPBAL.toString()} ;
+    if (obj.crdays != null){this.accountcreationservice.objledgeraccount.crdays = obj.crdays.toString()} ;
+    if (obj.GSTTIN != null){this.accountcreationservice.objledgeraccount.GSTTIN = obj.GSTTIN.toString()} ;
+    if (obj.HSNNO != null){this.accountcreationservice.objledgeraccount.HSNNO = obj.HSNNO.toString()} ;
+    if (obj.GSTCD != null){this.accountcreationservice.objledgeraccount.GSTCD = obj.GSTCD.toString()} ;
+    if (obj.add1 != null){this.accountcreationservice.objledgeraccount.add1 = obj.add1.toString()} ;
+    if (obj.add2 != null){this.accountcreationservice.objledgeraccount.add2 = obj.add2.toString()} ;
+    if (obj.add3 != null){this.accountcreationservice.objledgeraccount.add3 = obj.add3.toString()} ;
+    if (obj.pin != null){this.accountcreationservice.objledgeraccount.pin = obj.pin.toString()} ;
+    if (obj.city != null){this.accountcreationservice.objledgeraccount.city = obj.city.toString()} ;
+    if (obj.AREACD != null){this.accountcreationservice.objledgeraccount.AREACD = obj.AREACD.toString()} ;
+    if (obj.STATECD != null){this.accountcreationservice.objledgeraccount.STATECD = obj.STATECD.toString()} ;
+    if (obj.phr1 != null){this.accountcreationservice.objledgeraccount.phr1 = obj.phr1.toString()} ;
+    if (obj.mobile != null){this.accountcreationservice.objledgeraccount.mobile = obj.mobile.toString()} ;
+    if (obj.fax != null){this.accountcreationservice.objledgeraccount.fax = obj.fax.toString()} ;
+    if (obj.email != null){this.accountcreationservice.objledgeraccount.email = obj.email.toString()} ;
+    if (obj.adHarno != null){this.accountcreationservice.objledgeraccount.adHarno = obj.adHarno.toString()} ;
+    if (obj.PANCARD != null){this.accountcreationservice.objledgeraccount.PANCARD = obj.PANCARD.toString()} ;
+    if (obj.F6061 != null){this.accountcreationservice.objledgeraccount.F6061 = obj.F6061.toString()} ;
+    if (obj.Acknoledgeno != null){this.accountcreationservice.objledgeraccount.Acknoledgeno = obj.Acknoledgeno.toString()} ;
+    if (obj.CloseAccountYN != null){this.accountcreationservice.objledgeraccount.CloseAccountYN = obj.CloseAccountYN.toString()} ;
+    if (obj.active != null){this.accountcreationservice.objledgeraccount.active = obj.active.toString()} ;
+    // if (obj.USERNAME != null){this.accountcreationservice.objledgeraccount.USERNAME = obj.USERNAME.toString()} ;
+    // if (obj.ENTDATE != null){this.accountcreationservice.objledgeraccount.ENTDATE = obj.ENTDATE.toString()} ;
     
 
   }

@@ -33,15 +33,15 @@
     <div class="content px20">
       <form class="login-form" #myForm="ngForm" >
         <div class="text-center">
-          <h2 class="app-name">Material Admin</h2>
+          <h2 class="app-name">Login</h2>
         </div>
         <div fxLayout="row">
           <div fxFlexFill>
             <mat-form-field class="w-100">
-              <input matInput placeholder="Email" [(ngModel)]="this.username">
+              <input class="textbox" placeholder="UserName" [(ngModel)]="this.username">
             </mat-form-field>
             <mat-form-field class="w-100">
-              <input matInput type="password" placeholder="Password" [(ngModel)]="this.password">
+              <input class="textbox" type="password" placeholder="Password" [(ngModel)]="this.password">
             </mat-form-field>
           </div>
         </div>
@@ -51,7 +51,7 @@
         </div>
         <div fxLayout="row">
           <div fxFlexFill>
-            <button type="submit" mat-raised-button color="primary" class="w-100" routerLink="/dashboard">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="w-100" routerLink="/dash">Login</button>
             <button type="button" mat-button color="primary" class="w-100" 
             >Sign Up</button>
           </div>
