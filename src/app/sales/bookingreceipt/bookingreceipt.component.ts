@@ -219,7 +219,8 @@ export class BookingreceiptComponent {
     this.bookingreceiptservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
-    
+    let currentDate = new Date().toISOString().substring(0,10);
+    this.bookingreceiptservice.Objbookingreceipt.DOCDT = currentDate;
   }
   public back(){
     this.isVisibleChild=false;

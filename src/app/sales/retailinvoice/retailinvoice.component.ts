@@ -366,7 +366,8 @@ export class RetailinvoiceComponent implements OnInit{
     this.retailinvoiceservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
-    
+    let currentDate = new Date().toISOString().substring(0,10);
+    this.retailinvoiceservice.objRetailInvoice.sInvDt = currentDate;
     
   }
   

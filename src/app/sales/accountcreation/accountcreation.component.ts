@@ -167,6 +167,8 @@ export class AccountcreationComponent implements OnInit {
     this.accountcreationservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
+    // let currentDate = new Date().toISOString().substring(0,10);
+    // this.accountcreationservice.objledgeraccount.EnquiryDt = currentDate;
     
   } 
   public back(){

@@ -154,7 +154,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <mat-label>DB Code</mat-label>
-                    <input type="text" class="form-control">
+                    <input type="text" disabled="true" class="form-control">
                 </div>
                 <div class="col-sm-8">
                     <mat-label>DB Name</mat-label>
@@ -164,7 +164,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <mat-label>Document No.</mat-label>
-                    <input type="text" class="form-control">
+                    <input type="text" disabled="true" class="form-control">
                 </div>
                 <div class="col-sm-8">
                     <mat-label>DB Date</mat-label>
@@ -245,40 +245,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="tr">
+                        <tr id="tr" *ngFor="let obj of this.journalservice.listpurjournal; let i = index">
                             <td id="td" class="col-sm-1">
                                 <button mat-icon-button color="primary"
                                 (click)="addRow()"><mat-icon>add</mat-icon></button>&nbsp;
                             </td>
                             <td id="td">
-                                <input type="text" name="AcName" id="AcName" #acno [(ngModel)]="this.journalservice.objRto.acno" >
+                                <input type="text" name="{{ 'acno' + i }}" 
+                                id="{{ 'acno' + i }}"  [(ngModel)]="obj.acno" >
                             </td>
                             <td id="td">
-                                <input type="text" name="AcNo" id="AcNo" #ACNAME [(ngModel)]="this.journalservice.objRto.ACNAME" >
-                            </td>
-        
-                            <td id="td">
-                                <input type="text" name="Amount" id="Amount" #amount [(ngModel)]="this.journalservice.objRto.amount" >
+                                <input type="text" name="{{ 'ACNAME' + i }}" 
+                                id="{{ 'ACNAME' + i }}"  [(ngModel)]="obj.ACNAME" >
                             </td>
         
                             <td id="td">
-                                <input type="text" name="DC" id="DC" #DocNo [(ngModel)]="this.journalservice.objRto.DocNo" (input)="addRow()">
+                                <input type="text" name="{{ 'amount' + i }}" 
+                                id="{{ 'amount' + i }}"  [(ngModel)]="obj.amount" >
+                            </td>
+        
+                            <td id="td">
+                                <input type="text" name="{{ 'DocNo' + i }}" 
+                                id="{{ 'DocNo' + i }}"  [(ngModel)]="obj.DocNo">
                             </td>
                              <td id="td">
-                                <input type="text" name="Particulers-1" id="Particulers-1" #DBCODE [(ngModel)]="this.journalservice.objRto.DBCODE" (input)="addRow()">
+                                <input type="text" name="{{ 'DBCODE' + i }}" 
+                                id="{{ 'DBCODE' + i }}"  [(ngModel)]="obj.DBCODE">
                             </td>
                             <td id="td">
-                                <input type="text" name="Particulers-2" id="Particulers-2" #DBNAME [(ngModel)]="this.journalservice.objRto.DBNAME" (input)="addRow()">
+                                <input type="text" name="{{ 'DBNAME' + i }}" 
+                                id="{{ 'DBNAME' + i }}"  [(ngModel)]="obj.DBNAME">
                             </td>
                             <td id="td">
-                                <input type="text" name="Balance" id="Balance" #Nar1 [(ngModel)]="this.journalservice.objRto.Nar1" (input)="addRow()">
+                                <input type="text" name="{{ 'Nar1' + i }}" 
+                                id="{{ 'Nar1' + i }}"  [(ngModel)]="obj.Nar1">
                             </td>
                             
                             <td id="td">
-                                <input type="text" name="EntryDiff" id="EntryDiff" #Nar2 [(ngModel)]="this.journalservice.objRto.Nar2" (input)="addRow()">
+                                <input type="text" name="{{ 'Nar2' + i }}" 
+                                id="{{ 'Nar2' + i }}"  [(ngModel)]="obj.Nar2">
                             </td>
                             <td id="td">
-                                <input type="text" name="SrNo" id="SrNo" #Nar3 [(ngModel)]="this.journalservice.objRto.Nar3" (input)="addRow()">
+                                <input type="text" name="{{ 'Nar3' + i }}" 
+                                id="{{ 'Nar3' + i }}"  [(ngModel)]="obj.Nar3">
                             </td>
                             
         

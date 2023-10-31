@@ -178,6 +178,9 @@ export class MiscellaneoussalesComponent {
     this.miscellaneousservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
+    let currentDate = new Date().toISOString().substring(0,10);
+    this.miscellaneousservice.objMisSales.docdt = currentDate;
+    // this.miscellaneousservice.objMisSales.maxEnquiryNo = obj.maxEnquiryNo.toString()
     
   }
   public back(){

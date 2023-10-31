@@ -29,6 +29,17 @@ export class JournalService extends DataServiceService{
 
 
   }
+  public objPurchaseDetail = {
+    "acno": "",
+    "ACNAME": "",
+    "amount": 0,
+    "DocNo": "",
+    "DBCODE": 0,
+    "DBNAME": "",
+    "Nar1": "",
+    "Nar2": "",
+    "Nar3": "",
+  };
   public resetService(){
     this.objRto={
       "DocNo" : "",
@@ -46,8 +57,10 @@ export class JournalService extends DataServiceService{
       "Nar3" : "",
       "Nar4" : "",
       "DocDt" : "0",
-    }
+    };
+    this.listpurjournal=[];
   }
+  public listpurjournal = [this.objPurchaseDetail];
   public listRtodetails = [this.objRto];
   getJournalTransaction(data:any): Observable<any> {
     debugger

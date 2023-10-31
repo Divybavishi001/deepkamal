@@ -270,7 +270,8 @@ export class DelivryorderComponent implements OnInit{
     this.Deliveryorderservice.resetService();
     this.isVisibleChild=true;
     this.isVisibleParent=false;
-    
+    let currentDate = new Date().toISOString().substring(0,10);
+    this.Deliveryorderservice.objDeliveryOrder.DoDate = currentDate;
   }
   public back(){
     this.isVisibleChild=false;

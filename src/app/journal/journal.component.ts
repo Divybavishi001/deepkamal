@@ -149,8 +149,19 @@ export class JournalComponent implements OnInit {
   //   console.log(this.vehiclePurchaseService.listPurchaseDetails);
   // }
   public addRow() {
-    var row=document.querySelector(".tr2") as HTMLElement;
-    row.style.visibility= "visible";
+    debugger;
+    this.journalservice.listpurjournal.push({
+      "acno": "",
+    "ACNAME": "",
+    "amount": 0,
+    "DocNo": "",
+    "DBCODE": 0,
+    "DBNAME": "",
+    "Nar1": "",
+    "Nar2": "",
+    "Nar3": "",
+    });
+    console.log(this.journalservice.listpurjournal);
   }
     // public addNewRow(): void {
     //   this.itemsToDisplay.push({

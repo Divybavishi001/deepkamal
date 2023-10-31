@@ -36,6 +36,8 @@ export class EnquiryComponent implements OnInit{
 
   public isVisibleParent: boolean = true;
   public isVisibleChild:boolean=false;
+  public maxEnquiryNo = 0;
+
 
 
   public ngOnInit(): void {
@@ -71,6 +73,7 @@ export class EnquiryComponent implements OnInit{
           // this.itemsToDisplay = this.paginate(this.current, this.perPage);
           // this.total = Math.ceil(this.LstEnquiry.length / this.perPage);
           this.updatePaginationData(this.LstEnquiry);
+          this.maxEnquiryNo = Math.max(...this.LstEnquiry.map((enquiry: { EnquiryNo: any; }) => enquiry.EnquiryNo));
         }
         if (data != null && data["Table1"].length != 0) {
           for (let i = 0; i < data["Table1"].length; i++) {
@@ -103,6 +106,7 @@ export class EnquiryComponent implements OnInit{
              "TYPENAME": data["Table5"][i].TYPENAME.toString() });
           }
         }
+         
         
         //this.loaderService.hide();
       });
@@ -276,7 +280,11 @@ export class EnquiryComponent implements OnInit{
     this.isVisibleChild=true;
     this.isVisibleParent=false;
     
+    let currentDate = new Date().toISOString().substring(0,10);
+    this.enquiryservice.objEnquiry.EnquiryDt = currentDate;
+    this.enquiryservice.objEnquiry.EnquiryNo = this.maxEnquiryNo + 1;
   }
+  
   public back(){
     this.isVisibleChild=false;
     this.isVisibleParent=true;
